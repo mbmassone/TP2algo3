@@ -9,4 +9,8 @@ public class Jugador {
     public Jugador(String nombre){
         this.nombre = nombre;
     }
+
+    public String obtener_nombre(){
+        return nombre;
+    }
 }
