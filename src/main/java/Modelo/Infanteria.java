@@ -10,12 +10,12 @@ public class Infanteria extends Unidad {
     }
 
     @Override
-    void accion(Unidad unidad) {
+    public void accion(Unidad unidad) {
 
     }
 
     @Override
-    boolean mover(int filaNueva, int columnaNueva) {
+    public boolean mover(int filaNueva, int columnaNueva) {
         return false;
     }
 

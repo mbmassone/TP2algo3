@@ -13,6 +13,7 @@ public class Casillero {
 
     //Metodos
     public Casillero(){
+        this.estado = new Libre();
         this.adyacentes = new HashMap<Direccion, Casillero>();
     }
 

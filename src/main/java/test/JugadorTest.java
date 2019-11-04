@@ -1,14 +1,14 @@
 package test;
 
 import Modelo.Jugador;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class JugadorTest {
     @Test
-    void testCrearJugadorConNombre(){
+    public void testCrearJugadorConNombre(){
         String nuevoNombre = "Tomas";
         Jugador nuevoJugador = new Jugador(nuevoNombre);
-        Assertions.assertTrue(nuevoJugador.obtener_nombre() == nuevoNombre);
+        Assert.assertTrue(nuevoJugador.obtener_nombre() == nuevoNombre);
     }
 }

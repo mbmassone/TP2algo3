@@ -1,7 +1,7 @@
 package test;
 
 import Modelo.Infanteria;
-import Modelo.Tablero;
+import Modelo.Tablero.Tablero;
 import Modelo.Unidad;
 import org.junit.Assert;
 import org.junit.Test;
@@ -21,4 +21,6 @@ public class TableroTest {
 
         Assert.assertFalse(tablero.estaLibre(0,0));
     }
+
+
 }

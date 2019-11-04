@@ -1,6 +1,8 @@
-package Modelo;
+package Modelo.Tablero;
 
 import Modelo.Casillero.Casillero;
+import Modelo.Direccion;
+import Modelo.Unidad;
 
 import java.util.ArrayList;
 
@@ -27,17 +29,27 @@ public class Tablero {
     }
 
     private void inicializarAdyacentes(int indice, Casillero casillero){
-        //Por ahora lo hago manualmente para probar. TODO refactorizar funcion.
-        Casillero casilleroActual = this.tablero.get(indice);
+        for(Direccion direccion: Direccion.values()){
+            int defasaje = obtenerDefasaje(direccion);
+            if(indice + defasaje >= 0 && indice + defasaje < TAMANIO){
+                this.tablero.get(indice).agregarAdyacente(direccion, this.tablero.get(indice + defasaje));
+            }
+        }
+    }
 
-        casilleroActual.agregarAdyacente(ARRIBA, this.tablero.get(indice - TAMANIO));
-        casilleroActual.agregarAdyacente(ARRIBADERECHA, this.tablero.get(indice - TAMANIO + 1));
-        casilleroActual.agregarAdyacente(DERECHA, this.tablero.get(indice + 1));
-        casilleroActual.agregarAdyacente(ABAJODERECHA, this.tablero.get(indice + TAMANIO + 1));
-        casilleroActual.agregarAdyacente(ABAJO, this.tablero.get(indice + TAMANIO));
-        casilleroActual.agregarAdyacente(ABAJOIZQUIERDA, this.tablero.get(indice + TAMANIO - 1));
-        casilleroActual.agregarAdyacente(IZQUIERDA, this.tablero.get(indice - 1));
-        casilleroActual.agregarAdyacente(ARRIBAIZQUIERDA, this.tablero.get(indice - TAMANIO - 1));
+    private int obtenerDefasaje(Direccion direccion){
+        //TODO ESTA RE MAL!!!! CAMBIAR LO ANTES POSIBLE
+        switch (direccion){
+            case ARRIBA: return (-1) * TAMANIO;
+            case ARRIBADERECHA: return (-1) * TAMANIO + 1;
+            case DERECHA: return 1;
+            case ABAJODERECHA: return TAMANIO + 1;
+            case ABAJO: return TAMANIO;
+            case ABAJOIZQUIERDA: return TAMANIO - 1;
+            case IZQUIERDA: return -1;
+            case ARRIBAIZQUIERDA: return (-1) * TAMANIO - 1;
+        }
+        return 0; //Para que no se queje
     }
 
     public void agregarUnidad(int fila, int columna, Unidad unidad){
