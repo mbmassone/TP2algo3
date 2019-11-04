@@ -1,21 +1,17 @@
 package Modelo;
 
-import java.util.List;
+import java.util.HashMap;
 
 public class Casillero {
-	//Atributos
-    private int fila;
-    private int columna;
-    private List<Casillero> adyacentes;
+    //Atributos
+    private HashMap<Direccion, Casillero> adyacentes;
     private Unidad unidad;
-    private EstadoCasilla estado;
+    private EstadoCasilla estado;//TODO
 
     //Metodos
-    public Casillero(int fila, int columna){
-        this.fila = fila;
-        this.columna = columna;
+    public Casillero(){
+        this.adyacentes = new HashMap<Direccion, Casillero>();
     }
-
 
     public void agregarUnidad(Unidad unidad) {
         this.unidad = unidad;
@@ -35,5 +31,13 @@ public class Casillero {
 
     public void moverUnidad(Casillero nuevoCasillero) {
         //TODO
+    }
+
+    public void agregarAdyacente(Direccion direccion, Casillero casillero){
+        this.adyacentes.put(direccion, casillero);
+    }
+
+    public Casillero obtenerAdyacente(Direccion direccion){
+        return this.adyacentes.get(direccion);
     }
 }
