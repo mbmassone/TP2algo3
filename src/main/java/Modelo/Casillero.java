@@ -3,12 +3,14 @@ package Modelo;
 import java.util.List;
 
 public class Casillero {
+	//Atributos
     private int fila;
     private int columna;
     private List<Casillero> adyacentes;
     private Unidad unidad;
     private EstadoCasilla estado;
 
+    //Metodos
     public Casillero(int fila, int columna){
         this.fila = fila;
         this.columna = columna;

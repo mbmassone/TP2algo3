@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Tablero {
 
+	//Metodos
     private List<Casillero> tablero; //Lo hago como una lista, cualquier cosa lo cambiamos.
     private int TAMANIO = 20;
 
