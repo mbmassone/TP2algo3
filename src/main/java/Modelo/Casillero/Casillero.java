@@ -1,11 +1,14 @@
-package Modelo;
+package Modelo.Casillero;
+
+import Modelo.Direccion;
+import Modelo.Unidad;
 
 import java.util.HashMap;
 
 public class Casillero {
     //Atributos
     private HashMap<Direccion, Casillero> adyacentes;
-    private Unidad unidad;
+    Unidad unidad; //Solo la pueden acceder clases en el paquete Casillero.
     private EstadoCasilla estado;//TODO
 
     //Metodos
@@ -14,7 +17,7 @@ public class Casillero {
     }
 
     public void agregarUnidad(Unidad unidad) {
-        this.unidad = unidad;
+        this.estado.agregarUnidad(this, unidad);
     }
 
     public Unidad obtenerUnidad() {
@@ -35,6 +38,10 @@ public class Casillero {
 
     public void agregarAdyacente(Direccion direccion, Casillero casillero){
         this.adyacentes.put(direccion, casillero);
+    }
+
+    public void actualizarEstado(EstadoCasilla nuevoEstado){
+        this.estado = nuevoEstado;
     }
 
     public Casillero obtenerAdyacente(Direccion direccion){

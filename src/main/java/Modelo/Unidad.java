@@ -1,5 +1,7 @@
 package Modelo;
 
+import Modelo.Casillero.Casillero;
+
 public abstract class Unidad {
     protected int vida;
     protected int costo;
@@ -11,8 +13,8 @@ public abstract class Unidad {
 
     }
 
-    abstract void accion(Unidad unidad);
-    abstract boolean mover(int filaNueva, int columnaNueva);
+    public abstract void accion(Unidad unidad);
+    public abstract boolean mover(int filaNueva, int columnaNueva);
 
 
 }

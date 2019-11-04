@@ -1,5 +1,7 @@
 package Modelo;
 
+import Modelo.Casillero.Casillero;
+
 import java.util.ArrayList;
 
 import static Modelo.Direccion.*;
@@ -14,7 +16,7 @@ public class Tablero {
         this.tablero = new ArrayList<Casillero>();
 
         //Inicializo la matriz con casilleros
-        for(int i = 0; i < this.tablero.size(); i++){
+        for(int i = 0; i < TAMANIO*TAMANIO; i++){
             this.tablero.add(new Casillero());
         }
 
