@@ -1,12 +1,11 @@
 package Modelo.Tablero;
 
+import Modelo.Bando;
 import Modelo.Casillero.Casillero;
 import Modelo.Direccion;
 import Modelo.Unidad;
 
 import java.util.ArrayList;
-
-import static Modelo.Direccion.*;
 
 public class Tablero {
 
@@ -16,10 +15,15 @@ public class Tablero {
 
     public Tablero(){
         this.tablero = new ArrayList<Casillero>();
-
-        //Inicializo la matriz con casilleros
+        Bando bando;
+        //Inicializo la lista con casilleros
         for(int i = 0; i < TAMANIO*TAMANIO; i++){
-            this.tablero.add(new Casillero());
+            if (i < (TAMANIO * TAMANIO) / 2) {
+                bando = Bando.BANDO1;
+            } else {
+                bando = Bando.BANDO2;
+            }
+            this.tablero.add(new Casillero(bando));
         }
 
         //Inicializo los adyacentes
@@ -53,7 +57,11 @@ public class Tablero {
     }
 
     public void agregarUnidad(int fila, int columna, Unidad unidad){
-        obtenerCasillero(fila, columna).agregarUnidad(unidad);
+        Casillero casillero = obtenerCasillero(fila, columna);
+        if(casillero.obtenerBando() != unidad.obtenerBando()){
+            throw new UnidadAgregadaEnSectorEnemigoExeption();
+        }
+        casillero.agregarUnidad(unidad);
     }
 
     private Casillero obtenerCasillero(int fila, int columna) {
@@ -76,5 +84,4 @@ public class Tablero {
         Casillero nuevoCasillero = obtenerCasillero(nuevaFila, nuevaColumna);
         obtenerCasillero(fila, columna).moverUnidad(nuevoCasillero);
     }
-
 }

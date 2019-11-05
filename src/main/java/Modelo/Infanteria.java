@@ -5,8 +5,8 @@ import Modelo.Unidad;
 public class Infanteria extends Unidad {
 
     //Precondicion: fila, columna esta libre en el tablero.
-    public Infanteria(){
-
+    public Infanteria(Bando bando){
+        this.bando = bando;
     }
 
     @Override
