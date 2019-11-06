@@ -2,6 +2,7 @@ package Modelo.Casillero;
 
 import Modelo.Bando;
 import Modelo.Direccion;
+import Modelo.Tablero.CalculadorDistancias;
 import Modelo.Unidad;
 
 import java.util.HashMap;
@@ -11,13 +12,15 @@ public class Casillero {
     private HashMap<Direccion, Casillero> adyacentes;
     private Bando bando;
     Unidad unidad; //Solo la pueden acceder clases en el paquete Casillero.
-    private EstadoCasilla estado;//TODO
+    private EstadoCasilla estado;
+    private CalculadorDistancias calculadorDistancias;
 
     //Metodos
-    public Casillero(Bando bando){
+    public Casillero(Bando bando, CalculadorDistancias calculadorDistancias){
         this.bando = bando;
         this.estado = new Libre();
         this.adyacentes = new HashMap<Direccion, Casillero>();
+        this.calculadorDistancias = calculadorDistancias;
     }
 
     public void agregarUnidad(Unidad unidad) {
@@ -50,6 +53,10 @@ public class Casillero {
 
     public Casillero obtenerAdyacente(Direccion direccion){
         return this.adyacentes.get(direccion);
+    }
+
+    public int caluclarDistancia(Casillero casillero){
+        return this.calculadorDistancias.calcularDistancia(this, casillero);
     }
 
     public Bando obtenerBando() {

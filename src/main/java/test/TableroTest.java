@@ -12,7 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TableroTest {
 
-
+    @Test
+    public void tableroSeInicializaCorrectamente(){
+        //TODO
+    }
 
     @Test
     public void colocarUnidadNuevaEnCasilleroAliadoVacio(){

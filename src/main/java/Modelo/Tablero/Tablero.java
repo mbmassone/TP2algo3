@@ -16,6 +16,7 @@ public class Tablero {
     public Tablero(){
         this.tablero = new ArrayList<Casillero>();
         Bando bando;
+        CalculadorDistancias calculadorDistancias = new CalculadorDistancias(this);
         //Inicializo la lista con casilleros
         for(int i = 0; i < TAMANIO*TAMANIO; i++){
             if (i < (TAMANIO * TAMANIO) / 2) {
@@ -23,7 +24,7 @@ public class Tablero {
             } else {
                 bando = Bando.BANDO2;
             }
-            this.tablero.add(new Casillero(bando));
+            this.tablero.add(new Casillero(bando, calculadorDistancias));
         }
 
         //Inicializo los adyacentes
@@ -69,6 +70,15 @@ public class Tablero {
         // Si lo cambiamos a un diccionario solo tenemos que cambiar este método y la inicializacion.
         int indice = TAMANIO * fila + columna;
         return this.tablero.get(indice);
+    }
+
+    int[] obtenerCoordenadasCasillero(Casillero casillero){
+        int indice = tablero.indexOf(casillero);
+        int[] coordenada = new int[2];
+        coordenada[0] = indice % TAMANIO;
+        coordenada[1] = indice - coordenada[0] * TAMANIO;
+
+        return coordenada;
     }
 
     public boolean estaLibre(int fila, int columna){
