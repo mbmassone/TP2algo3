@@ -6,6 +6,8 @@ public class Infanteria extends Unidad {
 
     //Precondicion: fila, columna esta libre en el tablero.
     public Infanteria(Bando bando){
+        this.vida = 100;
+        this.costo = 1;
         this.bando = bando;
     }
 

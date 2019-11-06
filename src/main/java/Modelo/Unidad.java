@@ -14,6 +14,10 @@ public abstract class Unidad {
 
     }
 
+    public int descontarCosto(int puntos){
+        return puntos - costo;
+    }
+
     public abstract void accion(Unidad unidad);
     public abstract boolean mover(int filaNueva, int columnaNueva);
 
