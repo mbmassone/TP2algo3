@@ -10,4 +10,9 @@ public class Ocupado implements EstadoCasilla {
     public void agregarUnidad(Casillero casillero, Unidad unidad) {
         throw new CasilleroOcupadoExcepcion();
     }
+
+    @Override
+    public void destruirUnidad(Casillero casillero) {
+        casillero.actualizarEstado(new Libre());
+    }
 }

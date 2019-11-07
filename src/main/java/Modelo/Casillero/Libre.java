@@ -12,5 +12,10 @@ public class Libre implements EstadoCasilla {
         casillero.actualizarEstado(new Ocupado());
     }
 
+    @Override
+    public void destruirUnidad(Casillero casillero) {
+        throw new CasilleroYaEstaLibreExcepcion();
+    }
+
 
 }

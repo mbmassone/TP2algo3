@@ -24,7 +24,7 @@ public class JugadorTest {
     @Test
     public void testVerificarReduccionDePuntos() {
         Jugador nuevoJugador = new Jugador("Andoni");
-        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1), new Casillero() );
+        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()) );
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), 19);
     }
@@ -34,7 +34,7 @@ public class JugadorTest {
         Jugador nuevoJugador = new Jugador("Bernardo");
 
         for(int i = 0; i < 20; i++)
-            nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1), new Casillero() );
+            nuevoJugador.agregarUnidad(new Infanteria( Bando.BANDO1, new Casillero() ) );
 
         assertThrows(JugadorConPuntosInsuficientesExcepcion.class, () ->{
             nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ) );
@@ -47,7 +47,7 @@ public class JugadorTest {
 
         for(int i = 0; i < 21; i++) {
             try {
-                nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1), new Casillero() );
+                nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ));
             } catch (JugadorConPuntosInsuficientesExcepcion ex) {
                 Assert.assertSame(nuevoJugador.obtenerPuntos(), 0);
             }
@@ -57,8 +57,8 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAUnJugador(){
         Jugador nuevoJugador = new Jugador("Tomas");
-        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1), new Casillero());
-        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1), new Casillero());
+        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()));
+        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()));
         nuevoJugador.eliminarGuerrero();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 1);
@@ -67,7 +67,7 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
         Jugador nuevoJugador = new Jugador("Eugenio");
-        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1), new Casillero() );
+        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ));
         nuevoJugador.eliminarGuerrero();
 
         assertThrows(JugadorSinUnidadesEnJuegoExcepcion.class, () ->{
