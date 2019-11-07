@@ -26,11 +26,15 @@ public abstract class Unidad {
 
     public void sufrirAtaque(int danio){
         vida -= danio;
+        if(this.vida <= 0){
+            this.casillero.destruirUnidad();
+        }
     }
 
-    public void unidadMuere(){
-        if (this.vida <= 0)  throw new UnidadMuereException();
+    public int getVida(){
+        return this.vida;
     }
+
 
     public abstract void recibirCuracion(int curacion);
     public abstract void accion(Unidad unidad);

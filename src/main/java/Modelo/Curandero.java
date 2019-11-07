@@ -1,6 +1,6 @@
 package Modelo;
 import Modelo.Casillero.Casillero;
-import Modelo.Unidad;
+
 
 public class Curandero extends Unidad{
     private int curacion;
@@ -12,6 +12,9 @@ public class Curandero extends Unidad{
 
     @Override
     public void accion(Unidad unidad){
+        if (this.bando != unidad.obtenerBando()){
+            throw new CurarEnemigoExcepcion();
+        }
         unidad.recibirCuracion(curacion);
     }
 
