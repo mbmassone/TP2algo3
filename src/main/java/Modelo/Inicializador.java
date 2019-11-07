@@ -19,6 +19,16 @@ public class Inicializador {
 
     //public Unidad pedirUnidad()// TODO Lo que Tomy decía del indicador.
 
+
+
+
+
+
+
+
+
+
+
     public void agregarUnidad(Jugador jugador, int fila, int columna, Unidad unidad){
         try {
             tablero.agregarUnidad(fila, columna, unidad);
