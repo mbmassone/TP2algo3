@@ -10,8 +10,11 @@ public abstract class Unidad {
     //Saco fila, columna y tablero porque ahora la unidad tiene el casillero.
 
 
-    public Unidad(){
-
+    public Unidad(int vida,int costo,Casillero casillero,Bando bando){
+        this.vida = vida;
+        this.costo = costo;
+        this.casillero = casillero;
+        this.bando = bando;
     }
 
     public int descontarCosto(int puntos){

@@ -1,13 +1,12 @@
 package Modelo;
+import Modelo.Casillero.Casillero;
 import Modelo.Unidad;
 
 public class Curandero extends Unidad{
     private int curacion;
 
-    public Curandero(Bando bando){
-        this.vida = 75;
-        this.costo = 2;
-        this.bando = bando;
+    public Curandero(Bando bando, Casillero casillero){
+        super(75,2,casillero,bando);
         this.curacion = 15;
     }
 

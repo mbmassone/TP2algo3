@@ -1,14 +1,13 @@
 package Modelo;
+import Modelo.Casillero.Casillero;
 import Modelo.Unidad;
 
 public class Infanteria extends Unidad {
 
     private int danio;
     //Precondicion: fila, columna esta libre en el tablero.
-    public Infanteria(Bando bando){
-        this.vida = 100;
-        this.costo = 1;
-        this.bando = bando;
+    public Infanteria(Bando bando, Casillero casillero){
+        super(100,1,casillero,bando);
         this.danio = 15;
     }
 
