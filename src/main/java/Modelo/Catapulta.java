@@ -1,14 +1,13 @@
 package Modelo;
+import Modelo.Casillero.Casillero;
 import Modelo.Unidad;
 
 public class Catapulta extends Unidad{
     private int danioCercano;
     private int danioLejano;
 
-    public Catapulta(Bando bando){
-        this.vida = 50;
-        this.costo = 5;
-        this.bando = bando;
+    public Catapulta(Bando bando, Casillero casillero){
+        super(50,5,casillero,bando);
         danioCercano = 0;
         danioLejano = 20;
     }
@@ -23,7 +22,7 @@ public class Catapulta extends Unidad{
             danio = danioCercano;
         }
         unidad.sufrirAtaque(danio);
-        unidad.casillero.
+        //hacer danio adyacentes.
     }
 
     @Override

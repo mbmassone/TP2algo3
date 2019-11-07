@@ -1,14 +1,13 @@
 package Modelo;
+import Modelo.Casillero.Casillero;
 import Modelo.Unidad;
 
 public class Jinete extends Unidad {
     private int danioCercano;
     private int danioLejano;
 
-    public Jinete(Bando bando){
-        this.vida = 100;
-        this.costo = 3;
-        this.bando = bando;
+    public Jinete(Bando bando, Casillero casillero){
+        super(100,3,casillero,bando);
         this.danioCercano = 5;
         this.danioLejano = 15;
     }
@@ -20,7 +19,7 @@ public class Jinete extends Unidad {
 
     @Override
     public void accion(Unidad unidad) {
-        if (this.casillero.tieneInfanteriaCerca(this.bando) || !(this.casillero.tieneEnemigoCerca(this.bando))) {
+        if (this.casillero.tieneInfanteriaCerca(this.bando) || !(this.casillero.tieneEnemigosCerca(this.bando))) {
             unidad.sufrirAtaque(danioLejano);
         }
         else {
