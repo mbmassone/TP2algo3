@@ -21,4 +21,8 @@ public class Infanteria extends Unidad {
         return false;
     }
 
+    @Override
+    public void recibirCuracion(int curacion){
+        vida += curacion;
+    }
 }
