@@ -1,5 +1,8 @@
 import Modelo.*;
 import Modelo.Casillero.Casillero;
+import Modelo.Casillero.CasilleroOcupadoExcepcion;
+import Modelo.Tablero.Direccion;
+import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertSame;
@@ -50,6 +53,31 @@ public class InfanteriaTest{
         curandero.accion(infanteria);
 
         assertSame(infanteria.getVida(),115);
+    }
+
+    @Test
+    public void testInfanteriaSePuedeMoverACasillaLibre(){
+        Tablero tablero = new Tablero();
+        Infanteria infanteria = new Infanteria(Bando.BANDO1, new Casillero());
+        tablero.agregarUnidad(0,0, infanteria);
+
+        infanteria.mover(Direccion.ABAJO);
+
+        Assert.assertFalse(tablero.estaLibre(1,0));
+    }
+
+    @Test
+    public void testInfanteriaNoSePuedeMoverACasillaOcupada(){
+        Tablero tablero = new Tablero();
+        Infanteria infanteria1 = new Infanteria(Bando.BANDO1, new Casillero());
+        Infanteria infanteria2 = new Infanteria(Bando.BANDO1, new Casillero());
+
+        tablero.agregarUnidad(0,0, infanteria1);
+        tablero.agregarUnidad(1,0,infanteria2);
+
+        assertThrows(CasilleroOcupadoExcepcion.class, () ->{
+            infanteria1.mover(Direccion.ABAJO);
+        });
     }
 
 }

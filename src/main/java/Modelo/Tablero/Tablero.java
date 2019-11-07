@@ -36,7 +36,7 @@ public class Tablero {
     private void inicializarAdyacentes(int indice, Casillero casillero){
         for(Direccion direccion: Direccion.values()){
             int defasaje = direccion.obtenerDefasaje(TAMANIO);
-            if(indice + defasaje >= 0 && indice + defasaje < TAMANIO){
+            if(indice + defasaje >= 0 && indice + defasaje < TAMANIO*TAMANIO){
                 this.tablero.get(indice).agregarAdyacente(direccion, this.tablero.get(indice + defasaje));
             }
         }
