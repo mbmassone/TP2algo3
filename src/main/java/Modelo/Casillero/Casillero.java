@@ -62,4 +62,8 @@ public class Casillero {
     public Bando obtenerBando() {
         return this.bando;
     }
+
+    public void destruirUnidad(){
+        estado.destruirUnidad(this);
+    }
 }
