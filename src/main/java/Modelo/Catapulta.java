@@ -1,5 +1,6 @@
 package Modelo;
 import Modelo.Casillero.Casillero;
+import Modelo.Tablero.Direccion;
 import Modelo.Unidad;
 
 public class Catapulta extends Unidad{
@@ -26,8 +27,8 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public boolean mover(int filaNueva, int columnaNueva) {
-        return false;
+    public void mover(Direccion direccion) {
+        throw new CatapultaNoSePuedeMoverExcepcion();
     }
 
     @Override

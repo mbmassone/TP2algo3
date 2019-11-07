@@ -20,8 +20,4 @@ public class Curandero extends Unidad{
         this.vida += curacion;
     }
 
-    @Override
-    public boolean mover(int filaNueva, int columnaNueva) {
-        return false;
-    }
 }

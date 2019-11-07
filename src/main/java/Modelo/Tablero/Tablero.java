@@ -2,6 +2,7 @@ package Modelo.Tablero;
 
 import Modelo.Bando;
 import Modelo.Casillero.Casillero;
+import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
 import Modelo.Unidad;
 
 import java.util.ArrayList;
@@ -53,7 +54,11 @@ public class Tablero {
         //Como usamos una lista la forma de conseguir un casillero sería esta.
         // Si lo cambiamos a un diccionario solo tenemos que cambiar este método y la inicializacion.
         int indice = TAMANIO * fila + columna;
-        return this.tablero.get(indice);
+        try{
+            return this.tablero.get(indice);
+        }catch (IndexOutOfBoundsException error){
+            throw new CoordenadaInvalidaExcepcion();
+        }
     }
 
     int[] obtenerCoordenadasCasillero(Casillero casillero){
@@ -75,7 +80,10 @@ public class Tablero {
     }
 
     public void moverUnidad(int fila, int columna, int nuevaFila, int nuevaColumna){
+        Casillero actualCasillero = obtenerCasillero(fila, columna);
         Casillero nuevoCasillero = obtenerCasillero(nuevaFila, nuevaColumna);
-        obtenerCasillero(fila, columna).moverUnidad(nuevoCasillero);
+
+        Direccion direccion = actualCasillero.obtenerDireccionDeAdyacente(nuevoCasillero);
+        actualCasillero.moverUnidad(direccion);
     }
 }

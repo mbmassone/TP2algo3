@@ -6,6 +6,8 @@ import Modelo.Tablero.CalculadorDistancias;
 import Modelo.Unidad;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 public class Casillero {
     //Atributos
@@ -17,7 +19,8 @@ public class Casillero {
 
     //Metodos
     public Casillero(){
-
+        this.estado = new Libre();
+        //TODO hacer con mocks.
     }
 
     public Casillero(Bando bando, CalculadorDistancias calculadorDistancias){
@@ -43,8 +46,8 @@ public class Casillero {
         this.unidad.accion(unidad);
     }
 
-    public void moverUnidad(Casillero nuevoCasillero) {
-        //TODO
+    public void moverUnidad(Direccion direccion) {
+        this.unidad.mover(direccion);
     }
 
     public void agregarAdyacente(Direccion direccion, Casillero casillero){
@@ -56,7 +59,13 @@ public class Casillero {
     }
 
     public Casillero obtenerAdyacente(Direccion direccion){
-        return this.adyacentes.get(direccion);
+        Casillero adyacente =  this.adyacentes.get(direccion);
+
+        if(adyacente == null){
+            throw new CasilleroFueraDeRangoExcepcion();
+        }
+        return adyacente;
+
     }
 
     public int caluclarDistancia(Casillero casillero){
@@ -68,6 +77,15 @@ public class Casillero {
     }
 
     public void destruirUnidad(){
-        estado.destruirUnidad(this);
+        this.estado.destruirUnidad(this);
+    }
+
+    public Direccion obtenerDireccionDeAdyacente(Casillero casillero){
+        for(Map.Entry<Direccion, Casillero> adyacente: this.adyacentes.entrySet()){
+            if(adyacente.getValue() == casillero){
+                return adyacente.getKey();
+            }
+        }
+        throw new CasilleroNoEsAdyacenteExcepcion();
     }
 }
