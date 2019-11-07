@@ -9,18 +9,14 @@ public class Jugador {
     private EstadoJugador estado;
     private int cantidadUnidades;
 
-    //Métodos
-    public Jugador(){
-        this.cantidadUnidades = 0;
-        this.estado = new EnJuego();
-    }
-
+    //Constructor
     public Jugador(String nombre){
         this.nombre = nombre;
         this.cantidadUnidades = 0;
         this.estado = new EnJuego();
     }
 
+    //Métodos
     public String obtenerNombre(){
         return nombre;
     }

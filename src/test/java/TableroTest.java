@@ -11,7 +11,14 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TableroTest {
+/*
+    [x]Se coloca una pieza aliada en un casillero del sector aliado vacío con éxito.
+    [x]Se verifica que no se puede colocar una pieza aliada en un casillero del sector aliado ocupado.
+    [x]Se verifica que no se puede colocar una pieza aliada en un casillero del sector enemigo.
+    [ ]Correcta creación e inicialización del tablero.
 
+
+ */
     @Test
     public void tableroSeInicializaCorrectamente(){
         //TODO
