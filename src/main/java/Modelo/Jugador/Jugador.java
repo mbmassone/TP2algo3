@@ -1,5 +1,6 @@
 package Modelo.Jugador;
 
+import Modelo.Bando;
 import Modelo.Unidad;
 
 public class Jugador {
@@ -8,12 +9,14 @@ public class Jugador {
     private int puntos = 20;
     private EstadoJugador estado;
     private int cantidadUnidades;
+    private Bando bando;
 
     //Constructor
-    public Jugador(String nombre){
+    public Jugador(String nombre, Bando bando){
         this.nombre = nombre;
         this.cantidadUnidades = 0;
         this.estado = new EnJuego();
+        this.bando = bando;
     }
 
     //Métodos

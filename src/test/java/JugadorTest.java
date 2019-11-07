@@ -17,13 +17,13 @@ public class JugadorTest {
     @Test
     public void testCrearJugadorConNombre(){
         String nuevoNombre = "Tomas";
-        Jugador nuevoJugador = new Jugador(nuevoNombre);
+        Jugador nuevoJugador = new Jugador(nuevoNombre, Bando.BANDO1);
         Assert.assertSame(nuevoJugador.obtenerNombre(), nuevoNombre);
     }
 
     @Test
     public void testVerificarReduccionDePuntos() {
-        Jugador nuevoJugador = new Jugador("Andoni");
+        Jugador nuevoJugador = new Jugador("Andoni", Bando.BANDO1);
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()) );
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), 19);
@@ -31,7 +31,7 @@ public class JugadorTest {
 
     @Test
     public void testVerificarQueNoPuedaTomarMasEntidadesQueLasPermitidas() {
-        Jugador nuevoJugador = new Jugador("Bernardo");
+        Jugador nuevoJugador = new Jugador("Bernardo", Bando.BANDO1);
 
         for(int i = 0; i < 20; i++)
             nuevoJugador.agregarUnidad(new Infanteria( Bando.BANDO1, new Casillero() ) );
@@ -43,7 +43,7 @@ public class JugadorTest {
 
     @Test
     public void testVerificarQueNoPuedaTomarMasEntidadesQueLasPermitidasEntoncesNoRestaPuntos() {
-        Jugador nuevoJugador = new Jugador("Juan");
+        Jugador nuevoJugador = new Jugador("Juan", Bando.BANDO1);
 
         for(int i = 0; i < 21; i++) {
             try {
@@ -56,7 +56,7 @@ public class JugadorTest {
 
     @Test
     public void testMatanGuerreroAUnJugador(){
-        Jugador nuevoJugador = new Jugador("Tomas");
+        Jugador nuevoJugador = new Jugador("Tomas", Bando.BANDO1);
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()));
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()));
         nuevoJugador.eliminarGuerrero();
@@ -66,7 +66,7 @@ public class JugadorTest {
 
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
-        Jugador nuevoJugador = new Jugador("Eugenio");
+        Jugador nuevoJugador = new Jugador("Eugenio", Bando.BANDO1);
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ));
         nuevoJugador.eliminarGuerrero();
 
