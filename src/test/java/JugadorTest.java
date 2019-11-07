@@ -10,6 +10,11 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class JugadorTest {
+    /*
+    [ ]Se verifica que no puede tomar más entidades de lo que sus puntos le permiten.
+    [x]Se verifica que el jugador que se queda sin entidades, es el perdedor.
+
+     */
     @Test
     public void testCrearJugadorConNombre(){
         String nuevoNombre = "Tomas";
