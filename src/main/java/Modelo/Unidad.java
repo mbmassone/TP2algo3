@@ -7,22 +7,32 @@ public abstract class Unidad {
     protected int costo;
     protected Casillero casillero;
     protected  Bando bando;
-    //Saco fila, columna y tablero porque ahora la unidad tiene el casillero.
 
-
-    public Unidad(){
-
+    public Unidad(int vida,int costo,Casillero casillero,Bando bando){
+        this.vida = vida;
+        this.costo = costo;
+        this.casillero = casillero;
+        this.bando = bando;
     }
 
     public int descontarCosto(int puntos){
         return puntos - costo;
     }
 
+    public Bando obtenerBando(){
+        return this.bando;
+    }
+
+    public void sufrirAtaque(int danio){
+        vida -= danio;
+    }
+
+    public void unidadMuere(){
+        if (this.vida <= 0)  throw new UnidadMuereException();
+    }
+
+    public abstract void recibirCuracion(int curacion);
     public abstract void accion(Unidad unidad);
     public abstract boolean mover(int filaNueva, int columnaNueva);
 
-
-    public Bando obtenerBando() {
-        return this.bando;
-    }
 }

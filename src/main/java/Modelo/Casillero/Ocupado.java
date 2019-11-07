@@ -8,6 +8,6 @@ public class Ocupado implements EstadoCasilla {
     }
 
     public void agregarUnidad(Casillero casillero, Unidad unidad) {
-        throw new CasilleroOcupadoExeption();
+        throw new CasilleroOcupadoExcepcion();
     }
 }

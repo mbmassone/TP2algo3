@@ -1,7 +1,7 @@
 package Modelo.Casillero;
 
 import Modelo.Bando;
-import Modelo.Direccion;
+import Modelo.Tablero.Direccion;
 import Modelo.Tablero.CalculadorDistancias;
 import Modelo.Unidad;
 

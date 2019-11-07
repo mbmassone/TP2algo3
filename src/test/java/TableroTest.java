@@ -1,13 +1,12 @@
-package test;
-
 import Modelo.Bando;
-import Modelo.Casillero.CasilleroOcupadoExeption;
+import Modelo.Casillero.CasilleroOcupadoExcepcion;
 import Modelo.Infanteria;
 import Modelo.Tablero.Tablero;
-import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExeption;
+import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExcepcion;
 import Modelo.Unidad;
 import org.junit.Assert;
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TableroTest {
@@ -21,7 +20,11 @@ public class TableroTest {
  */
     @Test
     public void tableroSeInicializaCorrectamente(){
-        //TODO
+        Tablero tablero = new Tablero();
+
+        Assert.assertTrue(tablero != null);
+
+        //TODO agregar mas cosas.
     }
 
     @Test
@@ -41,7 +44,7 @@ public class TableroTest {
         Tablero tablero = new Tablero();
         Unidad infanteria = new Infanteria(Bando.BANDO2);
 
-        assertThrows(UnidadAgregadaEnSectorEnemigoExeption.class, () ->{
+        assertThrows(UnidadAgregadaEnSectorEnemigoExcepcion.class, () ->{
             tablero.agregarUnidad(0,0, infanteria);
         } );
     }
@@ -54,7 +57,7 @@ public class TableroTest {
 
         tablero.agregarUnidad(0,0,infanteria1);
 
-        assertThrows(CasilleroOcupadoExeption.class, () ->{
+        assertThrows(CasilleroOcupadoExcepcion.class, () ->{
             tablero.agregarUnidad(0,0, infanteria2);
         } );
     }

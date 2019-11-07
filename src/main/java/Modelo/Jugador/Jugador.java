@@ -25,9 +25,9 @@ public class Jugador {
         this.puntos = puntos;
     }
 
-    public void agregarUnidad(Unidad unidad) throws JugadorConPuntosInsuficientesException {
+    public void agregarUnidad(Unidad unidad) throws JugadorConPuntosInsuficientesExcepcion {
         if(unidad.descontarCosto(puntos) < 0) {
-            throw new JugadorConPuntosInsuficientesException();
+            throw new JugadorConPuntosInsuficientesExcepcion();
         }
         asignarPuntos(unidad.descontarCosto(puntos) );
         (this.cantidadUnidades)++;
