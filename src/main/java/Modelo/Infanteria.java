@@ -17,11 +17,6 @@ public class Infanteria extends Unidad {
     }
 
     @Override
-    public boolean mover(int filaNueva, int columnaNueva){
-        return false;
-    }
-
-    @Override
     public void recibirCuracion(int curacion){
         vida += curacion;
     }

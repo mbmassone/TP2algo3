@@ -1,6 +1,7 @@
 package Modelo;
 
 import Modelo.Casillero.Casillero;
+import Modelo.Tablero.Direccion;
 
 public abstract class Unidad {
     protected int vida;
@@ -33,6 +34,10 @@ public abstract class Unidad {
 
     public abstract void recibirCuracion(int curacion);
     public abstract void accion(Unidad unidad);
-    public abstract boolean mover(int filaNueva, int columnaNueva);
-
+    public void mover(Direccion direccion){
+        Casillero nuevoCasillero = this.casillero.obtenerAdyacente(direccion);
+        nuevoCasillero.agregarUnidad(this);
+        this.casillero.destruirUnidad();
+        this.casillero = nuevoCasillero;
+    }
 }

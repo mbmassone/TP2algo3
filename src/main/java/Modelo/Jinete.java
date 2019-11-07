@@ -26,9 +26,4 @@ public class Jinete extends Unidad {
             unidad.sufrirAtaque(danioCercano);
         }
     }
-
-    @Override
-    public boolean mover(int filaNueva, int columnaNueva) {
-        return false;
-    }
 }
