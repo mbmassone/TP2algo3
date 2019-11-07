@@ -19,11 +19,9 @@ public class Jinete extends Unidad {
 
     @Override
     public void accion(Unidad unidad) {
-        if (this.casillero.tieneInfanteriaCerca(this.bando) || !(this.casillero.tieneEnemigosCerca(this.bando))) {
-            unidad.sufrirAtaque(danioLejano);
+        if (this.bando == unidad.obtenerBando()){
+            throw new AtacarAliadoExcepcion();
         }
-        else {
-            unidad.sufrirAtaque(danioCercano);
-        }
+        unidad.sufrirAtaque(danioCercano);
     }
 }
