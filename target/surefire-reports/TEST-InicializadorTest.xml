@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="InicializadorTest" time="0.001" tests="1" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="InicializadorTest" time="0" tests="1" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/surefire/surefirebooter5797946498119645142.jar /home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/surefire 2019-11-07T15-30-31_748-jvmRun1 surefire4302897316365355485tmp surefire_04813409637669574009tmp"/>
+    <property name="sun.java.command" value="/home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/surefire/surefirebooter527555500188949150.jar /home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/surefire 2019-11-07T15-37-33_448-jvmRun1 surefire3566627273441901642tmp surefire_07513775777663432269tmp"/>
     <property name="surefire.test.class.path" value="/home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/test-classes:/home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/classes:/home/andoni98/.m2/repository/junit/junit/4.12/junit-4.12.jar:/home/andoni98/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/andoni98/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.5.2/junit-jupiter-api-5.5.2.jar:/home/andoni98/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/andoni98/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/andoni98/.m2/repository/org/junit/platform/junit-platform-commons/1.5.2/junit-platform-commons-1.5.2.jar:/home/andoni98/.m2/repository/org/junit/vintage/junit-vintage-engine/5.5.2/junit-vintage-engine-5.5.2.jar:/home/andoni98/.m2/repository/org/junit/platform/junit-platform-engine/1.5.2/junit-platform-engine-1.5.2.jar:/home/andoni98/.m2/repository/org/mockito/mockito-all/1.10.19/mockito-all-1.10.19.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/andoni98"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/surefire/surefirebooter5797946498119645142.jar"/>
+    <property name="surefire.real.class.path" value="/home/andoni98/Desktop/Fiuba/Algo/TP2algo3/target/surefire/surefirebooter527555500188949150.jar"/>
     <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk-amd64/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_222-8u222-b10-1ubuntu1~16.04.1-b10"/>
