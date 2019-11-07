@@ -7,7 +7,7 @@ import Modelo.Tablero.Tablero;
 import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExeption;
 import Modelo.Unidad;
 import org.junit.Assert;
-import org.testng.annotations.Test;
+import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TableroTest {
