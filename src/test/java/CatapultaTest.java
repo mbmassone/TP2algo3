@@ -25,6 +25,15 @@ public class CatapultaTest {
 
     @Test
     public void catapultaAtacaEnemigoCercano(){
+        Tablero tablero = new Tablero();
+        Catapulta catapulta = new Catapulta(Bando.BANDO1,new Casillero());
+        Catapulta catapultaEnemiga = new Catapulta(Bando.BANDO2,new Casillero());
+
+        tablero.agregarUnidad(9,9,catapulta);
+        tablero.agregarUnidad(16,16,catapultaEnemiga);
+
+        catapulta.accion(catapultaEnemiga);
+        assertSame(catapulta.getVida(),50);
 
     }
 
