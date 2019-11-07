@@ -24,7 +24,7 @@ public class JugadorTest {
 
     @Test
     public void testVerificarReduccionDePuntos() {
-        Jugador nuevoJugador = new Jugador();
+        Jugador nuevoJugador = new Jugador("Andoni");
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1) );
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), 19);
@@ -32,7 +32,7 @@ public class JugadorTest {
 
     @Test
     public void testVerificarQueNoPuedaTomarMasEntidadesQueLasPermitidas() {
-        Jugador nuevoJugador = new Jugador();
+        Jugador nuevoJugador = new Jugador("Bernardo");
 
         for(int i = 0; i < 20; i++)
             nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1) );
@@ -44,7 +44,7 @@ public class JugadorTest {
 
     @Test
     public void testVerificarQueNoPuedaTomarMasEntidadesQueLasPermitidasEntoncesNoRestaPuntos() {
-        Jugador nuevoJugador = new Jugador();
+        Jugador nuevoJugador = new Jugador("Juan");
 
         for(int i = 0; i < 21; i++) {
             try {
@@ -57,7 +57,7 @@ public class JugadorTest {
 
     @Test
     public void testMatanGuerreroAUnJugador(){
-        Jugador nuevoJugador = new Jugador();
+        Jugador nuevoJugador = new Jugador("Tomas");
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1));
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1));
         nuevoJugador.eliminarGuerrero();
@@ -67,7 +67,7 @@ public class JugadorTest {
 
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
-        Jugador nuevoJugador = new Jugador();
+        Jugador nuevoJugador = new Jugador("Eugenio");
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1));
         nuevoJugador.eliminarGuerrero();
 
