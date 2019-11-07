@@ -44,4 +44,8 @@ public abstract class Unidad {
         this.casillero.destruirUnidad();
         this.casillero = nuevoCasillero;
     }
+
+    public void agregarCasillero(Casillero casillero){
+        this.casillero = casillero;
+    }
 }

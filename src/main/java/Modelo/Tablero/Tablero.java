@@ -47,6 +47,7 @@ public class Tablero {
         if(casillero.obtenerBando() != unidad.obtenerBando()){
             throw new UnidadAgregadaEnSectorEnemigoExcepcion();
         }
+        unidad.agregarCasillero(casillero);
         casillero.agregarUnidad(unidad);
     }
 
