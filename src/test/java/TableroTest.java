@@ -1,4 +1,5 @@
 import Modelo.Bando;
+import Modelo.Casillero.Casillero;
 import Modelo.Casillero.CasilleroOcupadoExcepcion;
 import Modelo.Infanteria;
 import Modelo.Tablero.Tablero;
@@ -30,7 +31,7 @@ public class TableroTest {
     @Test
     public void colocarUnidadNuevaEnCasilleroAliadoVacio(){
         Tablero tablero = new Tablero();
-        Unidad infanteria = new Infanteria(Bando.BANDO1);
+        Unidad infanteria = new Infanteria(Bando.BANDO1,new Casillero());
 
         Assert.assertTrue(tablero.estaLibre(0,0));
 
@@ -42,7 +43,7 @@ public class TableroTest {
     @Test
     public void colocarUnidadNuevaEnCasilleroEnemigoDevuelveExcepcion(){
         Tablero tablero = new Tablero();
-        Unidad infanteria = new Infanteria(Bando.BANDO2);
+        Unidad infanteria = new Infanteria(Bando.BANDO2,new Casillero());
 
         assertThrows(UnidadAgregadaEnSectorEnemigoExcepcion.class, () ->{
             tablero.agregarUnidad(0,0, infanteria);
@@ -52,8 +53,8 @@ public class TableroTest {
     @Test
     public void colocarUnidadNuevaEnCasilleroOcupadoDevuelveExcepcion(){
         Tablero tablero = new Tablero();
-        Unidad infanteria1 = new Infanteria(Bando.BANDO1);
-        Unidad infanteria2 = new Infanteria(Bando.BANDO1);
+        Unidad infanteria1 = new Infanteria(Bando.BANDO1,new Casillero());
+        Unidad infanteria2 = new Infanteria(Bando.BANDO1,new Casillero());
 
         tablero.agregarUnidad(0,0,infanteria1);
 

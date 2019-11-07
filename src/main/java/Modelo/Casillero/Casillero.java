@@ -16,6 +16,10 @@ public class Casillero {
     private CalculadorDistancias calculadorDistancias;
 
     //Metodos
+    public Casillero(){
+
+    }
+
     public Casillero(Bando bando, CalculadorDistancias calculadorDistancias){
         this.bando = bando;
         this.estado = new Libre();

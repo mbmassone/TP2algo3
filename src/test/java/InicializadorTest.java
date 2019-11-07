@@ -1,4 +1,5 @@
  import Modelo.Bando;
+ import Modelo.Casillero.Casillero;
  import Modelo.Infanteria;
  import Modelo.Inicializador;
  import Modelo.Jugador.Jugador;
@@ -11,7 +12,7 @@ public class InicializadorTest {
     public void testAgregarGuerreroAlJuego(){ //TODO
         Inicializador inicializador = new Inicializador(new Tablero());
 
-        inicializador.agregarUnidad(new Jugador("Andoni"), 5, 5, new Infanteria(Bando.BANDO1) );
+        inicializador.agregarUnidad(new Jugador("Andoni"), 5, 5, new Infanteria(Bando.BANDO1, new Casillero()));
 
         //Assert.assertSame();
     }
