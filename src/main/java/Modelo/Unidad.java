@@ -17,12 +17,16 @@ public abstract class Unidad {
     public int descontarCosto(int puntos){
         return puntos - costo;
     }
-
-    public abstract void accion(Unidad unidad);
-    public abstract boolean mover(int filaNueva, int columnaNueva);
-
-
     public Bando obtenerBando() {
         return this.bando;
     }
+
+    public void sufrirAtaque(int danio){
+        vida -= danio;
+    }
+
+    public abstract void recibirCuracion(int curacion);
+    public abstract void accion(Unidad unidad);
+    public abstract boolean mover(int filaNueva, int columnaNueva);
+
 }
