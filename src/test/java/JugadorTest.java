@@ -1,10 +1,8 @@
-package test;
-
 import Modelo.Bando;
 import Modelo.Infanteria;
 import Modelo.Jugador.Jugador;
-import Modelo.Jugador.JugadorConPuntosInsuficientesException;
-import Modelo.Jugador.JugadorSinUnidadesEnJuego;
+import Modelo.Jugador.JugadorConPuntosInsuficientesExcepcion;
+import Modelo.Jugador.JugadorSinUnidadesEnJuegoExcepcion;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -37,7 +35,7 @@ public class JugadorTest {
         for(int i = 0; i < 20; i++)
             nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1) );
 
-        assertThrows(JugadorConPuntosInsuficientesException.class, () ->{
+        assertThrows(JugadorConPuntosInsuficientesExcepcion.class, () ->{
             nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1) );
         });
     }
@@ -49,7 +47,7 @@ public class JugadorTest {
         for(int i = 0; i < 21; i++) {
             try {
                 nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1));
-            } catch (JugadorConPuntosInsuficientesException ex) {
+            } catch (JugadorConPuntosInsuficientesExcepcion ex) {
                 Assert.assertSame(nuevoJugador.obtenerPuntos(), 0);
             }
         }
@@ -71,7 +69,7 @@ public class JugadorTest {
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1));
         nuevoJugador.eliminarGuerrero();
 
-        assertThrows(JugadorSinUnidadesEnJuego.class, () ->{
+        assertThrows(JugadorSinUnidadesEnJuegoExcepcion.class, () ->{
             nuevoJugador.chequearEstado();
         });
     }

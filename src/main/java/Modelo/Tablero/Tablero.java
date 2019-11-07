@@ -2,7 +2,6 @@ package Modelo.Tablero;
 
 import Modelo.Bando;
 import Modelo.Casillero.Casillero;
-import Modelo.Direccion;
 import Modelo.Unidad;
 
 import java.util.ArrayList;
@@ -35,32 +34,17 @@ public class Tablero {
 
     private void inicializarAdyacentes(int indice, Casillero casillero){
         for(Direccion direccion: Direccion.values()){
-            int defasaje = obtenerDefasaje(direccion);
+            int defasaje = direccion.obtenerDefasaje(TAMANIO);
             if(indice + defasaje >= 0 && indice + defasaje < TAMANIO){
                 this.tablero.get(indice).agregarAdyacente(direccion, this.tablero.get(indice + defasaje));
             }
         }
     }
 
-    private int obtenerDefasaje(Direccion direccion){
-        //TODO ESTA RE MAL!!!! CAMBIAR LO ANTES POSIBLE
-        switch (direccion){
-            case ARRIBA: return (-1) * TAMANIO;
-            case ARRIBADERECHA: return (-1) * TAMANIO + 1;
-            case DERECHA: return 1;
-            case ABAJODERECHA: return TAMANIO + 1;
-            case ABAJO: return TAMANIO;
-            case ABAJOIZQUIERDA: return TAMANIO - 1;
-            case IZQUIERDA: return -1;
-            case ARRIBAIZQUIERDA: return (-1) * TAMANIO - 1;
-        }
-        return 0; //Para que no se queje
-    }
-
     public void agregarUnidad(int fila, int columna, Unidad unidad){
         Casillero casillero = obtenerCasillero(fila, columna);
         if(casillero.obtenerBando() != unidad.obtenerBando()){
-            throw new UnidadAgregadaEnSectorEnemigoExeption();
+            throw new UnidadAgregadaEnSectorEnemigoExcepcion();
         }
         casillero.agregarUnidad(unidad);
     }
