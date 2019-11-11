@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -31,21 +32,19 @@ public class Main extends Application {
         DebugStage.setTitle("Java FX tTittle");
 
         //Tamaño de la ventana del stage
-        DebugStage.setWidth(640);
-        DebugStage.setHeight(480);
+
 
         //Setup de elementos a usar
         //Se abre un archivo
-        FileInputStream neko_miku_reimu = new FileInputStream("nmr.gif");
+        FileInputStream PantallaTitulo = new FileInputStream("PantallaTitulo.png");
         //Creo un objeto imagen a mostrar
-        Image image = new Image(neko_miku_reimu);
+        Image image = new Image(PantallaTitulo);
         //coloco un visor y lo referencio
         ImageView imageView = new ImageView(image);
-        //adicionalmente coloco un texto que lo acompañara
-        Label label = new Label("Neko Miku Reimu", imageView);
-
+        Label texto = new Label("Debug Info");
+        VBox vbox = new VBox(20,imageView,texto);
         ///Creacion de una Escena
-        Scene scene = new Scene(label,0,0);
+        Scene scene = new Scene(vbox,image.getWidth(),image.getHeight()*2);
         //Coloco la escena en el Stage
         DebugStage.setScene(scene);
 
