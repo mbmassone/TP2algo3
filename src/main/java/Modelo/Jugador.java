@@ -1,13 +1,10 @@
-package Modelo.Jugador;
+package Modelo;
 
-import Modelo.Bando;
-import Modelo.Unidad;
 
 public class Jugador {
     //Atributos
     private String nombre;
     private int puntos = 20;
-    private EstadoJugador estado;
     private int cantidadUnidades;
     private Bando bando;
 
@@ -15,7 +12,6 @@ public class Jugador {
     public Jugador(String nombre, Bando bando){
         this.nombre = nombre;
         this.cantidadUnidades = 0;
-        this.estado = new EnJuego();
         this.bando = bando;
     }
 
@@ -28,22 +24,16 @@ public class Jugador {
         this.puntos = puntos;
     }
 
-    public void agregarUnidad(Unidad unidad) throws JugadorConPuntosInsuficientesExcepcion {
-        if(unidad.descontarCosto(puntos) < 0) {
-            throw new JugadorConPuntosInsuficientesExcepcion();
+    public void agregarUnidad(Unidad unidad){
+        if(unidad.descontarCosto(puntos) >= 0) {
+            asignarPuntos(unidad.descontarCosto(puntos) );
+            (this.cantidadUnidades)++;
         }
-        asignarPuntos(unidad.descontarCosto(puntos) );
-        (this.cantidadUnidades)++;
     }
 
     public int obtenerPuntos() { return puntos; }
 
     public int obtenerCantidadUnidades(){ return cantidadUnidades; }
-
-    public void chequearEstado(){
-        this.estado = this.estado.actualizarEstado(this.estado, this.cantidadUnidades);
-        this.estado.consultarEstado();
-    }
 
     public void eliminarGuerrero(){
         this.cantidadUnidades--;
