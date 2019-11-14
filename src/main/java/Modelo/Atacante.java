@@ -1,18 +1,14 @@
 package Modelo;
+
 import Modelo.Casillero.Casillero;
-import Modelo.Tablero.Direccion;
-import Modelo.Unidad;
 
-public class Catapulta extends Unidad{
-    private int danioCercano;
-    private int danioMediano;
-    private int danioLejano;
+public abstract class Atacante extends Unidad {
+    protected int danioCercano;
+    protected int danioMediano;
+    protected int danioLejano;
 
-    public Catapulta(Jugador duenio, Casillero casillero){
-        super(50,5, casillero, duenio);
-        danioCercano = 0;
-        danioMediano = 0;
-        danioLejano = 20;
+    public Atacante(int vida,int costo,Casillero casillero,Jugador duenio){
+        super(100,1, casillero, duenio);
     }
 
     @Override
@@ -37,13 +33,4 @@ public class Catapulta extends Unidad{
         unidad.sufrirAtaque(danioLejano);
     }
 
-    @Override
-    public void mover(Direccion direccion) {
-        throw new CatapultaNoSePuedeMoverExcepcion();
-    }
-
-    @Override
-    public void recibirCuracion(int curacion){
-        throw new CatapultaCuracionException();
-    }
 }

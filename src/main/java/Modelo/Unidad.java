@@ -35,9 +35,6 @@ public abstract class Unidad {
         return this.vida;
     }
 
-
-    public abstract void recibirCuracion(int curacion);
-    public abstract void accion(Unidad unidad);
     public void mover(Direccion direccion){
         Casillero nuevoCasillero = this.casillero.obtenerAdyacente(direccion);
         nuevoCasillero.agregarUnidad(this);
@@ -48,4 +45,22 @@ public abstract class Unidad {
     public void agregarCasillero(Casillero casillero){
         this.casillero = casillero;
     }
+
+    public void atacaAliado(Unidad unidad){
+        if (this.obtenerDuenio() == unidad.obtenerDuenio()){
+            throw new AtacarAliadoExcepcion();
+        }
+    }
+
+    public void curaEnemigo(Unidad unidad){
+        if (this.obtenerDuenio() != unidad.obtenerDuenio()){
+            throw new CurarEnemigoExcepcion();
+        }
+    }
+
+    public abstract void recibirCuracion(int curacion);
+    public abstract void accion(Unidad unidad);
+    public abstract void accionCercana(Unidad unidad);
+    public abstract void accionMediana(Unidad unidad);
+    public abstract void accionLejana(Unidad unidad);
 }
