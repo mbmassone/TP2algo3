@@ -1,6 +1,5 @@
 Modelo/Casillero/CasilleroFueraDeRangoExcepcion.class
 Modelo/Casillero/CasilleroOcupadoExcepcion.class
-Modelo/Bando.class
 Modelo/Casillero/Libre.class
 Modelo/Casillero/CasilleroYaEstaLibreExcepcion.class
 Modelo/Jinete.class
@@ -17,4 +16,6 @@ Modelo/Catapulta.class
 Modelo/CatapultaCuracionException.class
 Modelo/Tablero/UnidadAgregadaEnSectorEnemigoExcepcion.class
 Modelo/Casillero/Ocupado.class
+Vista_api/Pantalla_titulo.class
+Vista_api/Manipulador_escenarios.class
 Modelo/CurarEnemigoExcepcion.class

@@ -7,21 +7,21 @@ public abstract class Unidad {
     protected int vida;
     protected int costo;
     protected Casillero casillero;
-    protected  Bando bando;
+    protected  Jugador duenio;
 
-    public Unidad(int vida,int costo,Casillero casillero,Bando bando){
+    public Unidad(int vida, int costo, Casillero casillero, Jugador duenio){
         this.vida = vida;
         this.costo = costo;
         this.casillero = casillero;
-        this.bando = bando;
+        this.duenio = duenio;
     }
 
     public int descontarCosto(int puntos){
         return puntos - costo;
     }
 
-    public Bando obtenerBando(){
-        return this.bando;
+    public Jugador obtenerDuenio(){
+        return this.duenio;
     }
 
     public void sufrirAtaque(int danio){

@@ -1,30 +1,35 @@
 package Modelo.Tablero;
 
-import Modelo.Bando;
 import Modelo.Casillero.Casillero;
-import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
+import Modelo.Jugador;
 import Modelo.Unidad;
 
 import java.util.ArrayList;
 
 public class Tablero {
-
-	//Metodos
+    //Atributos
     private ArrayList<Casillero> tablero; //Lo hago como una lista, cualquier cosa lo cambiamos.
     private int TAMANIO = 20;
+    Jugador j1;
+    Jugador j2;
 
-    public Tablero(){
+    //Constructor
+    public Tablero(Jugador j1, Jugador j2){
+        this.j1 = j1;
+        this.j2 = j2;
+        Jugador aux;
+
         this.tablero = new ArrayList<Casillero>();
-        Bando bando;
+
         CalculadorDistancias calculadorDistancias = new CalculadorDistancias(this);
         //Inicializo la lista con casilleros
         for(int i = 0; i < TAMANIO*TAMANIO; i++){
             if (i < (TAMANIO * TAMANIO) / 2) {
-                bando = Bando.BANDO1;
+                aux = this.j1;
             } else {
-                bando = Bando.BANDO2;
+                aux = this.j2;
             }
-            this.tablero.add(new Casillero(bando, calculadorDistancias));
+            this.tablero.add(new Casillero(aux, calculadorDistancias));
         }
 
         //Inicializo los adyacentes
@@ -33,6 +38,7 @@ public class Tablero {
         }
     }
 
+    //Metodos
     private void inicializarAdyacentes(int indice, Casillero casillero){
         for(Direccion direccion: Direccion.values()){
             int defasaje = direccion.obtenerDefasaje(TAMANIO);
@@ -44,7 +50,7 @@ public class Tablero {
 
     public void agregarUnidad(int fila, int columna, Unidad unidad){
         Casillero casillero = obtenerCasillero(fila, columna);
-        if(casillero.obtenerBando() != unidad.obtenerBando()){
+        if(casillero.obtenerDuenio() != unidad.obtenerDuenio() ){
             throw new UnidadAgregadaEnSectorEnemigoExcepcion();
         }
         unidad.agregarCasillero(casillero);

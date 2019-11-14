@@ -6,8 +6,8 @@ public class Jinete extends Unidad {
     private int danioCercano;
     private int danioLejano;
 
-    public Jinete(Bando bando, Casillero casillero){
-        super(100,3,casillero,bando);
+    public Jinete(Jugador duenio, Casillero casillero){
+        super(100,3, casillero, duenio);
         this.danioCercano = 5;
         this.danioLejano = 15;
     }
@@ -19,7 +19,7 @@ public class Jinete extends Unidad {
 
     @Override
     public void accion(Unidad unidad) {
-        if (this.bando == unidad.obtenerBando()){
+        if (duenio == unidad.obtenerDuenio() ) {
             throw new AtacarAliadoExcepcion();
         }
         unidad.sufrirAtaque(danioCercano);

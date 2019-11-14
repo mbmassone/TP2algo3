@@ -4,14 +4,14 @@ import Modelo.Casillero.Casillero;
 public class Infanteria extends Unidad {
     private int danio;
 
-    public Infanteria(Bando bando, Casillero casillero){
-        super(100,1,casillero,bando);
+    public Infanteria(Jugador duenio, Casillero casillero){
+        super(100,1, casillero, duenio);
         this.danio = 10;
     }
 
     @Override
     public void accion(Unidad unidad){
-        if (this.bando == unidad.obtenerBando()){
+        if (duenio == unidad.obtenerDuenio()){
             throw new AtacarAliadoExcepcion();
         }
         unidad.sufrirAtaque(danio);

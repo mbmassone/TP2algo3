@@ -9,8 +9,8 @@ public class JineteTest {
 
     @Test
     public void testJineteAtacaEnemigoCercano(){
-        Jinete jinete = new Jinete(Bando.BANDO2,new Casillero() );
-        Catapulta catapulta = new Catapulta(Bando.BANDO1,new Casillero());
+        Jinete jinete = new Jinete(new Jugador("Lucas"), new Casillero() );
+        Catapulta catapulta = new Catapulta(new Jugador("Mauro"), new Casillero());
 
         jinete.accion(catapulta);
         Assert.assertSame(catapulta.getVida(),45);
@@ -21,8 +21,8 @@ public class JineteTest {
     @Test
     public void testJineteMataEnemigoCercano(){
         Casillero casilleroCatapulta = new Casillero();
-        Jinete jinete = new Jinete(Bando.BANDO2,new Casillero());
-        Catapulta catapulta = new Catapulta(Bando.BANDO1, casilleroCatapulta);
+        Jinete jinete = new Jinete(new Jugador("Santiago"), new Casillero());
+        Catapulta catapulta = new Catapulta(new Jugador("Bruno"), casilleroCatapulta);
 
         casilleroCatapulta.agregarUnidad(catapulta);
 
@@ -34,8 +34,9 @@ public class JineteTest {
 
     @Test
     public  void testJinetePuedeRecibirCuracion(){
-        Jinete jinete = new Jinete(Bando.BANDO2,new Casillero());
-        Curandero curandero = new Curandero(Bando.BANDO2 , new Casillero());
+        Jugador jugador = new Jugador("Laura");
+        Jinete jinete = new Jinete(jugador, new Casillero());
+        Curandero curandero = new Curandero(jugador, new Casillero());
 
         curandero.accion(jinete);
 
@@ -45,8 +46,9 @@ public class JineteTest {
 
     @Test
     public void testJineteAtacaAliado(){
-        Jinete jinete = new Jinete(Bando.BANDO1, new Casillero());
-        Curandero curanderoAliado = new Curandero(Bando.BANDO1, new Casillero());
+        Jugador jugador = new Jugador("Juan");
+        Jinete jinete = new Jinete(jugador, new Casillero());
+        Curandero curanderoAliado = new Curandero(jugador, new Casillero());
 
         assertThrows(AtacarAliadoExcepcion.class, () ->{
             jinete.accion(curanderoAliado);

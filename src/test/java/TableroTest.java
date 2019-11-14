@@ -1,7 +1,7 @@
-import Modelo.Bando;
 import Modelo.Casillero.Casillero;
 import Modelo.Casillero.CasilleroOcupadoExcepcion;
 import Modelo.Infanteria;
+import Modelo.Jugador;
 import Modelo.Tablero.Tablero;
 import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExcepcion;
 import Modelo.Unidad;
@@ -11,17 +11,11 @@ import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class TableroTest {
-/*
-    [x]Se coloca una pieza aliada en un casillero del sector aliado vacío con éxito.
-    [x]Se verifica que no se puede colocar una pieza aliada en un casillero del sector aliado ocupado.
-    [x]Se verifica que no se puede colocar una pieza aliada en un casillero del sector enemigo.
-    [ ]Correcta creación e inicialización del tablero.
-
-
- */
     @Test
     public void tableroSeInicializaCorrectamente(){
-        Tablero tablero = new Tablero();
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
 
         Assert.assertTrue(tablero != null);
 
@@ -30,8 +24,10 @@ public class TableroTest {
 
     @Test
     public void colocarUnidadNuevaEnCasilleroAliadoVacio(){
-        Tablero tablero = new Tablero();
-        Unidad infanteria = new Infanteria(Bando.BANDO1,new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Unidad infanteria = new Infanteria(j1, new Casillero());
 
         Assert.assertTrue(tablero.estaLibre(0,0));
 
@@ -42,8 +38,10 @@ public class TableroTest {
 
     @Test
     public void colocarUnidadNuevaEnCasilleroEnemigoDevuelveExcepcion(){
-        Tablero tablero = new Tablero();
-        Unidad infanteria = new Infanteria(Bando.BANDO2,new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Unidad infanteria = new Infanteria(j2 ,new Casillero());
 
         assertThrows(UnidadAgregadaEnSectorEnemigoExcepcion.class, () ->{
             tablero.agregarUnidad(0,0, infanteria);
@@ -52,9 +50,11 @@ public class TableroTest {
 
     @Test
     public void colocarUnidadNuevaEnCasilleroOcupadoDevuelveExcepcion(){
-        Tablero tablero = new Tablero();
-        Unidad infanteria1 = new Infanteria(Bando.BANDO1,new Casillero());
-        Unidad infanteria2 = new Infanteria(Bando.BANDO1,new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Unidad infanteria1 = new Infanteria(j1, new Casillero());
+        Unidad infanteria2 = new Infanteria(j1, new Casillero());
 
         tablero.agregarUnidad(0,0,infanteria1);
 

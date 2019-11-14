@@ -6,13 +6,11 @@ public class Jugador {
     private String nombre;
     private int puntos = 20;
     private int cantidadUnidades;
-    private Bando bando;
 
     //Constructor
-    public Jugador(String nombre, Bando bando){
+    public Jugador(String nombre){
         this.nombre = nombre;
         this.cantidadUnidades = 0;
-        this.bando = bando;
     }
 
     //Métodos
