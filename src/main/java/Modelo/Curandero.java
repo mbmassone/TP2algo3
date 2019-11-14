@@ -5,14 +5,14 @@ import Modelo.Casillero.Casillero;
 public class Curandero extends Unidad{
     private int curacion;
 
-    public Curandero(Bando bando, Casillero casillero){
-        super(75,2,casillero,bando);
+    public Curandero(Jugador duenio, Casillero casillero){
+        super(75,2, casillero, duenio);
         this.curacion = 15;
     }
 
     @Override
     public void accion(Unidad unidad){
-        if (this.bando != unidad.obtenerBando()){
+        if (duenio != unidad.obtenerDuenio()){
             throw new CurarEnemigoExcepcion();
         }
         unidad.recibirCuracion(curacion);

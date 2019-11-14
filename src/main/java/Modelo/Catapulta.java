@@ -7,8 +7,8 @@ public class Catapulta extends Unidad{
     private int danioCercano;
     private int danioLejano;
 
-    public Catapulta(Bando bando, Casillero casillero){
-        super(50,5,casillero,bando);
+    public Catapulta(Jugador duenio, Casillero casillero){
+        super(50,5, casillero, duenio);
         danioCercano = 0;
         danioLejano = 20;
     }

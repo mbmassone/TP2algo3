@@ -12,9 +12,12 @@ public class CatapultaTest {
 
     @Test
     public void catapultaAtacaEnemigoLejano(){
-        Tablero tablero = new Tablero();
-        Infanteria infanteria = new Infanteria(Bando.BANDO1,new Casillero());
-        Catapulta catapulta = new Catapulta(Bando.BANDO2,new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Infanteria infanteria = new Infanteria(j1, new Casillero() );
+        Catapulta catapulta = new Catapulta(j2, new Casillero() );
 
         tablero.agregarUnidad(0,0,infanteria);
         tablero.agregarUnidad(18,18,catapulta);
@@ -25,9 +28,11 @@ public class CatapultaTest {
 
     @Test
     public void catapultaAtacaEnemigoCercano(){
-        Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta(Bando.BANDO1,new Casillero());
-        Catapulta catapultaEnemiga = new Catapulta(Bando.BANDO2,new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Catapulta catapulta = new Catapulta(j1, new Casillero() );
+        Catapulta catapultaEnemiga = new Catapulta(j2, new Casillero() );
 
         tablero.agregarUnidad(9,9,catapulta);
         tablero.agregarUnidad(16,16,catapultaEnemiga);
@@ -39,7 +44,7 @@ public class CatapultaTest {
 
     @Test
     public void catapultaNoPuedeSerCurada(){
-        Catapulta catapulta = new Catapulta(Bando.BANDO2,new Casillero());
+        Catapulta catapulta = new Catapulta(new Jugador("Tomas"), new Casillero() );
 
         assertThrows(CatapultaCuracionException.class, () ->{
             catapulta.recibirCuracion(321);
@@ -48,7 +53,7 @@ public class CatapultaTest {
 
     @Test
     public void catapultaNoPuedeMoverse(){
-        Catapulta catapulta = new Catapulta(Bando.BANDO1, new Casillero());
+        Catapulta catapulta = new Catapulta(new Jugador("Bernardo"), new Casillero() );
 
         assertThrows(CatapultaNoSePuedeMoverExcepcion.class, () ->{
             catapulta.mover(Direccion.ABAJO);

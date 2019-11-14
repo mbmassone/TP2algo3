@@ -12,8 +12,8 @@ public class InfanteriaTest{
 
     @Test
     public void testInfanteriaAtacaEnemigo(){
-        Infanteria infanteriaAliada = new Infanteria(Bando.BANDO1, new Casillero());
-        Infanteria infanteriaEnemiga = new Infanteria(Bando.BANDO2, new Casillero());
+        Infanteria infanteriaAliada = new Infanteria(new Jugador("Manuel") , new Casillero() );
+        Infanteria infanteriaEnemiga = new Infanteria(new Jugador("Andoni") , new Casillero() );
 
         infanteriaAliada.accion(infanteriaEnemiga);
         Assert.assertSame(infanteriaEnemiga.getVida(),90);
@@ -22,8 +22,8 @@ public class InfanteriaTest{
     @Test
     public void testInfanteriaMataAEnemigo() {
         Casillero casilleroJinete = new Casillero();
-        Infanteria infanteria = new Infanteria(Bando.BANDO1, new Casillero());
-        Jinete jinete = new Jinete(Bando.BANDO2, casilleroJinete);
+        Infanteria infanteria = new Infanteria(new Jugador("Andy"), new Casillero());
+        Jinete jinete = new Jinete(new Jugador("Jorge"), casilleroJinete);
 
         casilleroJinete.agregarUnidad(jinete);
 
@@ -32,13 +32,13 @@ public class InfanteriaTest{
             infanteria.accion(jinete);
         }
         Assert.assertTrue(casilleroJinete.estaLibre());
-
     }
 
     @Test
     public void testInfanteriaAtacaAliado(){
-        Infanteria infanteria = new Infanteria(Bando.BANDO2, new Casillero());
-        Infanteria infanteriaAliada = new Infanteria(Bando.BANDO2, new Casillero());
+        Jugador jugador = new Jugador("Guido");
+        Infanteria infanteria = new Infanteria(jugador, new Casillero());
+        Infanteria infanteriaAliada = new Infanteria(jugador, new Casillero());
 
         assertThrows(AtacarAliadoExcepcion.class, () ->{
             infanteria.accion(infanteriaAliada);
@@ -47,8 +47,9 @@ public class InfanteriaTest{
 
     @Test
     public void testInfanteriaPuedeRecibirCuracion(){
-        Infanteria infanteria = new Infanteria(Bando.BANDO2, new Casillero());
-        Curandero curandero = new Curandero(Bando.BANDO2, new Casillero());
+        Jugador jugador = new Jugador("Luis");
+        Infanteria infanteria = new Infanteria(jugador, new Casillero());
+        Curandero curandero = new Curandero(jugador, new Casillero());
 
         curandero.accion(infanteria);
 
@@ -57,8 +58,11 @@ public class InfanteriaTest{
 
     @Test
     public void testInfanteriaSePuedeMoverACasillaLibre(){
-        Tablero tablero = new Tablero();
-        Infanteria infanteria = new Infanteria(Bando.BANDO1, new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Infanteria infanteria = new Infanteria(j1, new Casillero());
         tablero.agregarUnidad(0,0, infanteria);
 
         infanteria.mover(Direccion.ABAJO);
@@ -68,9 +72,13 @@ public class InfanteriaTest{
 
     @Test
     public void testInfanteriaNoSePuedeMoverACasillaOcupada(){
-        Tablero tablero = new Tablero();
-        Infanteria infanteria1 = new Infanteria(Bando.BANDO1, new Casillero());
-        Infanteria infanteria2 = new Infanteria(Bando.BANDO1, new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Jugador jugador = new Jugador("Camila");
+        Infanteria infanteria1 = new Infanteria(j1, new Casillero());
+        Infanteria infanteria2 = new Infanteria(j1, new Casillero());
 
         tablero.agregarUnidad(0,0, infanteria1);
         tablero.agregarUnidad(1,0,infanteria2);
