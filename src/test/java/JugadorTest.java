@@ -1,29 +1,23 @@
 import Modelo.Bando;
 import Modelo.Casillero.Casillero;
 import Modelo.Infanteria;
-import Modelo.Jugador.Jugador;
-import Modelo.Jugador.JugadorConPuntosInsuficientesExcepcion;
-import Modelo.Jugador.JugadorSinUnidadesEnJuegoExcepcion;
+import Modelo.Jugador;
 import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class JugadorTest {
-    /*
-    [ ]Se verifica que no puede tomar más entidades de lo que sus puntos le permiten.
-    [x]Se verifica que el jugador que se queda sin entidades, es el perdedor.
-
-     */
+    
     @Test
     public void testCrearJugadorConNombre(){
         String nuevoNombre = "Tomas";
-        Jugador nuevoJugador = new Jugador(nuevoNombre);
+        Jugador nuevoJugador = new Jugador(nuevoNombre, Bando.BANDO1);
         Assert.assertSame(nuevoJugador.obtenerNombre(), nuevoNombre);
     }
 
     @Test
     public void testVerificarReduccionDePuntos() {
-        Jugador nuevoJugador = new Jugador("Andoni");
+        Jugador nuevoJugador = new Jugador("Andoni", Bando.BANDO1);
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()) );
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), 19);
@@ -31,32 +25,35 @@ public class JugadorTest {
 
     @Test
     public void testVerificarQueNoPuedaTomarMasEntidadesQueLasPermitidas() {
-        Jugador nuevoJugador = new Jugador("Bernardo");
+        Jugador nuevoJugador = new Jugador("Bernardo", Bando.BANDO1);
 
         for(int i = 0; i < 20; i++)
             nuevoJugador.agregarUnidad(new Infanteria( Bando.BANDO1, new Casillero() ) );
 
-        assertThrows(JugadorConPuntosInsuficientesExcepcion.class, () ->{
-            nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ) );
-        });
+        int cantidadUnidadesEsperadas = nuevoJugador.obtenerCantidadUnidades();
+
+        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ) );
+
+        Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), cantidadUnidadesEsperadas);
     }
 
     @Test
     public void testVerificarQueNoPuedaTomarMasEntidadesQueLasPermitidasEntoncesNoRestaPuntos() {
-        Jugador nuevoJugador = new Jugador("Juan");
+        Jugador nuevoJugador = new Jugador("Juan", Bando.BANDO1);
 
-        for(int i = 0; i < 21; i++) {
-            try {
-                nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ));
-            } catch (JugadorConPuntosInsuficientesExcepcion ex) {
-                Assert.assertSame(nuevoJugador.obtenerPuntos(), 0);
-            }
-        }
+        for(int i = 0; i < 20; i++)
+            nuevoJugador.agregarUnidad(new Infanteria( Bando.BANDO1, new Casillero() ) );
+
+        int cantidadPuntosEsperados = nuevoJugador.obtenerPuntos();
+
+        nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ) );
+
+        Assert.assertSame(nuevoJugador.obtenerPuntos(), cantidadPuntosEsperados);
     }
 
     @Test
     public void testMatanGuerreroAUnJugador(){
-        Jugador nuevoJugador = new Jugador("Tomas");
+        Jugador nuevoJugador = new Jugador("Tomas", Bando.BANDO1);
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()));
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero()));
         nuevoJugador.eliminarGuerrero();
@@ -66,12 +63,10 @@ public class JugadorTest {
 
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
-        Jugador nuevoJugador = new Jugador("Eugenio");
+        Jugador nuevoJugador = new Jugador("Eugenio", Bando.BANDO1);
         nuevoJugador.agregarUnidad(new Infanteria(Bando.BANDO1, new Casillero() ));
         nuevoJugador.eliminarGuerrero();
 
-        assertThrows(JugadorSinUnidadesEnJuegoExcepcion.class, () ->{
-            nuevoJugador.chequearEstado();
-        });
+        Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0); //TODO Consultar esto
     }
 }

@@ -1,8 +1,5 @@
 package Modelo;
 
-import Modelo.Casillero.CasilleroOcupadoExcepcion;
-import Modelo.Jugador.Jugador;
-import Modelo.Jugador.JugadorConPuntosInsuficientesExcepcion;
 import Modelo.Tablero.Tablero;
 
 public class Inicializador {
@@ -29,10 +26,10 @@ public class Inicializador {
 
 
 
-    public void agregarUnidad(Jugador jugador, int fila, int columna, Unidad unidad){
+    /*public void agregarUnidad(Jugador jugador, int fila, int columna, Unidad unidad){
         try {
             tablero.agregarUnidad(fila, columna, unidad);
             jugador.agregarUnidad(unidad);
         }catch (CasilleroOcupadoExcepcion | JugadorConPuntosInsuficientesExcepcion ignored){}
-    }
+    }*/
 }
