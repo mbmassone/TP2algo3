@@ -1,6 +1,6 @@
 language: java
 jdk:
-  - openjdk8
+  - openjdk13
 
 script:
   - mvn test
@@ -13,5 +13,6 @@ notifications:
       - chubyrd1@gmail.com
       - bernardomassone@hotmail.com
       - andonifzabala@gmail.com
-      - juanwbenitez@gmail.com
+      - jbenitez@aade.org.ar
+      - sakuyalm40@gmail.com
     on_failure: always

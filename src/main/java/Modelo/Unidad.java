@@ -48,4 +48,8 @@ public abstract class Unidad {
     public void agregarCasillero(Casillero casillero){
         this.casillero = casillero;
     }
+
+    public Casillero obtenerCasillero(){
+        return this.casillero;
+    }
 }

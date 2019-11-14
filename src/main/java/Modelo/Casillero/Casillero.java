@@ -5,7 +5,9 @@ import Modelo.Tablero.Direccion;
 import Modelo.Tablero.CalculadorDistancias;
 import Modelo.Unidad;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Casillero {
@@ -19,6 +21,7 @@ public class Casillero {
     //Metodos
     public Casillero(){
         this.estado = new Libre();
+        this.adyacentes = new HashMap<Direccion, Casillero>();
         //TODO hacer con mocks.
     }
 
@@ -87,4 +90,29 @@ public class Casillero {
         }
         throw new CasilleroNoEsAdyacenteExcepcion();
     }
+
+    public List<Unidad> encontrarEnemigosEnCadena(){
+        //TODO Cambiar a su propia clase.
+        List<Unidad> listaEnemigos = new ArrayList<Unidad>();
+        encontrarEnemigosEnCadenaRec(listaEnemigos, this, this.duenio);
+
+        return listaEnemigos;
+    }
+
+    private void encontrarEnemigosEnCadenaRec(List<Unidad> listaEnemigos, Casillero casilleroActual, Jugador aliado) {
+        if(casilleroActual.estaLibre()){
+            return;
+        } else {
+            Unidad actual = casilleroActual.obtenerUnidad();
+            if(actual.obtenerDuenio() == aliado){
+                return;
+            } else {
+                listaEnemigos.add(actual);
+                for(Direccion direccion: Direccion.values()){
+                    encontrarEnemigosEnCadenaRec(listaEnemigos, casilleroActual.obtenerAdyacente(direccion), aliado);
+                }
+            }
+        }
+    }
+
 }
