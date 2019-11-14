@@ -12,7 +12,7 @@ public class Curandero extends Unidad{
 
     @Override
     public void accion(Unidad unidad){
-        if (duenio != unidad.obtenerDuenio()){
+        if (duenio != unidad.obtenerDuenio() ){
             throw new CurarEnemigoExcepcion();
         }
         unidad.recibirCuracion(curacion);
