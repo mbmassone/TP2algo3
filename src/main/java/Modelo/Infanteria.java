@@ -1,24 +1,17 @@
 package Modelo;
 import Modelo.Casillero.Casillero;
 
-public class Infanteria extends Unidad {
-    private int danio;
+public class Infanteria extends Atacante {
 
     public Infanteria(Jugador duenio, Casillero casillero){
         super(100,1, casillero, duenio);
-        this.danio = 10;
+        this.danioCercano = 10;
+        this.danioMediano = 0;
+        this.danioLejano = 0;
     }
 
     @Override
-    public void accion(Unidad unidad){
-        if (duenio == unidad.obtenerDuenio()){
-            throw new AtacarAliadoExcepcion();
-        }
-        unidad.sufrirAtaque(danio);
-    }
-
-    @Override
-    public void recibirCuracion(int curacion){
-        vida += curacion;
+    public void recibirCuracion(int curacion) {
+        this.recibirCuracion(curacion);
     }
 }

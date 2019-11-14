@@ -1,6 +1,7 @@
 import Modelo.*;
 import Modelo.Casillero.Casillero;
 import Modelo.Casillero.CasilleroOcupadoExcepcion;
+import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
 import org.junit.Assert;
@@ -63,11 +64,14 @@ public class InfanteriaTest{
         Tablero tablero = new Tablero(j1, j2);
 
         Infanteria infanteria = new Infanteria(j1, new Casillero());
-        tablero.agregarUnidad(0,0, infanteria);
+
+        Coordenada coordenada = new Coordenada(0, 0);
+        tablero.agregarUnidad(coordenada, infanteria);
 
         infanteria.mover(Direccion.ABAJO);
 
-        Assert.assertFalse(tablero.estaLibre(1,0));
+        Coordenada coordenadaSiguiente = new Coordenada(1, 0);
+        Assert.assertFalse(tablero.estaLibre(coordenadaSiguiente) );
     }
 
     @Test
@@ -80,8 +84,11 @@ public class InfanteriaTest{
         Infanteria infanteria1 = new Infanteria(j1, new Casillero());
         Infanteria infanteria2 = new Infanteria(j1, new Casillero());
 
-        tablero.agregarUnidad(0,0, infanteria1);
-        tablero.agregarUnidad(1,0,infanteria2);
+        Coordenada coordenada1 = new Coordenada(0, 0);
+        Coordenada coordenada2 = new Coordenada(1 ,0);
+
+        tablero.agregarUnidad(coordenada1, infanteria1);
+        tablero.agregarUnidad(coordenada2, infanteria2);
 
         assertThrows(CasilleroOcupadoExcepcion.class, () ->{
             infanteria1.mover(Direccion.ABAJO);

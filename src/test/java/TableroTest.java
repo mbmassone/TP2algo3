@@ -2,6 +2,7 @@ import Modelo.Casillero.Casillero;
 import Modelo.Casillero.CasilleroOcupadoExcepcion;
 import Modelo.Infanteria;
 import Modelo.Jugador;
+import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExcepcion;
 import Modelo.Unidad;
@@ -29,11 +30,12 @@ public class TableroTest {
         Tablero tablero = new Tablero(j1, j2);
         Unidad infanteria = new Infanteria(j1, new Casillero());
 
-        Assert.assertTrue(tablero.estaLibre(0,0));
+        Coordenada coordenada = new Coordenada(0, 0);
+        Assert.assertTrue(tablero.estaLibre(coordenada) );
 
-        tablero.agregarUnidad(0, 0, infanteria);
+        tablero.agregarUnidad(coordenada, infanteria);
 
-        Assert.assertFalse(tablero.estaLibre(0,0));
+        Assert.assertFalse(tablero.estaLibre(coordenada) );
     }
 
     @Test
@@ -43,8 +45,9 @@ public class TableroTest {
         Tablero tablero = new Tablero(j1, j2);
         Unidad infanteria = new Infanteria(j2 ,new Casillero());
 
+        Coordenada coordenada = new Coordenada(0, 0);
         assertThrows(UnidadAgregadaEnSectorEnemigoExcepcion.class, () ->{
-            tablero.agregarUnidad(0,0, infanteria);
+            tablero.agregarUnidad(coordenada, infanteria);
         } );
     }
 
@@ -56,10 +59,11 @@ public class TableroTest {
         Unidad infanteria1 = new Infanteria(j1, new Casillero());
         Unidad infanteria2 = new Infanteria(j1, new Casillero());
 
-        tablero.agregarUnidad(0,0,infanteria1);
+        Coordenada coordenada = new Coordenada(0, 0);
+        tablero.agregarUnidad(coordenada, infanteria1);
 
         assertThrows(CasilleroOcupadoExcepcion.class, () ->{
-            tablero.agregarUnidad(0,0, infanteria2);
+            tablero.agregarUnidad(coordenada, infanteria2);
         } );
     }
 }
