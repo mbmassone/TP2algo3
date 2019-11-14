@@ -48,8 +48,8 @@ public class Tablero {
         }
     }
 
-    public void agregarUnidad(int fila, int columna, Unidad unidad){
-        Casillero casillero = obtenerCasillero(fila, columna);
+    public void agregarUnidad(Coordenada coordenada, Unidad unidad){
+        Casillero casillero = obtenerCasillero(coordenada);
         if(casillero.obtenerDuenio() != unidad.obtenerDuenio() ){
             throw new UnidadAgregadaEnSectorEnemigoExcepcion();
         }
@@ -57,10 +57,10 @@ public class Tablero {
         casillero.agregarUnidad(unidad);
     }
 
-    private Casillero obtenerCasillero(int fila, int columna) {
+    private Casillero obtenerCasillero(Coordenada coordenada) {
         //Como usamos una lista la forma de conseguir un casillero sería esta.
         // Si lo cambiamos a un diccionario solo tenemos que cambiar este método y la inicializacion.
-        int indice = TAMANIO * fila + columna;
+        int indice = TAMANIO * coordenada.obtenerFila() + coordenada.obtenerColumna();
         try{
             return this.tablero.get(indice);
         }catch (IndexOutOfBoundsException error){
@@ -77,18 +77,18 @@ public class Tablero {
         return coordenada;
     }
 
-    public boolean estaLibre(int fila, int columna){
-        return obtenerCasillero(fila, columna).estaLibre();
+    public boolean estaLibre(Coordenada coordenada){
+        return obtenerCasillero(coordenada).estaLibre();
     }
 
-    public void accionConUnidad(int fila, int columna, int filaObjetivo, int columnaObjetivo){
-        Unidad unidadObjetivo = obtenerCasillero(filaObjetivo, columnaObjetivo).obtenerUnidad();
-        obtenerCasillero(fila, columna).accionConUnidad(unidadObjetivo);
+    public void accionConUnidad(Coordenada coordenada, Coordenada coordenadaObjetivo){
+        Unidad unidadObjetivo = obtenerCasillero(coordenadaObjetivo).obtenerUnidad();
+        obtenerCasillero(coordenada).accionConUnidad(unidadObjetivo);
     }
 
-    public void moverUnidad(int fila, int columna, int nuevaFila, int nuevaColumna){
-        Casillero actualCasillero = obtenerCasillero(fila, columna);
-        Casillero nuevoCasillero = obtenerCasillero(nuevaFila, nuevaColumna);
+    public void moverUnidad(Coordenada coordenada, Coordenada nuevaCoordenada){
+        Casillero actualCasillero = obtenerCasillero(coordenada);
+        Casillero nuevoCasillero = obtenerCasillero(nuevaCoordenada);
 
         Direccion direccion = actualCasillero.obtenerDireccionDeAdyacente(nuevoCasillero);
         actualCasillero.moverUnidad(direccion);

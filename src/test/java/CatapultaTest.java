@@ -1,5 +1,6 @@
 import Modelo.*;
 import Modelo.Casillero.Casillero;
+import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
 import org.junit.Test;
@@ -19,8 +20,11 @@ public class CatapultaTest {
         Infanteria infanteria = new Infanteria(j1, new Casillero() );
         Catapulta catapulta = new Catapulta(j2, new Casillero() );
 
-        tablero.agregarUnidad(0,0,infanteria);
-        tablero.agregarUnidad(18,18,catapulta);
+        Coordenada coordenadaInfanteria = new Coordenada(0, 0);
+        Coordenada coordenadaCatapulta = new Coordenada(18, 18);
+
+        tablero.agregarUnidad(coordenadaInfanteria, infanteria);
+        tablero.agregarUnidad(coordenadaCatapulta, catapulta);
 
         catapulta.accion(infanteria);
         assertSame(infanteria.getVida(),80);
@@ -34,12 +38,14 @@ public class CatapultaTest {
         Catapulta catapulta = new Catapulta(j1, new Casillero() );
         Catapulta catapultaEnemiga = new Catapulta(j2, new Casillero() );
 
-        tablero.agregarUnidad(9,9,catapulta);
-        tablero.agregarUnidad(16,16,catapultaEnemiga);
+        Coordenada coordenadaCatapulta = new Coordenada(9, 9);
+        Coordenada coordenadaCatapultaEnemiga = new Coordenada(16, 16);
+
+        tablero.agregarUnidad(coordenadaCatapulta, catapulta);
+        tablero.agregarUnidad(coordenadaCatapultaEnemiga, catapultaEnemiga);
 
         catapulta.accion(catapultaEnemiga);
         assertSame(catapulta.getVida(),50);
-
     }
 
     @Test
