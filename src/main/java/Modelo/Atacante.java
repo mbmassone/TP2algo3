@@ -15,7 +15,7 @@ public abstract class Atacante extends Unidad {
     public void accion(Unidad unidad){
         super.atacaAliado(unidad);
         TipoDistancia tipoDistancia = this.casillero.getTipoDistancia(unidad.casillero); //Devuelve un hijo de TipoDistancia.
-        tipoDistancia.aplicarAccion(this,unidad);
+        tipoDistancia.aplicarAccion(this, unidad); //Usamos polimorfismo y aplicarAccion actua en funcion de la distancia.
     }
 
     @Override
@@ -32,5 +32,4 @@ public abstract class Atacante extends Unidad {
     public void accionLejana(Unidad unidad){
         unidad.sufrirAtaque(danioLejano);
     }
-
 }

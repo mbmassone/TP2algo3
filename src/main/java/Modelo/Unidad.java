@@ -3,11 +3,11 @@ package Modelo;
 import Modelo.Casillero.Casillero;
 import Modelo.Tablero.Direccion;
 
-public abstract class Unidad {
+public abstract class Unidad{
     protected int vida;
     protected int costo;
     protected Casillero casillero;
-    protected  Jugador duenio;
+    protected Jugador duenio;
 
     public Unidad(int vida, int costo, Casillero casillero, Jugador duenio){
         this.vida = vida;
