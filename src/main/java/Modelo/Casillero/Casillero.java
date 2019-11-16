@@ -1,9 +1,8 @@
 package Modelo.Casillero;
 
-import Modelo.Jugador;
+import Modelo.*;
 import Modelo.Tablero.Direccion;
 import Modelo.Tablero.CalculadorDistancias;
-import Modelo.Unidad;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -115,4 +114,10 @@ public class Casillero {
         }
     }
 
+    public TipoDistancia obtenerTipoDistancia(Casillero casillero) {
+        int distancia = this.caluclarDistancia(casillero);
+        if(distancia < 3) return new DistanciaCercana();
+        else if (distancia < 6) return new DistanciaMediana();
+        else return new DistanciaLejana();
+    }
 }
