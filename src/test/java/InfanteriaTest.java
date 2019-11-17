@@ -48,26 +48,24 @@ public class InfanteriaTest{
 
     @Test
     public void testInfanteriaMataAEnemigo() {
-        Casillero casilleroEnemigo = new Casillero();
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
         Infanteria infanteriaAliada = new Infanteria(j1 , new Casillero() );
-        Jinete jineteEnemigo = new Jinete(j2 , casilleroEnemigo );
+        Jinete jineteEnemigo = new Jinete(j2 , new Casillero() );
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(11,11);
         tablero.agregarUnidad(coordenadaAliada,infanteriaAliada);
         tablero.agregarUnidad(coordenadaEnemiga,jineteEnemigo);
 
-        casilleroEnemigo.agregarUnidad(jineteEnemigo);
 
-        Assert.assertFalse(casilleroEnemigo.estaLibre());
+        Assert.assertFalse(tablero.estaLibre(coordenadaEnemiga));
         for (int i = 0; i < 10; i++) {
             infanteriaAliada.accion(jineteEnemigo);
         }
-        Assert.assertEquals(jineteEnemigo.getVida(),0); //TODO idem que con jinete test,casillero no esta actualizando el estado.
-        Assert.assertTrue(casilleroEnemigo.estaLibre()); // TODO IDEM que con jinete test.
+        Assert.assertEquals(jineteEnemigo.getVida(),0);
+        Assert.assertTrue(tablero.estaLibre(coordenadaEnemiga));
     }
 
     @Test

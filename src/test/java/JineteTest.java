@@ -30,23 +30,22 @@ public class JineteTest {
     public void testJineteMataEnemigoCercano(){
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
-        Casillero casilleroCatapulta = new Casillero();
+
         Tablero tablero = new Tablero(j1, j2);
         Jinete jineteAliado = new Jinete(j1 , new Casillero() );
-        Catapulta catapultaEnemiga = new Catapulta(j2 , casilleroCatapulta);
+        Catapulta catapultaEnemiga = new Catapulta(j2 , new Casillero() );
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(11,11);
         tablero.agregarUnidad(coordenadaAliada,jineteAliado);
         tablero.agregarUnidad(coordenadaEnemiga,catapultaEnemiga);
 
-        casilleroCatapulta.agregarUnidad(catapultaEnemiga);
-        Assert.assertFalse(casilleroCatapulta.estaLibre());
+
+        Assert.assertFalse(tablero.estaLibre(coordenadaEnemiga));
         for (int i = 0 ; i < 10 ; i++){
             jineteAliado.accion(catapultaEnemiga);
         }
-        Assert.assertEquals(catapultaEnemiga.getVida(),0); //TODO casillero no esta destruyendo unidad,catapultaEnemiga no deberia estar.
-        Assert.assertFalse(casilleroCatapulta.estaLibre()); //TODO casilleroCatapulta.estaLibre() deberia devolver TRUE; devuelve FALSE.xd
+        Assert.assertTrue(tablero.estaLibre(coordenadaEnemiga));
     }
 
     @Test
