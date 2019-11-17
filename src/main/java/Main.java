@@ -1,18 +1,6 @@
-import Modelo.Tablero.Tablero;
 import Vista_api.Pantalla_titulo;
 import javafx.application.Application;
-import javafx.scene.Scene;
-
-import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
-
-
-import java.io.FileInputStream;
 
 
 public class Main extends Application {
@@ -24,7 +12,9 @@ public class Main extends Application {
         Pantalla_titulo wn = new Pantalla_titulo();
         wn.actualizar();
         wn.mostrar(DebugStage);
+        //La muestra
         DebugStage.show();
+
     }
 
     public static void main(String[] args) {
