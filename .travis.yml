@@ -13,6 +13,5 @@ notifications:
       - chubyrd1@gmail.com
       - bernardomassone@hotmail.com
       - andonifzabala@gmail.com
-      - jbenitez@aade.org.ar
       - sakuyalm40@gmail.com
     on_failure: always

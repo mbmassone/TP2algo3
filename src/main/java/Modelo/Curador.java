@@ -14,7 +14,7 @@ public abstract class Curador extends Unidad {
     @Override
     public void accion(Unidad unidad){
         super.curaEnemigo(unidad);
-        TipoDistancia tipoDistancia = this.casillero.getTipoDistancia(unidad.casillero); //Devuelve un hijo de TipoDistancia.
+        TipoDistancia tipoDistancia = this.casillero.obtenerTipoDistancia(unidad.casillero); //Devuelve un hijo de TipoDistancia.
         tipoDistancia.aplicarAccion(this, unidad); //Usamos polimorfismo y aplicarAccion actua en funcion de la distancia.
     }
 
