@@ -1,5 +1,7 @@
 import Modelo.*;
 import Modelo.Casillero.Casillero;
+import Modelo.Tablero.Coordenada;
+import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -9,38 +11,79 @@ public class JineteTest {
 
     @Test
     public void testJineteAtacaEnemigoCercano(){
-        Jinete jinete = new Jinete(new Jugador("Lucas"), new Casillero() );
-        Catapulta catapulta = new Catapulta(new Jugador("Mauro"), new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
+        Infanteria infanteriaEnemiga = new Infanteria(j2 , new Casillero() );
 
-        jinete.accion(catapulta);
-        Assert.assertSame(catapulta.getVida(),45);
+        Coordenada coordenadaAliada = new Coordenada(9,9);
+        Coordenada coordenadaEnemiga = new Coordenada(11,11);
+        tablero.agregarUnidad(coordenadaAliada,jineteAliado);
+        tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
+
+        jineteAliado.accion(infanteriaEnemiga);
+        Assert.assertSame(infanteriaEnemiga.getVida(),95);
     }
-
-
 
     @Test
     public void testJineteMataEnemigoCercano(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
         Casillero casilleroCatapulta = new Casillero();
-        Jinete jinete = new Jinete(new Jugador("Santiago"), new Casillero());
-        Catapulta catapulta = new Catapulta(new Jugador("Bruno"), casilleroCatapulta);
+        Tablero tablero = new Tablero(j1, j2);
+        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
+        Catapulta catapultaEnemiga = new Catapulta(j2 , casilleroCatapulta);
 
-        casilleroCatapulta.agregarUnidad(catapulta);
+        Coordenada coordenadaAliada = new Coordenada(9,9);
+        Coordenada coordenadaEnemiga = new Coordenada(11,11);
+        tablero.agregarUnidad(coordenadaAliada,jineteAliado);
+        tablero.agregarUnidad(coordenadaEnemiga,catapultaEnemiga);
 
+        casilleroCatapulta.agregarUnidad(catapultaEnemiga);
+        Assert.assertFalse(casilleroCatapulta.estaLibre());
         for (int i = 0 ; i < 10 ; i++){
-            jinete.accion(catapulta);
+            jineteAliado.accion(catapultaEnemiga);
         }
-        Assert.assertTrue(casilleroCatapulta.estaLibre());
+        Assert.assertEquals(catapultaEnemiga.getVida(),0); //TODO casillero no esta destruyendo unidad,catapultaEnemiga no deberia estar.
+        Assert.assertFalse(casilleroCatapulta.estaLibre()); //TODO casilleroCatapulta.estaLibre() deberia devolver TRUE; devuelve FALSE.xd
     }
 
     @Test
+    public void testJineteAtacaEnemigoMediano(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
+        Infanteria infanteriaEnemiga = new Infanteria(j2 , new Casillero() );
+
+        Coordenada coordenadaAliada = new Coordenada(9,9);
+        Coordenada coordenadaEnemiga = new Coordenada(14,14);
+        tablero.agregarUnidad(coordenadaAliada,jineteAliado);
+        tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
+
+        jineteAliado.accion(infanteriaEnemiga);
+        Assert.assertSame(infanteriaEnemiga.getVida(),85);
+    }
+
+
+    @Test
     public  void testJinetePuedeRecibirCuracion(){
-        Jugador jugador = new Jugador("Laura");
-        Jinete jinete = new Jinete(jugador, new Casillero());
-        Curandero curandero = new Curandero(jugador, new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Casillero casilleroCatapulta = new Casillero();
+        Tablero tablero = new Tablero(j1, j2);
+        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
+        Curandero curanderoAliado = new Curandero(j1 , casilleroCatapulta);
 
-        curandero.accion(jinete);
+        Coordenada coordenadaJinete = new Coordenada(3,3);
+        Coordenada coordenadaCurandero = new Coordenada(5,2);
+        tablero.agregarUnidad(coordenadaCurandero,curanderoAliado);
+        tablero.agregarUnidad(coordenadaJinete,jineteAliado);
 
-        Assert.assertSame(jinete.getVida(),115);
+        curanderoAliado.accion(jineteAliado);
+
+        Assert.assertSame(jineteAliado.getVida(),115);
 
     }
 

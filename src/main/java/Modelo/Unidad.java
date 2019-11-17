@@ -9,7 +9,7 @@ public abstract class Unidad{
     protected Casillero casillero;
     protected Jugador duenio;
 
-    public Unidad(int vida, int costo, Casillero casillero, Jugador duenio){
+    public Unidad(int vida,int costo,Casillero casillero,Jugador duenio){
         this.vida = vida;
         this.costo = costo;
         this.casillero = casillero;
@@ -25,7 +25,7 @@ public abstract class Unidad{
     }
 
     public void sufrirAtaque(int danio){
-        vida -= danio;
+        this.vida -= danio;
         if(this.vida <= 0){
             this.casillero.destruirUnidad();
         }

@@ -12,6 +12,6 @@ public class Infanteria extends Atacante {
 
     @Override
     public void recibirCuracion(int curacion) {
-        this.recibirCuracion(curacion);
+        this.vida += curacion;
     }
 }

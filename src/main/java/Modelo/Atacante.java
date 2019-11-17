@@ -8,7 +8,7 @@ public abstract class Atacante extends Unidad {
     protected int danioLejano;
 
     public Atacante(int vida,int costo,Casillero casillero,Jugador duenio){
-        super(100,1, casillero, duenio);
+        super(vida,costo, casillero, duenio);
     }
 
     @Override

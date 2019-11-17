@@ -1,20 +1,30 @@
+import Modelo.*;
 import Modelo.Casillero.Casillero;
-import Modelo.Curandero;
-import Modelo.CurarEnemigoExcepcion;
-import Modelo.Infanteria;
-import Modelo.Jugador;
+import Modelo.Tablero.Coordenada;
+import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class CuranderoTest {
     @Test
-    public void curanderoCuraAliado(){
-        Jugador jugador = new Jugador("Eugenio");
-        Curandero curandero = new Curandero(jugador, new Casillero());
-        Infanteria infanteriaAliada = new Infanteria(jugador, new Casillero());
-        Infanteria infanteriaEnemiga = new Infanteria(new Jugador("Tomas"), new Casillero());
+    public void curanderoCuraAliadoCercano(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Curandero curandero = new Curandero(j1, new Casillero());
+        Infanteria infanteriaAliada = new Infanteria(j1, new Casillero());
+        Infanteria infanteriaEnemiga = new Infanteria(j2, new Casillero());
+
+        Coordenada coordenadaAliadaCurandero = new Coordenada(8,8);
+        Coordenada coordenadaAliadaInfanteria = new Coordenada(9,9);
+        Coordenada coordenadaEnemigaInfanteria = new Coordenada(11,11);
+
+        tablero.agregarUnidad(coordenadaAliadaCurandero,curandero);
+        tablero.agregarUnidad(coordenadaAliadaInfanteria,infanteriaAliada);
+        tablero.agregarUnidad(coordenadaEnemigaInfanteria,infanteriaEnemiga);
 
         infanteriaEnemiga.accion(infanteriaAliada);
         infanteriaEnemiga.accion(infanteriaAliada);
@@ -24,17 +34,48 @@ public class CuranderoTest {
         Assert.assertSame(infanteriaAliada.getVida(), 95);
     }
     @Test
+    public void curanderoCuraAliadoLejano(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Curandero curandero = new Curandero(j1, new Casillero());
+        Infanteria infanteriaAliada = new Infanteria(j1, new Casillero());
+
+        Coordenada coordenadaAliadaCurandero = new Coordenada(0,0);
+        Coordenada coordenadaAliadaInfanteria = new Coordenada(9,9);
+
+        tablero.agregarUnidad(coordenadaAliadaCurandero,curandero);
+        tablero.agregarUnidad(coordenadaAliadaInfanteria,infanteriaAliada);
+
+
+        curandero.accion(infanteriaAliada);
+        Assert.assertSame(infanteriaAliada.getVida(), 100);
+    }
+
+
+
+    @Test
     public void curanderoCuraEnemigo(){
-        Curandero curandero = new Curandero(new Jugador("Bernardo"), new Casillero());
-        Infanteria infanteriaEnemiga = new Infanteria(new Jugador("Juan"), new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Curandero curandero = new Curandero(j1, new Casillero());
+        Jinete jineteEnemigo = new Jinete(j2,new Casillero());
 
         assertThrows(CurarEnemigoExcepcion.class, () ->{
-            curandero.accion(infanteriaEnemiga);
+            curandero.accion(jineteEnemigo);
         });
     }
+
     @Test
     public void curanderoSeCuraAsiMismo(){
-        Curandero curandero = new Curandero(new Jugador("Stephanie"), new Casillero());
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Curandero curandero = new Curandero(j1, new Casillero());
+        Coordenada coordenada = new Coordenada(4,6);
+
+        tablero.agregarUnidad(coordenada,curandero);
         curandero.accion(curandero);
 
         Assert.assertSame(curandero.getVida(),90);
