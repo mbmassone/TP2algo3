@@ -3,15 +3,13 @@ package Modelo.Tablero;
 public enum Direccion{
     ARRIBA(-1, 0), ARRIBADERECHA(-1,1), DERECHA(0,1), ABAJODERECHA(1,1), ABAJO(1,0), ABAJOIZQUIERDA(1,-1), IZQUIERDA(0, -1), ARRIBAIZQUIERDA(-1,-1);
 
-    private int defasajeConstante;
-    private int multiplicador;
+    Coordenada defasaje;
 
-    Direccion(int multiplicador, int defasajeConstante) {
-        this.multiplicador = multiplicador;
-        this.defasajeConstante = defasajeConstante;
+    Direccion(int fila, int columna) {
+        this.defasaje = new Coordenada(fila, columna);
     }
 
-    int obtenerDefasaje(int tamanio){
-        return multiplicador * tamanio + defasajeConstante;
+    Coordenada obtenerDefasaje(){
+        return defasaje;
     }
 }

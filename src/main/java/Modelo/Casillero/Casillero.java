@@ -1,8 +1,8 @@
 package Modelo.Casillero;
 
 import Modelo.*;
+import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Direccion;
-import Modelo.Tablero.CalculadorDistancias;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ public class Casillero {
     private Jugador duenio;
     Unidad unidad; //Solo la pueden acceder clases en el paquete Casillero.
     private EstadoCasilla estado;
-    private CalculadorDistancias calculadorDistancias;
+    private Coordenada coordenada;
 
     //Metodos
     public Casillero(){
@@ -24,11 +24,11 @@ public class Casillero {
         //TODO hacer con mocks.
     }
 
-    public Casillero(Jugador duenio, CalculadorDistancias calculadorDistancias){
+    public Casillero(Jugador duenio, Coordenada coordenada){
         this.duenio = duenio;
         this.estado = new Libre();
         this.adyacentes = new HashMap<Direccion, Casillero>();
-        this.calculadorDistancias = calculadorDistancias;
+        this.coordenada = coordenada;
     }
 
     public void agregarUnidad(Unidad unidad) {
@@ -69,8 +69,8 @@ public class Casillero {
 
     }
 
-    public int caluclarDistancia(Casillero casillero){
-        return this.calculadorDistancias.calcularDistancia(this, casillero);
+    public Coordenada obtenerCoordenada() {
+        return this.coordenada;
     }
 
     public Jugador obtenerDuenio() {
@@ -115,7 +115,8 @@ public class Casillero {
     }
 
     public TipoDistancia obtenerTipoDistancia(Casillero casillero) {
-        int distancia = this.caluclarDistancia(casillero);
+        //TODO refactorizar y hacer con polimorfismo
+        int distancia = this.coordenada.calcularDistancia(casillero.obtenerCoordenada());
         if(distancia < 3) return new DistanciaCercana();
         else if (distancia < 6) return new DistanciaMediana();
         else return new DistanciaLejana();

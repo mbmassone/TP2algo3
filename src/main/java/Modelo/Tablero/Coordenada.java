@@ -10,6 +10,26 @@ public class Coordenada {
         this.columna = columna;
     }
 
+    @Override
+    public boolean equals(Object o){
+        Coordenada coordenada = (Coordenada) o;
+        return (this.fila == coordenada.obtenerFila()) && (this.columna == coordenada.obtenerColumna());
+    }
+
+
+    @Override
+    public int hashCode() {
+        return this.fila | (this.columna << 15);
+    }
+
+    public Coordenada suma(Coordenada coordenada){
+        return new Coordenada(this.fila + coordenada.obtenerFila(), this.columna + coordenada.obtenerColumna());
+    }
+
+    public int calcularDistancia(Coordenada coordenada){
+        return Math.max(Math.abs(coordenada.obtenerFila() - this.fila), Math.abs((coordenada.obtenerColumna() - this.columna)));
+    }
+
     public int obtenerFila(){ return fila; }
 
     public int obtenerColumna(){ return columna; }
