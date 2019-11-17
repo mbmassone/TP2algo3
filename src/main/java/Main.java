@@ -9,8 +9,10 @@ public class Main extends Application {
     public void start(Stage DebugStage) throws Exception {
         DebugStage.setTitle("AlgoChessApp Beta0..0.0.1");
 
+        DebugStage.setHeight(600);
+        DebugStage.setWidth(800);
         Pantalla_titulo wn = new Pantalla_titulo();
-        wn.actualizar();
+        wn.inicializar(DebugStage);
         wn.mostrar(DebugStage);
         //La muestra
         DebugStage.show();

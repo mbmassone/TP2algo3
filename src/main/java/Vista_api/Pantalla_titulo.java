@@ -33,7 +33,7 @@ public class Pantalla_titulo implements Manipulador_escenarios {
     public void inicializar(Stage stage) throws Exception{
 
         //Se abre un archivo
-        FileInputStream PantallaTitulo = new FileInputStream(RUTA_IMG_TITULO);
+        FileInputStream PantallaTitulo = new FileInputStream("PantallaTitulo.png");
         //Creo un objeto imagen a mostrar
         this.image = new Image(PantallaTitulo);
 
@@ -54,7 +54,10 @@ public class Pantalla_titulo implements Manipulador_escenarios {
 
         //Boton handle con funcion lambda
         boton_dummy.setOnAction((event) -> System.out.println("Tocaboton"));
+
+        //Instancias una excepcion del tipo creado
         this.jugarHandler = new Empezar_juego_Handler(stage);
+        //Se lo mandas al boton para que lo "active"
         this.boton_iniciar.setOnAction(this.jugarHandler);
         this.salir_juego_handler = new Salir_Juego_Handler(stage);
         this.boton_salir.setOnAction(this.salir_juego_handler);
@@ -62,43 +65,15 @@ public class Pantalla_titulo implements Manipulador_escenarios {
     }
 
     @Override
-    public void actualizar()  throws Exception{
-        //Titulo de la ventana
-        //this.titulo.setTitle("Java FX tTittle");
+    public void inicializar() {
 
-        //Tamaño de la ventana del stage
-
-
-        //Setup de elementos a usar
-        //Se abre un archivo
-        FileInputStream PantallaTitulo = new FileInputStream("PantallaTitulo.png");
-        //Creo un objeto imagen a mostrar
-        Image image = new Image(PantallaTitulo);
-        //coloco un visor y lo referencio
-        ImageView imageView = new ImageView(image);
-        Label texto = new Label("Debug Info");
-        texto.setTextAlignment(TextAlignment.LEFT);
-        Button boton_dummy = new Button("Dummy");
-        Button boton_iniciar = new Button("Iniciar");
-        HBox hbox = new HBox(boton_dummy,boton_iniciar);
-        VBox vbox = new VBox(20,imageView,texto,hbox);
-        vbox.setAlignment(Pos.CENTER);
-        hbox.setAlignment(Pos.CENTER);
-        ///Creacion de una Escena
-
-        //Boton handle con funcion lambda
-        boton_dummy.setOnAction((event) -> System.out.println("Tocaboton"));
-
-        this.titulo = new Scene(vbox,image.getWidth()*2,image.getHeight()*3);
-        //Coloco la escena en el Stage
-
-        //Lo muestro
     }
 
     @Override
-    public void mostrar() {
+    public void actualizar(){
 
     }
+
 
     @Override
     public void mostrar(Stage stage) {
