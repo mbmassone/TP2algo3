@@ -9,7 +9,7 @@ public abstract class Unidad{
     protected Casillero casillero;
     protected Jugador duenio;
 
-    public Unidad(int vida,int costo,Casillero casillero,Jugador duenio){
+    public Unidad(int vida,int costo,Casillero casillero,Jugador duenio){//TODO sacar casillero de constructor
         this.vida = vida;
         this.costo = costo;
         this.casillero = casillero;
@@ -22,6 +22,10 @@ public abstract class Unidad{
 
     public Jugador obtenerDuenio(){
         return this.duenio;
+    }
+
+    public Casillero obtenerCasillero(){
+        return this.casillero;
     }
 
     public void sufrirAtaque(int danio){

@@ -90,26 +90,28 @@ public class Casillero {
         throw new CasilleroNoEsAdyacenteExcepcion();
     }
 
-    public List<Unidad> encontrarEnemigosEnCadena(){
+    public List<Unidad> encontrarEnemigosEnCadena(Jugador enemigo){
         //TODO Cambiar a su propia clase.
         List<Unidad> listaEnemigos = new ArrayList<Unidad>();
-        encontrarEnemigosEnCadenaRec(listaEnemigos, this, this.duenio);
+        encontrarEnemigosEnCadenaRec(listaEnemigos, this, enemigo);
 
         return listaEnemigos;
     }
 
-    private void encontrarEnemigosEnCadenaRec(List<Unidad> listaEnemigos, Casillero casilleroActual, Jugador aliado) {
+    private void encontrarEnemigosEnCadenaRec(List<Unidad> listaEnemigos, Casillero casilleroActual, Jugador enemigo) {
         if(casilleroActual.estaLibre()){
             return;
         } else {
             Unidad actual = casilleroActual.obtenerUnidad();
-            if(actual.obtenerDuenio() == aliado){
+            if(listaEnemigos.contains(actual)){
                 return;
-            } else {
+            } else if(actual.obtenerDuenio() == enemigo){
                 listaEnemigos.add(actual);
                 for(Direccion direccion: Direccion.values()){
-                    encontrarEnemigosEnCadenaRec(listaEnemigos, casilleroActual.obtenerAdyacente(direccion), aliado);
+                    encontrarEnemigosEnCadenaRec(listaEnemigos, casilleroActual.obtenerAdyacente(direccion), enemigo);
                 }
+            } else {
+                return;
             }
         }
     }
