@@ -25,9 +25,20 @@ public class Casilla_vista {
     //Desconozco si todas las unidades pueden ser reemplazadas por la clase unidad.
     //TODO cambiar lo que recibe
 
-    public void setup() throws Exception{
+    public Casilla_vista() {
+
+    }
+
+    public ImageView mostrar(){
+        //Constructor, deberia setupear el estado de la casilla al iniciar
+        //Talvez pueda ser reemplazado por el actualizar
+        return this.visor_casillero_image;
+    }
+
+    //podriamos directamente usar el constructor cada vez que quisieramos actualizar, aun estoy en duda
+    public void actualizar(String string) throws Exception{
         //Abro el stream de los archivos
-        FileInputStream imagen = new FileInputStream("vacio.png");
+        FileInputStream imagen = new FileInputStream(string + ".png");
 
         //Referencio todas las imagenes
         this.casillero_image = new Image(imagen);
@@ -38,16 +49,6 @@ public class Casilla_vista {
         this.visor_casillero_image = new ImageView(casillero_image);
 
     }
-    public ImageView mostrar(){
-        //Constructor, deberia setupear el estado de la casilla al iniciar
-        //Talvez pueda ser reemplazado por el actualizar
-        return this.visor_casillero_image;
-    }
 
-    //podriamos directamente usar el constructor cada vez que quisieramos actualizar, aun estoy en duda
-    public void actualizar(){
-        //Actualiza el estado de la casilla
-        //Redibujandola y sustrajendo los datos del modelo
-    }
 }
 
