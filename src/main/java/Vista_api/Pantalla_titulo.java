@@ -1,66 +1,51 @@
 package Vista_api;
 
 import Vista_api.ManipuladorEventos.Empezar_juego_Handler;
-
 import Vista_api.ManipuladorEventos.Salir_Juego_Handler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.io.FileInputStream;
+import static Vista_api.ConstantesInterfaz.*;
 
 public class Pantalla_titulo implements Manipulador_escenarios {
 
-    private Scene titulo;
+    public Scene titulo;
 
-   private Image image;
-    private ImageView imageView;
-    private Label texto;
-    private Button boton_dummy;
-    private Button boton_iniciar;
-    private Button boton_salir;
-    private Empezar_juego_Handler jugarHandler;
-    private Salir_Juego_Handler salir_juego_handler;
+    public void inicializar(Stage stage){
 
-    public void inicializar(Stage stage) throws Exception{
+        //abro una imagen y se lo asigno a un visor
+        ImageView Imagen_titulo = (new ImageView(new Image(IMG_TITULO)));
 
-        //Se abre un archivo
-        FileInputStream PantallaTitulo = new FileInputStream("PantallaTitulo.png");
-        //Creo un objeto imagen a mostrar
-        this.image = new Image(PantallaTitulo);
+        Label debug_info = new Label("Debug Info");
 
-        //coloco un visor y lo referencio
-        this.imageView = new ImageView(this.image);
+        //Creo botones
+        Button boton_dummy = new Button("Dummy");
+        Button boton_iniciar = new Button("Iniciar");
+        Button boton_salir = new Button("Salir ");
 
-        this.texto = new Label("Debug Info");
+        //Creacion de Handlers y sus iniciaciones
+        Salir_Juego_Handler salir_juego_handler = new Salir_Juego_Handler(stage);
+        Empezar_juego_Handler jugarHandler = new Empezar_juego_Handler(stage);
 
-        this.boton_dummy = new Button("Dummy");
-        this.boton_iniciar = new Button("Iniciar");
-        this.boton_salir = new Button("Salir ");
+        //Asignacion de triggers de eventos a los botones
+        //Dummy usa un lambda
+        boton_dummy.setOnAction((event) -> System.out.println("Tocaboton"));
+        boton_salir.setOnAction(salir_juego_handler);
+        boton_iniciar.setOnAction(jugarHandler);
 
-        HBox hbox = new HBox(this.boton_dummy,this.boton_iniciar, this.boton_salir);
-        VBox vbox = new VBox(20,imageView,texto,hbox);
+        //Creo contenedores y
+        HBox hbox = new HBox(boton_dummy,boton_iniciar, boton_salir);
+        VBox vbox = new VBox(20,Imagen_titulo,debug_info,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
-        ///Creacion de una Escena
 
-        //Boton handle con funcion lambda
-        boton_dummy.setOnAction((event) -> System.out.println("Tocaboton"));
-
-        //Instancias una excepcion del tipo creado
-        this.jugarHandler = new Empezar_juego_Handler(stage);
-        //Se lo mandas al boton para que lo "active"
-        this.boton_iniciar.setOnAction(this.jugarHandler);
-        this.salir_juego_handler = new Salir_Juego_Handler(stage);
-        this.boton_salir.setOnAction(this.salir_juego_handler);
+        //aplico la escena al Stage
         this.titulo = new Scene(vbox);
     }
 
