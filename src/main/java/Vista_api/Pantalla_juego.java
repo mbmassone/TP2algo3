@@ -11,26 +11,20 @@ import javafx.stage.Stage;
 
 public class Pantalla_juego {
 
-    private Label texto;
-    private Button salir_del_juego;
-    private Stage jugando;
-    private Salir_Juego_Handler salir_juego_handler;
-    private Scene board;
-
 
     public void inicializar(Stage stage) {
 
-       this.texto = new Label("zona de juego");
-       this.salir_del_juego = new Button("Salir");
-       this.jugando = stage;
-       salir_juego_handler = new Salir_Juego_Handler(this.jugando);
-       this.salir_del_juego.setOnAction(salir_juego_handler);
+       Label texto = new Label("zona de juego");
 
-        VBox vbox = new VBox(texto,salir_del_juego);
-        board = new Scene(vbox);
+       Button salir_del_juego = new Button("Salir");
 
+       Salir_Juego_Handler salir_juego_handler = new Salir_Juego_Handler(stage);
+       salir_del_juego.setOnAction(salir_juego_handler);
+
+       VBox vbox = new VBox(texto,salir_del_juego);
+       Scene board = new Scene(vbox);
        //Seteando esta escena, ahora los eventos de esta seran manipulado por otros (manipuladores de evento)
-       jugando.setScene(board);
+       stage.setScene(board);
     }
 
 

@@ -1,5 +1,6 @@
 package Vista_api;
 
+import Vista_api.ManipuladorEventos.EasterEggLogo;
 import Vista_api.ManipuladorEventos.Empezar_juego_Handler;
 import Vista_api.ManipuladorEventos.Salir_Juego_Handler;
 import javafx.geometry.Pos;
@@ -8,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -32,12 +34,16 @@ public class Pantalla_titulo implements Manipulador_escenarios {
         //Creacion de Handlers y sus iniciaciones
         Salir_Juego_Handler salir_juego_handler = new Salir_Juego_Handler(stage);
         Empezar_juego_Handler jugarHandler = new Empezar_juego_Handler(stage);
+        EasterEggLogo logo_bonus = new EasterEggLogo();
 
         //Asignacion de triggers de eventos a los botones
         //Dummy usa un lambda
         boton_dummy.setOnAction((event) -> System.out.println("Tocaboton"));
         boton_salir.setOnAction(salir_juego_handler);
         boton_iniciar.setOnAction(jugarHandler);
+
+        //Dispara el evento logo_bonus SOLO al hacer click en el logo del titulo
+        Imagen_titulo.addEventFilter(MouseEvent.MOUSE_CLICKED, logo_bonus);
 
         //Creo contenedores y
         HBox hbox = new HBox(boton_dummy,boton_iniciar, boton_salir);
