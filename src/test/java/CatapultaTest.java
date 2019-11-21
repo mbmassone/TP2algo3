@@ -49,6 +49,61 @@ public class CatapultaTest {
     }
 
     @Test
+    public void catapultaAtacaDeLejosACualquierAdyacente(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Catapulta catapultaAliada = new Catapulta(j1, new Casillero() );
+        Curandero curanderoAliado = new Curandero(j1, new Casillero() );
+        Infanteria infanteriaEnemiga = new Infanteria(j2, new Casillero() );
+        Catapulta catapultaEnemiga = new Catapulta(j2, new Casillero());
+
+        Coordenada coordenadaCatapultaAliada = new Coordenada(1,1);
+        Coordenada coordenadaCuranderoAliado = new Coordenada(9,9);
+        Coordenada coordenadaInfanteriaEnemiga = new Coordenada(10,10);
+        Coordenada coordenadaCatapultaEnemiga = new Coordenada(11,11);
+
+        tablero.agregarUnidad(coordenadaCatapultaAliada,catapultaAliada);
+        tablero.agregarUnidad(coordenadaCuranderoAliado,curanderoAliado);
+        tablero.agregarUnidad(coordenadaInfanteriaEnemiga,infanteriaEnemiga);
+        tablero.agregarUnidad(coordenadaCatapultaEnemiga, catapultaEnemiga);
+
+
+        catapultaAliada.accion(infanteriaEnemiga);
+
+        assertSame(catapultaAliada.getVida(),50);
+        assertSame(curanderoAliado.getVida(),55);
+        assertSame(infanteriaEnemiga.getVida(),80);
+        assertSame(catapultaEnemiga.getVida(),30);
+    }
+
+    @Test
+    public void catapultaNoAtacaDeLejosALosNoAdyacentes(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Catapulta catapultaAliada = new Catapulta(j1, new Casillero() );
+        Infanteria infanteriaEnemiga = new Infanteria(j2,new Casillero());
+        Jinete jineteEnemigo = new Jinete(j2,new Casillero());
+
+        Coordenada coordenadaCatapultaAliada = new Coordenada(1,1);
+        Coordenada coordenadaInfanteriaEnemiga = new Coordenada(16,16);
+        Coordenada coordenadaJineteEnemigo = new Coordenada(16,18);
+
+        tablero.agregarUnidad(coordenadaCatapultaAliada,catapultaAliada);
+        tablero.agregarUnidad(coordenadaInfanteriaEnemiga,infanteriaEnemiga);
+        tablero.agregarUnidad(coordenadaJineteEnemigo,jineteEnemigo);
+
+        catapultaAliada.accion(infanteriaEnemiga);
+
+        assertSame(infanteriaEnemiga.getVida(),80);
+        assertSame(jineteEnemigo.getVida(),100);
+    }
+
+
+    @Test
     public void catapultaNoPuedeSerCurada(){
         Catapulta catapulta = new Catapulta(new Jugador("Tomas") );
 
