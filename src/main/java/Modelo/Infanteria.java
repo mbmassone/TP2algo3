@@ -1,5 +1,10 @@
 package Modelo;
+
+import Modelo.Casillero.IdentificadorDeInfanterias;
 import Modelo.Casillero.Casillero;
+import Modelo.Casillero.IdentificadorDeInfanterias;
+import Modelo.Tablero.Direccion;
+import java.util.List;
 
 public class Infanteria extends Atacante {
 
@@ -10,6 +15,7 @@ public class Infanteria extends Atacante {
         this.danioLejano = 0;
     }
 
+
     @Override
     public void recibirCuracion(int curacion) {
         this.vida += curacion;
@@ -19,4 +25,28 @@ public class Infanteria extends Atacante {
     public boolean esInfanteria(){
         return true;
     }
+
+    @Override
+    public void mover(Direccion direccion){
+        List<Unidad> listaInfanteria;
+        listaInfanteria = this.casillero.encontrarUnidadesEnCadena(new IdentificadorDeInfanterias( this.obtenerDuenio() ) );
+
+        if (listaInfanteria.size() >= 3) { //Batallon
+            for (int i = 0; i < 3; i++) {
+                Infanteria infanteria = (Infanteria)listaInfanteria.get(i);
+                infanteria.moverInfanteria(direccion);
+            }
+        }
+        else{ //No hay batallon,se mueve solo una Infanteria.
+            this.moverInfanteria(direccion);
+        }
+    }
+
+
+    public void moverInfanteria(Direccion direccion){
+        super.mover(direccion);
+    }
+
 }
+
+

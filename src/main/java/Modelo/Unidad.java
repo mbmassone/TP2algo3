@@ -38,11 +38,19 @@ public abstract class Unidad{
         }
     }
 
+    public boolean puedeMover(Direccion direccion){
+        //TODO usar esta funcion para eliminar excepciones
+        return this.casillero.obtenerAdyacente(direccion).estaLibre();
+    }
+
     public int getVida(){
         return this.vida;
     }
 
     public void mover(Direccion direccion){
+        if (!puedeMover(direccion)){
+            return;
+        }
         Casillero nuevoCasillero = this.casillero.obtenerAdyacente(direccion);
         nuevoCasillero.agregarUnidad(this);
         this.casillero.destruirUnidad();

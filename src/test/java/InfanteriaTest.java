@@ -137,9 +137,47 @@ public class InfanteriaTest{
         tablero.agregarUnidad(coordenada1, infanteria1);
         tablero.agregarUnidad(coordenada2, infanteria2);
 
-        assertThrows(CasilleroOcupadoExcepcion.class, () ->{
-            infanteria1.mover(Direccion.ABAJO);
-        });
+        infanteria1.mover(Direccion.ABAJO);
+        Assert.assertFalse(tablero.estaLibre(coordenada1)); //La infanteria1 no vario su posicion.
+        Assert.assertFalse(tablero.estaLibre(coordenada2)); //La infanteria2 mantiene su posicion.
+
     }
+
+    @Test
+    public void testInfanteriaSeComportaComoBatallonAlMover(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Jugador jugador = new Jugador("Camila");
+        Infanteria infanteria1 = new Infanteria(j1);
+        Infanteria infanteria2 = new Infanteria(j1);
+        Infanteria infanteria3 = new Infanteria(j1);
+
+        Coordenada coordenada1 = new Coordenada(0, 0);
+        Coordenada coordenada2 = new Coordenada(1 ,0);
+        Coordenada coordenada3 = new Coordenada(2,0);
+
+        tablero.agregarUnidad(coordenada1, infanteria1);
+        tablero.agregarUnidad(coordenada2, infanteria2);
+        tablero.agregarUnidad(coordenada3, infanteria3);
+        infanteria1.mover(Direccion.DERECHA);
+
+        Coordenada coordenada1Actualizada = new Coordenada(0,1);
+        Coordenada coordenada2Actualizada = new Coordenada(1,1);
+        Coordenada coordenada3Actualizada = new Coordenada(2,1);
+
+        Assert.assertFalse(tablero.estaLibre(coordenada1Actualizada));
+        Assert.assertFalse(tablero.estaLibre(coordenada2Actualizada));
+        Assert.assertFalse(tablero.estaLibre(coordenada3Actualizada));
+
+        Assert.assertTrue(tablero.estaLibre(coordenada1));
+        Assert.assertTrue(tablero.estaLibre(coordenada2));
+        Assert.assertTrue(tablero.estaLibre(coordenada3));
+    }
+
+
+
+
 
 }

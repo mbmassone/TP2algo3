@@ -6,7 +6,6 @@ import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
 import org.junit.Test;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,6 +17,15 @@ public class CasilleroTest {
 
         assertThrows(CasilleroFueraDeRangoExcepcion.class, () ->{
             casillero.obtenerAdyacente(Direccion.ARRIBA);
+        } );
+    }
+
+    @Test
+    public void destruirUnidadDeCasilleroLibreDevuelveExcepcion(){
+        Casillero casillero = new Casillero();
+
+        assertThrows(CasilleroYaEstaLibreExcepcion.class, () ->{
+            casillero.destruirUnidad();
         } );
     }
 
@@ -115,11 +123,11 @@ public class CasilleroTest {
 
         //Solo las infanterias 1,2 y 3 estan en cadena.
 
-        Agregador agregador = new AgregadorDeUnidades();
+        Identificador identificador = new IdentificadorDeUnidades();
 
-        List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarUnidadesEnCadena(agregador);
+        List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarUnidadesEnCadena(identificador);
 
-        assertEquals(cadena.size(), 3);
+        assertEquals(3, cadena.size());
 
         assertTrue(cadena.contains(infanteria1));
         assertTrue(cadena.contains(infanteria2));
@@ -128,4 +136,119 @@ public class CasilleroTest {
         assertFalse(cadena.contains(infanteria4));
 
     }
+
+    @Test
+    public void encontrarUnidadesEnCadenaDevuelveUnaListaConInfanteriasEnCadena(){
+        Jugador dummy1 = new Jugador("Berni");
+        Jugador dummy2 = new Jugador("Tomi");
+
+        Tablero tablero = new Tablero(dummy1, dummy2);
+
+        Coordenada coordenada1 = new Coordenada(8,0);
+        Infanteria infanteria1 = new Infanteria(dummy1);
+        tablero.agregarUnidad(coordenada1, infanteria1);
+
+        Coordenada coordenada2 = new Coordenada(8,1);
+        Infanteria infanteria2 = new Infanteria(dummy1);
+        tablero.agregarUnidad(coordenada2, infanteria2);
+
+        Coordenada coordenada3 = new Coordenada(7,2);
+        Infanteria infanteria3 = new Infanteria(dummy1);
+        tablero.agregarUnidad(coordenada3, infanteria3);
+
+        Coordenada coordenada4 = new Coordenada(9 , 4);
+        Infanteria infanteria4 = new Infanteria(dummy1);
+        tablero.agregarUnidad(coordenada4, infanteria4);
+
+        Coordenada coordenada5 = new Coordenada(9 , 6);
+        Infanteria infanteria5 = new Infanteria(dummy1);
+        tablero.agregarUnidad(coordenada5, infanteria5);
+
+        Coordenada coordenadaCat = new Coordenada(8 , 3);
+        Catapulta catapulta = new Catapulta(dummy1);
+        tablero.agregarUnidad(coordenadaCat, catapulta);
+
+        Coordenada coordenadaEnem = new Coordenada(10 , 5);
+        Infanteria infanteriaEnem = new Infanteria(dummy2);
+        tablero.agregarUnidad(coordenadaEnem, infanteriaEnem);
+
+        //La primer busqueda encuentra 1, 2 y 3.
+        Identificador identificador = new IdentificadorDeInfanterias(dummy1);
+
+        List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarUnidadesEnCadena(identificador);
+
+        assertEquals(3, cadena.size());
+
+        assertTrue(cadena.contains(infanteria1));
+        assertTrue(cadena.contains(infanteria2));
+        assertTrue(cadena.contains(infanteria3));
+
+        assertFalse(cadena.contains(infanteria4));
+        assertFalse(cadena.contains(infanteria5));
+        assertFalse(cadena.contains(catapulta));
+        assertFalse(cadena.contains(infanteriaEnem));
+
+        //La segunda busqueda solo encuentra el 4.
+
+        cadena = infanteria4.obtenerCasillero().encontrarUnidadesEnCadena(identificador);
+
+        assertEquals(1, cadena.size());
+
+        assertTrue(cadena.contains(infanteria4));
+
+        assertFalse(cadena.contains(infanteria1));
+        assertFalse(cadena.contains(infanteria2));
+        assertFalse(cadena.contains(infanteria3));
+        assertFalse(cadena.contains(infanteria5));
+        assertFalse(cadena.contains(catapulta));
+        assertFalse(cadena.contains(infanteriaEnem));
+
+    }
+
+    @Test
+    public void hayInfanteriasAliadasADistanciaCercanaDevuelveTrueSiHayUnaInfanteriaAliadaCerca(){
+        Jugador dummy1 = new Jugador("Berni");
+        Jugador dummy2 = new Jugador("Tomi");
+
+        Tablero tablero = new Tablero(dummy1, dummy2);
+
+        Coordenada coordenadaInf = new Coordenada(0,2);
+        Infanteria infanteria = new Infanteria(dummy1);
+        tablero.agregarUnidad(coordenadaInf, infanteria);
+
+        Coordenada coordenadaJin1 = new Coordenada(0,0);
+        Jinete jinete1 = new Jinete(dummy1);
+        tablero.agregarUnidad(coordenadaJin1, jinete1);
+
+        Coordenada coordenadaJin2 = new Coordenada(0,19);
+        Jinete jinete2 = new Jinete(dummy1);
+        tablero.agregarUnidad(coordenadaJin2, jinete2);
+
+        assertTrue(jinete1.obtenerCasillero().hayUnidadesADistanciaCercana(new IdentificadorDeInfanterias(jinete1.obtenerDuenio())));
+        assertFalse(jinete2.obtenerCasillero().hayUnidadesADistanciaCercana(new IdentificadorDeInfanterias(jinete2.obtenerDuenio())));
+    }
+
+    @Test
+    public void hayEnemigosADistanciaCercanaDevuelveTrueSiHayEnemigosCerca(){
+        Jugador dummy1 = new Jugador("Berni");
+        Jugador dummy2 = new Jugador("Tomi");
+
+        Tablero tablero = new Tablero(dummy1, dummy2);
+
+        Coordenada coordenadaInf = new Coordenada(10,2);
+        Infanteria infanteria = new Infanteria(dummy2);
+        tablero.agregarUnidad(coordenadaInf, infanteria);
+
+        Coordenada coordenadaJin1 = new Coordenada(9,0);
+        Jinete jinete1 = new Jinete(dummy1);
+        tablero.agregarUnidad(coordenadaJin1, jinete1);
+
+        Coordenada coordenadaJin2 = new Coordenada(9,19);
+        Jinete jinete2 = new Jinete(dummy1);
+        tablero.agregarUnidad(coordenadaJin2, jinete2);
+
+        assertTrue(jinete1.obtenerCasillero().hayUnidadesADistanciaCercana(new IdentificadorDeEnemigos(jinete1.obtenerDuenio())));
+        assertFalse(jinete2.obtenerCasillero().hayUnidadesADistanciaCercana(new IdentificadorDeEnemigos(jinete2.obtenerDuenio())));
+    }
+
 }

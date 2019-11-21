@@ -1,10 +1,8 @@
 package Modelo;
-import Modelo.Casillero.Agregador;
-import Modelo.Casillero.AgregadorDeUnidades;
+import Modelo.Casillero.IdentificadorDeUnidades;
 import Modelo.Casillero.Casillero;
 import Modelo.Tablero.Direccion;
-import Modelo.Unidad;
-import java.util.ArrayList;
+
 import java.util.List;
 
 public class Catapulta extends Atacante{
@@ -29,7 +27,7 @@ public class Catapulta extends Atacante{
     @Override
     public void accionLejana(Unidad unidad) {
         List<Unidad> listaUnidad;
-        listaUnidad = unidad.casillero.encontrarUnidadesEnCadena(new AgregadorDeUnidades());
+        listaUnidad = unidad.casillero.encontrarUnidadesEnCadena(new IdentificadorDeUnidades());
 
         for (Unidad unidadEnLista: listaUnidad) {
             unidadEnLista.sufrirAtaque(danioLejano);
