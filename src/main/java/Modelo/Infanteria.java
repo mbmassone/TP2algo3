@@ -14,4 +14,9 @@ public class Infanteria extends Atacante {
     public void recibirCuracion(int curacion) {
         this.vida += curacion;
     }
+
+    @Override
+    public boolean esInfanteria(){
+        return true;
+    }
 }

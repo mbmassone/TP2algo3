@@ -97,25 +97,27 @@ public class CasilleroTest {
 
         Tablero tablero = new Tablero(dummy1, dummy2);
 
-        Coordenada coordenada1 = new Coordenada(5,5);
+        Coordenada coordenada1 = new Coordenada(9,9);
         Infanteria infanteria1 = new Infanteria(dummy1, new Casillero());
         tablero.agregarUnidad(coordenada1, infanteria1);
 
-        Coordenada coordenada2 = new Coordenada(4,4);
-        Infanteria infanteria2 = new Infanteria(dummy1, new Casillero());
+        Coordenada coordenada2 = new Coordenada(10,10);
+        Infanteria infanteria2 = new Infanteria(dummy2, new Casillero());
         tablero.agregarUnidad(coordenada2, infanteria2);
 
-        Coordenada coordenada3 = new Coordenada(4,6);
+        Coordenada coordenada3 = new Coordenada(9,11);
         Infanteria infanteria3 = new Infanteria(dummy1, new Casillero());
         tablero.agregarUnidad(coordenada3, infanteria3);
 
-        Coordenada coordenada4 = new Coordenada(4,2);
-        Infanteria infanteria4 = new Infanteria(dummy1, new Casillero());
+        Coordenada coordenada4 = new Coordenada(12 , 10);
+        Infanteria infanteria4 = new Infanteria(dummy2, new Casillero());
         tablero.agregarUnidad(coordenada4, infanteria4);
 
         //Solo las infanterias 1,2 y 3 estan en cadena.
 
-        List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarEnemigosEnCadena(dummy1);
+        Agregador agregador = new AgregadorDeUnidades();
+
+        List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarUnidadesEnCadena(agregador);
 
         assertEquals(cadena.size(), 3);
 

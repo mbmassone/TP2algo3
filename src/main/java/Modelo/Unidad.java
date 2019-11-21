@@ -56,6 +56,10 @@ public abstract class Unidad{
         }
     }
 
+    public boolean esInfanteria(){
+        return false;
+    }
+
     public void curaEnemigo(Unidad unidad){
         if (this.obtenerDuenio() != unidad.obtenerDuenio()){
             throw new CurarEnemigoExcepcion();
