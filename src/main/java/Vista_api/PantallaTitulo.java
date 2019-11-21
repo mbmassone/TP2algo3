@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
 
 import static Vista_api.ConstantesInterfaz.*;
 
-public class Pantalla_titulo implements Manipulador_escenarios {
+public class PantallaTitulo implements Manipulador_escenarios {
 
     public Scene titulo;
 
@@ -25,7 +26,6 @@ public class Pantalla_titulo implements Manipulador_escenarios {
         //abro una imagen y se lo asigno a un visor
         ImageView Imagen_titulo = (new ImageView(new Image(IMG_TITULO)));
 
-        Label debug_info = new Label("Debug Info");
 
         //Creo botones
         Button boton_dummy = new Button("Dummy");
@@ -48,7 +48,7 @@ public class Pantalla_titulo implements Manipulador_escenarios {
 
         //Creo contenedores y
         HBox hbox = new HBox(boton_dummy,boton_iniciar, boton_salir);
-        VBox vbox = new VBox(20,Imagen_titulo,debug_info,hbox);
+        VBox vbox = new VBox(20,Imagen_titulo,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
 
