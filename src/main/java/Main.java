@@ -6,16 +6,19 @@ import javafx.stage.Stage;
 public class Main extends Application {
 
     @Override
-    public void start(Stage DebugStage) throws Exception {
-        DebugStage.setTitle("AlgoChessApp Beta0..0.0.1");
+    public void start(Stage stage) {
+        stage.setTitle("AlgoChessApp Beta0..0.0.1");
 
-        DebugStage.setHeight(600);
-        DebugStage.setWidth(800);
+        //Fijo las dimensiones de la ventana
+        stage.setHeight(600);
+        stage.setWidth(800);
+
+        //Instancio mi clase de Pantalla de titulo que colocara contenido en el Stage
         Pantalla_titulo wn = new Pantalla_titulo();
-        wn.inicializar(DebugStage);
-        wn.mostrar(DebugStage);
+        wn.inicializar(stage);
+        wn.mostrar(stage);
         //La muestra
-        DebugStage.show();
+        stage.show();
 
     }
 
