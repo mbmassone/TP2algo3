@@ -176,8 +176,78 @@ public class InfanteriaTest{
         Assert.assertTrue(tablero.estaLibre(coordenada3));
     }
 
+    @Test
+    public void testInfanteriaDejaDeComportarseComoBatallonAlColisionar(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Jugador jugador = new Jugador("Camila");
+        Infanteria infanteria1 = new Infanteria(j1);
+        Infanteria infanteria2 = new Infanteria(j1);
+        Infanteria infanteria3 = new Infanteria(j1);
+        Curandero curandero = new Curandero(j1);
 
 
+        Coordenada coordenada1 = new Coordenada(0, 0);
+        Coordenada coordenada2 = new Coordenada(1 ,0);
+        Coordenada coordenada3 = new Coordenada(2,0);
+        Coordenada coordenadaCurandero = new Coordenada(1,1); // Posicion de colision.
+        tablero.agregarUnidad(coordenada1, infanteria1);
+        tablero.agregarUnidad(coordenada2, infanteria2);
+        tablero.agregarUnidad(coordenada3, infanteria3);
+        tablero.agregarUnidad(coordenadaCurandero,curandero);
+        infanteria1.mover(Direccion.DERECHA);
+
+        Coordenada coordenada1Actualizada = new Coordenada(0,1);
+        Coordenada coordenada3Actualizada = new Coordenada(2,1);
+
+        Assert.assertFalse(tablero.estaLibre(coordenada1Actualizada));
+        Assert.assertFalse(tablero.estaLibre(coordenada2)); // infanteria2 no se movio.
+        Assert.assertFalse(tablero.estaLibre(coordenadaCurandero));
+        Assert.assertFalse(tablero.estaLibre(coordenada3Actualizada));
+
+        Assert.assertTrue(tablero.estaLibre(coordenada1));
+        Assert.assertFalse(tablero.estaLibre(coordenada2));
+        Assert.assertTrue(tablero.estaLibre(coordenada3));
+    }
+
+    @Test
+    public void testInfanteriaDejaDeSerComoBatallonAlColisionar(){
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Jugador jugador = new Jugador("Camila");
+        Infanteria infanteria1 = new Infanteria(j1);
+        Infanteria infanteria2 = new Infanteria(j1);
+        Infanteria infanteria3 = new Infanteria(j1);
+        Curandero curandero = new Curandero(j1);
 
 
+        Coordenada coordenada1 = new Coordenada(0, 0);
+        Coordenada coordenada2 = new Coordenada(1 ,0);
+        Coordenada coordenada3 = new Coordenada(2,0);
+        Coordenada coordenadaCurandero = new Coordenada(1,1); // Posicion de colision.
+
+        tablero.agregarUnidad(coordenada1,infanteria1);
+        tablero.agregarUnidad(coordenada2,infanteria2);
+        tablero.agregarUnidad(coordenada3,infanteria3);
+        tablero.agregarUnidad(coordenadaCurandero,curandero);
+        infanteria1.mover(Direccion.DERECHA);
+
+        Coordenada coordenada1Actualizada = new Coordenada(0,1);
+        Coordenada coordenada3Actualizada = new Coordenada(2,1);
+        Assert.assertFalse(tablero.estaLibre(coordenada1Actualizada));
+        Assert.assertFalse(tablero.estaLibre(coordenada3Actualizada));
+
+        infanteria1.mover(Direccion.DERECHA);
+        infanteria1.mover(Direccion.DERECHA);
+
+        Coordenada coordenada1Final = new Coordenada(0,3);
+        Coordenada coordenada3Final = new Coordenada(2,2);
+        Assert.assertFalse(tablero.estaLibre(coordenada1Final));
+        Assert.assertFalse(tablero.estaLibre(coordenada3Final)); // infanteria3 solo se mueve 2 veces y no 3 pues deja de ser batallon.
+
+    }
 }
