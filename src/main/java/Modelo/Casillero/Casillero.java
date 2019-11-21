@@ -94,31 +94,52 @@ public class Casillero {
         return adyacentes.get(direccion) != null;
     }
 
-    public List<Unidad> encontrarUnidadesEnCadena(Agregador agregador){
+    public List<Unidad> encontrarUnidadesEnCadena(Identificador identificador){
         //TODO Cambiar a su propia clase.
         List<Unidad> listaUnidades = new ArrayList<>();
-        this.encontrarUnidadesEnCadenaRec(listaUnidades, agregador);
+        this.encontrarUnidadesEnCadenaRec(listaUnidades, identificador);
 
         return listaUnidades;
     }
 
-    private void encontrarUnidadesEnCadenaRec(List<Unidad> listaUnidades, Agregador agregador) {
+    private void encontrarUnidadesEnCadenaRec(List<Unidad> listaUnidades, Identificador identificador) {
         if(this.estaLibre()){
             return;
         } else {
             if(listaUnidades.contains(this.obtenerUnidad())){
                 return;
-            } else if(agregador.debeAgregarALista(this)){
+            } else if(identificador.esDeLosBuscados(this)){
                 listaUnidades.add(this.obtenerUnidad());
                 for(Direccion direccion: Direccion.values()){
                     if(this.hayAdyacenteEnDireccion(direccion)){
-                        this.obtenerAdyacente(direccion).encontrarUnidadesEnCadenaRec(listaUnidades, agregador);
+                        this.obtenerAdyacente(direccion).encontrarUnidadesEnCadenaRec(listaUnidades, identificador);
                     }
                 }
             } else {
                 return;
             }
         }
+    }
+
+    public boolean hayUnidadesADistanciaCercana(Identificador identificador){
+        List<Casillero> visitados = new ArrayList<>();
+        return this.hayUnidadesADistanciaCercanaRec(visitados, identificador, this);
+    }
+
+    private boolean hayUnidadesADistanciaCercanaRec(List<Casillero> visitados, Identificador identificador, Casillero inicial) {
+        if(!this.obtenerTipoDistancia(inicial).equals(new DistanciaCercana())) return false;
+        if(visitados.contains(this)) return false;
+        if(this != inicial && identificador.esDeLosBuscados(this)) return true;
+
+        visitados.add(this);
+        Boolean hayCercanos = false;
+        for (Direccion direccion: Direccion.values()) {
+            if(this.hayAdyacenteEnDireccion(direccion)){
+                hayCercanos = hayCercanos || this.obtenerAdyacente(direccion).hayUnidadesADistanciaCercanaRec(visitados, identificador, inicial);
+            }
+        }
+
+        return hayCercanos;
     }
 
     public TipoDistancia obtenerTipoDistancia(Casillero casillero) {
