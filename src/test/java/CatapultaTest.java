@@ -54,10 +54,10 @@ public class CatapultaTest {
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
 
-        Catapulta catapultaAliada = new Catapulta(j1, new Casillero() );
-        Curandero curanderoAliado = new Curandero(j1, new Casillero() );
-        Infanteria infanteriaEnemiga = new Infanteria(j2, new Casillero() );
-        Catapulta catapultaEnemiga = new Catapulta(j2, new Casillero());
+        Catapulta catapultaAliada = new Catapulta(j1);
+        Curandero curanderoAliado = new Curandero(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
+        Catapulta catapultaEnemiga = new Catapulta(j2);
 
         Coordenada coordenadaCatapultaAliada = new Coordenada(1,1);
         Coordenada coordenadaCuranderoAliado = new Coordenada(9,9);
@@ -84,9 +84,9 @@ public class CatapultaTest {
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
 
-        Catapulta catapultaAliada = new Catapulta(j1, new Casillero() );
-        Infanteria infanteriaEnemiga = new Infanteria(j2,new Casillero());
-        Jinete jineteEnemigo = new Jinete(j2,new Casillero());
+        Catapulta catapultaAliada = new Catapulta(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
+        Jinete jineteEnemigo = new Jinete(j2);
 
         Coordenada coordenadaCatapultaAliada = new Coordenada(1,1);
         Coordenada coordenadaInfanteriaEnemiga = new Coordenada(16,16);
