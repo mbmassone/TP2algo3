@@ -90,6 +90,10 @@ public class Casillero {
         throw new CasilleroNoEsAdyacenteExcepcion();
     }
 
+    public boolean hayAdyacenteEnDireccion(Direccion direccion){
+        return adyacentes.get(direccion) != null;
+    }
+
     public List<Unidad> encontrarUnidadesEnCadena(Agregador agregador){
         //TODO Cambiar a su propia clase.
         List<Unidad> listaUnidades = new ArrayList<Unidad>();
@@ -107,7 +111,9 @@ public class Casillero {
             } else if(agregador.debeAgregarALista(this)){
                 listaUnidades.add(this.obtenerUnidad());
                 for(Direccion direccion: Direccion.values()){
-                    this.obtenerAdyacente(direccion).encontrarUnidadesEnCadenaRec(listaUnidades, agregador);
+                    if(this.hayAdyacenteEnDireccion(direccion)){
+                        this.obtenerAdyacente(direccion).encontrarUnidadesEnCadenaRec(listaUnidades, agregador);
+                    }
                 }
             } else {
                 return;

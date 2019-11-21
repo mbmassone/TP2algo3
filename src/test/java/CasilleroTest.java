@@ -91,25 +91,25 @@ public class CasilleroTest {
     }
 
     @Test
-    public void encontrarEnemigosEnCadenaDevuelveUnaListaConEnemigosEnCadena(){
+    public void encontrarUnidadesEnCadenaDevuelveUnaListaConUnidadesEnCadena(){
         Jugador dummy1 = new Jugador("Berni");
         Jugador dummy2 = new Jugador("Tomi");
 
         Tablero tablero = new Tablero(dummy1, dummy2);
 
-        Coordenada coordenada1 = new Coordenada(9,9);
+        Coordenada coordenada1 = new Coordenada(9,0);
         Infanteria infanteria1 = new Infanteria(dummy1, new Casillero());
         tablero.agregarUnidad(coordenada1, infanteria1);
 
-        Coordenada coordenada2 = new Coordenada(10,10);
+        Coordenada coordenada2 = new Coordenada(10,1);
         Infanteria infanteria2 = new Infanteria(dummy2, new Casillero());
         tablero.agregarUnidad(coordenada2, infanteria2);
 
-        Coordenada coordenada3 = new Coordenada(9,11);
+        Coordenada coordenada3 = new Coordenada(9,2);
         Infanteria infanteria3 = new Infanteria(dummy1, new Casillero());
         tablero.agregarUnidad(coordenada3, infanteria3);
 
-        Coordenada coordenada4 = new Coordenada(12 , 10);
+        Coordenada coordenada4 = new Coordenada(12 , 1);
         Infanteria infanteria4 = new Infanteria(dummy2, new Casillero());
         tablero.agregarUnidad(coordenada4, infanteria4);
 
@@ -119,13 +119,80 @@ public class CasilleroTest {
 
         List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarUnidadesEnCadena(agregador);
 
-        assertEquals(cadena.size(), 3);
+        assertEquals(3, cadena.size());
 
         assertTrue(cadena.contains(infanteria1));
         assertTrue(cadena.contains(infanteria2));
         assertTrue(cadena.contains(infanteria3));
 
         assertFalse(cadena.contains(infanteria4));
+    }
+
+    @Test
+    public void encontrarUnidadesEnCadenaDevuelveUnaListaConInfanteriasEnCadena(){
+        Jugador dummy1 = new Jugador("Berni");
+        Jugador dummy2 = new Jugador("Tomi");
+
+        Tablero tablero = new Tablero(dummy1, dummy2);
+
+        Coordenada coordenada1 = new Coordenada(8,0);
+        Infanteria infanteria1 = new Infanteria(dummy1, new Casillero());
+        tablero.agregarUnidad(coordenada1, infanteria1);
+
+        Coordenada coordenada2 = new Coordenada(8,1);
+        Infanteria infanteria2 = new Infanteria(dummy1, new Casillero());
+        tablero.agregarUnidad(coordenada2, infanteria2);
+
+        Coordenada coordenada3 = new Coordenada(7,2);
+        Infanteria infanteria3 = new Infanteria(dummy1, new Casillero());
+        tablero.agregarUnidad(coordenada3, infanteria3);
+
+        Coordenada coordenada4 = new Coordenada(9 , 4);
+        Infanteria infanteria4 = new Infanteria(dummy1, new Casillero());
+        tablero.agregarUnidad(coordenada4, infanteria4);
+
+        Coordenada coordenada5 = new Coordenada(9 , 6);
+        Infanteria infanteria5 = new Infanteria(dummy1, new Casillero());
+        tablero.agregarUnidad(coordenada5, infanteria5);
+
+        Coordenada coordenadaCat = new Coordenada(8 , 3);
+        Catapulta catapulta = new Catapulta(dummy1, new Casillero());
+        tablero.agregarUnidad(coordenadaCat, catapulta);
+
+        Coordenada coordenadaEnem = new Coordenada(10 , 5);
+        Infanteria infanteriaEnem = new Infanteria(dummy2, new Casillero());
+        tablero.agregarUnidad(coordenadaEnem, infanteriaEnem);
+
+        //La primer busqueda encuentra 1, 2 y 3.
+        Agregador agregador = new AgregadorDeInfanterias(dummy1);
+
+        List<Unidad> cadena = infanteria1.obtenerCasillero().encontrarUnidadesEnCadena(agregador);
+
+        assertEquals(3, cadena.size());
+
+        assertTrue(cadena.contains(infanteria1));
+        assertTrue(cadena.contains(infanteria2));
+        assertTrue(cadena.contains(infanteria3));
+
+        assertFalse(cadena.contains(infanteria4));
+        assertFalse(cadena.contains(infanteria5));
+        assertFalse(cadena.contains(catapulta));
+        assertFalse(cadena.contains(infanteriaEnem));
+
+        //La segunda busqueda solo encuentra el 4.
+
+        cadena = infanteria4.obtenerCasillero().encontrarUnidadesEnCadena(agregador);
+
+        assertEquals(1, cadena.size());
+
+        assertTrue(cadena.contains(infanteria4));
+
+        assertFalse(cadena.contains(infanteria1));
+        assertFalse(cadena.contains(infanteria2));
+        assertFalse(cadena.contains(infanteria3));
+        assertFalse(cadena.contains(infanteria5));
+        assertFalse(cadena.contains(catapulta));
+        assertFalse(cadena.contains(infanteriaEnem));
 
     }
 }
