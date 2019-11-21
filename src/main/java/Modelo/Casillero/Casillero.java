@@ -96,7 +96,7 @@ public class Casillero {
 
     public List<Unidad> encontrarUnidadesEnCadena(Agregador agregador){
         //TODO Cambiar a su propia clase.
-        List<Unidad> listaUnidades = new ArrayList<Unidad>();
+        List<Unidad> listaUnidades = new ArrayList<>();
         this.encontrarUnidadesEnCadenaRec(listaUnidades, agregador);
 
         return listaUnidades;
