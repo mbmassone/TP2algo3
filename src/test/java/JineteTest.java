@@ -14,8 +14,8 @@ public class JineteTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
-        Infanteria infanteriaEnemiga = new Infanteria(j2 , new Casillero() );
+        Jinete jineteAliado = new Jinete(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(11,11);
@@ -32,8 +32,8 @@ public class JineteTest {
         Jugador j2 = new Jugador("Josefina");
 
         Tablero tablero = new Tablero(j1, j2);
-        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
-        Catapulta catapultaEnemiga = new Catapulta(j2 , new Casillero() );
+        Jinete jineteAliado = new Jinete(j1);
+        Catapulta catapultaEnemiga = new Catapulta(j2);
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(11,11);
@@ -53,8 +53,8 @@ public class JineteTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
-        Infanteria infanteriaEnemiga = new Infanteria(j2 , new Casillero() );
+        Jinete jineteAliado = new Jinete(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(14,14);
@@ -72,8 +72,9 @@ public class JineteTest {
         Jugador j2 = new Jugador("Josefina");
         Casillero casilleroCatapulta = new Casillero();
         Tablero tablero = new Tablero(j1, j2);
-        Jinete jineteAliado = new Jinete(j1 , new Casillero() );
-        Curandero curanderoAliado = new Curandero(j1 , casilleroCatapulta);
+        Jinete jineteAliado = new Jinete(j1);
+        Curandero curanderoAliado = new Curandero(j1);
+        curanderoAliado.asignarCasillero(casilleroCatapulta);
 
         Coordenada coordenadaJinete = new Coordenada(3,3);
         Coordenada coordenadaCurandero = new Coordenada(5,2);
@@ -89,8 +90,8 @@ public class JineteTest {
     @Test
     public void testJineteAtacaAliado(){
         Jugador jugador = new Jugador("Juan");
-        Jinete jinete = new Jinete(jugador, new Casillero());
-        Curandero curanderoAliado = new Curandero(jugador, new Casillero());
+        Jinete jinete = new Jinete(jugador);
+        Curandero curanderoAliado = new Curandero(jugador);
 
         assertThrows(AtacarAliadoExcepcion.class, () ->{
             jinete.accion(curanderoAliado);

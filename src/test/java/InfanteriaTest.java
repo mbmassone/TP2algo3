@@ -17,8 +17,8 @@ public class InfanteriaTest{
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Infanteria infanteriaAliada = new Infanteria(j1 , new Casillero() );
-        Infanteria infanteriaEnemiga = new Infanteria(j2 , new Casillero() );
+        Infanteria infanteriaAliada = new Infanteria(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(11,11);
@@ -34,8 +34,8 @@ public class InfanteriaTest{
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Infanteria infanteriaAliada = new Infanteria(j1 , new Casillero() );
-        Infanteria infanteriaEnemiga = new Infanteria(j2 , new Casillero() );
+        Infanteria infanteriaAliada = new Infanteria(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(16,16);
@@ -51,8 +51,8 @@ public class InfanteriaTest{
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Infanteria infanteriaAliada = new Infanteria(j1 , new Casillero() );
-        Jinete jineteEnemigo = new Jinete(j2 , new Casillero() );
+        Infanteria infanteriaAliada = new Infanteria(j1);
+        Jinete jineteEnemigo = new Jinete(j2);
 
         Coordenada coordenadaAliada = new Coordenada(9,9);
         Coordenada coordenadaEnemiga = new Coordenada(11,11);
@@ -73,8 +73,8 @@ public class InfanteriaTest{
         Jugador jugador1 = new Jugador("Guido");
         Jugador jugador2 = new Jugador("Franco");
         Tablero tablero = new Tablero(jugador1,jugador2);
-        Infanteria infanteria = new Infanteria(jugador1, new Casillero());
-        Curandero curanderoAliado = new Curandero(jugador1, new Casillero());
+        Infanteria infanteria = new Infanteria(jugador1);
+        Curandero curanderoAliado = new Curandero(jugador1);
 
         Coordenada coordenada = new Coordenada(2,2);
         Coordenada coordenadaAliada = new Coordenada(3,3);
@@ -91,8 +91,8 @@ public class InfanteriaTest{
         Jugador jugador1 = new Jugador("Guido");
         Jugador jugador2 = new Jugador("Franco");
         Tablero tablero = new Tablero(jugador1,jugador2);
-        Infanteria infanteria = new Infanteria(jugador1, new Casillero());
-        Curandero curanderoAliado = new Curandero(jugador1, new Casillero());
+        Infanteria infanteria = new Infanteria(jugador1);
+        Curandero curanderoAliado = new Curandero(jugador1);
 
         Coordenada coordenada = new Coordenada(2,2);
         Coordenada coordenadaAliada = new Coordenada(3,3);
@@ -110,7 +110,7 @@ public class InfanteriaTest{
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
 
-        Infanteria infanteria = new Infanteria(j1, new Casillero());
+        Infanteria infanteria = new Infanteria(j1);
 
         Coordenada coordenada = new Coordenada(0, 0);
         tablero.agregarUnidad(coordenada, infanteria);
@@ -128,8 +128,8 @@ public class InfanteriaTest{
         Tablero tablero = new Tablero(j1, j2);
 
         Jugador jugador = new Jugador("Camila");
-        Infanteria infanteria1 = new Infanteria(j1, new Casillero());
-        Infanteria infanteria2 = new Infanteria(j1, new Casillero());
+        Infanteria infanteria1 = new Infanteria(j1);
+        Infanteria infanteria2 = new Infanteria(j1);
 
         Coordenada coordenada1 = new Coordenada(0, 0);
         Coordenada coordenada2 = new Coordenada(1 ,0);

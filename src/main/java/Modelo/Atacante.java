@@ -7,8 +7,8 @@ public abstract class Atacante extends Unidad {
     protected int danioMediano;
     protected int danioLejano;
 
-    public Atacante(int vida,int costo,Casillero casillero,Jugador duenio){
-        super(vida,costo, casillero, duenio);
+    public Atacante(int vida, int costo, Jugador duenio){
+        super(vida, costo, duenio);
     }
 
     @Override

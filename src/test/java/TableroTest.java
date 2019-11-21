@@ -28,7 +28,7 @@ public class TableroTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Unidad infanteria = new Infanteria(j1, new Casillero());
+        Unidad infanteria = new Infanteria(j1);
 
         Coordenada coordenada = new Coordenada(0, 0);
         Assert.assertTrue(tablero.estaLibre(coordenada) );
@@ -43,7 +43,7 @@ public class TableroTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Unidad infanteria = new Infanteria(j2 ,new Casillero());
+        Unidad infanteria = new Infanteria(j2);
 
         Coordenada coordenada = new Coordenada(0, 0);
         assertThrows(UnidadAgregadaEnSectorEnemigoExcepcion.class, () ->{
@@ -56,8 +56,8 @@ public class TableroTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Unidad infanteria1 = new Infanteria(j1, new Casillero());
-        Unidad infanteria2 = new Infanteria(j1, new Casillero());
+        Unidad infanteria1 = new Infanteria(j1);
+        Unidad infanteria2 = new Infanteria(j1);
 
         Coordenada coordenada = new Coordenada(0, 0);
         tablero.agregarUnidad(coordenada, infanteria1);

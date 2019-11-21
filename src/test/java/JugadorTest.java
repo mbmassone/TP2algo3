@@ -17,7 +17,7 @@ public class JugadorTest {
     @Test
     public void testVerificarReduccionDePuntos() {
         Jugador nuevoJugador = new Jugador("Andoni");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), 19);
     }
@@ -27,11 +27,11 @@ public class JugadorTest {
         Jugador nuevoJugador = new Jugador("Bernardo");
 
         for(int i = 0; i < 20; i++)
-            nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
+            nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
 
         int cantidadUnidadesEsperadas = nuevoJugador.obtenerCantidadUnidades();
 
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), cantidadUnidadesEsperadas);
     }
@@ -41,11 +41,11 @@ public class JugadorTest {
         Jugador nuevoJugador = new Jugador("Juan");
 
         for(int i = 0; i < 20; i++)
-            nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
+            nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
 
         int cantidadPuntosEsperados = nuevoJugador.obtenerPuntos();
 
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), cantidadPuntosEsperados);
     }
@@ -53,8 +53,8 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAUnJugador(){
         Jugador nuevoJugador = new Jugador("Tomas");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ) );
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
         nuevoJugador.eliminarGuerrero();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 1);
@@ -63,7 +63,7 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
         Jugador nuevoJugador = new Jugador("Eugenio");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador, new Casillero() ));
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador));
         nuevoJugador.eliminarGuerrero();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0); //TODO Consultar esto

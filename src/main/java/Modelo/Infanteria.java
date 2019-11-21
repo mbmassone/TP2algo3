@@ -3,8 +3,8 @@ import Modelo.Casillero.Casillero;
 
 public class Infanteria extends Atacante {
 
-    public Infanteria(Jugador duenio, Casillero casillero){
-        super(100,1, casillero, duenio);
+    public Infanteria(Jugador duenio){
+        super(100,1, duenio);
         this.danioCercano = 10;
         this.danioMediano = 0;
         this.danioLejano = 0;

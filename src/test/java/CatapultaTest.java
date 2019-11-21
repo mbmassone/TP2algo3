@@ -17,8 +17,8 @@ public class CatapultaTest {
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
 
-        Infanteria infanteria = new Infanteria(j1, new Casillero() );
-        Catapulta catapulta = new Catapulta(j2, new Casillero() );
+        Infanteria infanteria = new Infanteria(j1);
+        Catapulta catapulta = new Catapulta(j2);
 
         Coordenada coordenadaInfanteria = new Coordenada(0, 0);
         Coordenada coordenadaCatapulta = new Coordenada(18, 18);
@@ -35,8 +35,8 @@ public class CatapultaTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Catapulta catapulta = new Catapulta(j1, new Casillero() );
-        Catapulta catapultaEnemiga = new Catapulta(j2, new Casillero() );
+        Catapulta catapulta = new Catapulta(j1);
+        Catapulta catapultaEnemiga = new Catapulta(j2);
 
         Coordenada coordenadaCatapulta = new Coordenada(9, 9);
         Coordenada coordenadaCatapultaEnemiga = new Coordenada(16, 16);
@@ -50,7 +50,7 @@ public class CatapultaTest {
 
     @Test
     public void catapultaNoPuedeSerCurada(){
-        Catapulta catapulta = new Catapulta(new Jugador("Tomas"), new Casillero() );
+        Catapulta catapulta = new Catapulta(new Jugador("Tomas") );
 
         assertThrows(CatapultaCuracionException.class, () ->{
             catapulta.recibirCuracion(321);
@@ -59,7 +59,7 @@ public class CatapultaTest {
 
     @Test
     public void catapultaNoPuedeMoverse(){
-        Catapulta catapulta = new Catapulta(new Jugador("Bernardo"), new Casillero() );
+        Catapulta catapulta = new Catapulta(new Jugador("Bernardo") );
 
         assertThrows(CatapultaNoSePuedeMoverExcepcion.class, () ->{
             catapulta.mover(Direccion.ABAJO);

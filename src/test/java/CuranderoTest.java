@@ -14,9 +14,9 @@ public class CuranderoTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Curandero curandero = new Curandero(j1, new Casillero());
-        Infanteria infanteriaAliada = new Infanteria(j1, new Casillero());
-        Infanteria infanteriaEnemiga = new Infanteria(j2, new Casillero());
+        Curandero curandero = new Curandero(j1);
+        Infanteria infanteriaAliada = new Infanteria(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
 
         Coordenada coordenadaAliadaCurandero = new Coordenada(8,8);
         Coordenada coordenadaAliadaInfanteria = new Coordenada(9,9);
@@ -38,8 +38,8 @@ public class CuranderoTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Curandero curandero = new Curandero(j1, new Casillero());
-        Infanteria infanteriaAliada = new Infanteria(j1, new Casillero());
+        Curandero curandero = new Curandero(j1);
+        Infanteria infanteriaAliada = new Infanteria(j1);
 
         Coordenada coordenadaAliadaCurandero = new Coordenada(0,0);
         Coordenada coordenadaAliadaInfanteria = new Coordenada(9,9);
@@ -59,8 +59,8 @@ public class CuranderoTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Curandero curandero = new Curandero(j1, new Casillero());
-        Jinete jineteEnemigo = new Jinete(j2,new Casillero());
+        Curandero curandero = new Curandero(j1);
+        Jinete jineteEnemigo = new Jinete(j2);
 
         assertThrows(CurarEnemigoExcepcion.class, () ->{
             curandero.accion(jineteEnemigo);
@@ -72,7 +72,7 @@ public class CuranderoTest {
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
         Tablero tablero = new Tablero(j1, j2);
-        Curandero curandero = new Curandero(j1, new Casillero());
+        Curandero curandero = new Curandero(j1);
         Coordenada coordenada = new Coordenada(4,6);
 
         tablero.agregarUnidad(coordenada,curandero);

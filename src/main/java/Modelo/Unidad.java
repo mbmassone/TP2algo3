@@ -9,11 +9,14 @@ public abstract class Unidad{
     protected Casillero casillero;
     protected Jugador duenio;
 
-    public Unidad(int vida,int costo,Casillero casillero,Jugador duenio){//TODO sacar casillero de constructor
+    public Unidad(int vida, int costo, Jugador duenio){
         this.vida = vida;
         this.costo = costo;
-        this.casillero = casillero;
         this.duenio = duenio;
+    }
+
+    public void asignarCasillero(Casillero casillero){
+        this.casillero = casillero;
     }
 
     public int descontarCosto(int puntos){
