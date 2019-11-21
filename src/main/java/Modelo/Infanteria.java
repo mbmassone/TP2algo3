@@ -1,7 +1,8 @@
 package Modelo;
 
-import Modelo.Casillero.AgregadorDeInfanterias;
+import Modelo.Casillero.IdentificadorDeInfanterias;
 import Modelo.Casillero.Casillero;
+import Modelo.Casillero.IdentificadorDeInfanterias;
 import Modelo.Tablero.Direccion;
 import java.util.List;
 
@@ -28,7 +29,7 @@ public class Infanteria extends Atacante {
     @Override
     public void mover(Direccion direccion){
         List<Unidad> listaInfanteria;
-        listaInfanteria = this.casillero.encontrarUnidadesEnCadena(new AgregadorDeInfanterias( this.obtenerDuenio() ) );
+        listaInfanteria = this.casillero.encontrarUnidadesEnCadena(new IdentificadorDeInfanterias( this.obtenerDuenio() ) );
 
         if (listaInfanteria.size() >= 3) { //Batallon
             for (int i = 0; i < 3; i++) {

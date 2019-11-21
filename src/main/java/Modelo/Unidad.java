@@ -47,10 +47,6 @@ public abstract class Unidad{
         return this.vida;
     }
 
-    public boolean puedeMover(Direccion direccion){
-        return this.casillero.obtenerAdyacente(direccion).estaLibre();
-    }
-
     public void mover(Direccion direccion){
         if (!puedeMover(direccion)){
             return;
