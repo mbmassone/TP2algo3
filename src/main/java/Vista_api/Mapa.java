@@ -25,11 +25,19 @@ public class Mapa extends VBox {
 
     //Actualiza la vista del mapa
     public void actualizarTablero(){
+        //aqui colocar clase que obtiene y actualiza cada uno de los casilleros
         for (int x=1; x<=this.columnas; x++) {
             for (int y = 1; y <= this.filas; y++) {
+                //Aqui la anterior mencionada clase obtiene la casilla y le coloca la imagen que le pertenece
                 ImageView vacio = (new ImageView(new Image(IMG_VACIO)));
+                //vacio.setFitHeight(25);
+                //vacio.setFitWidth(25);
                 this.matriz.add(vacio, y, x);
             }
         }
+        ImageView vacio = (new ImageView(new Image(IMG_JINETE)));
+        //vacio.setFitHeight(25);
+        //vacio.setFitWidth(25);
+        this.matriz.add(vacio, 20, 20);
     }
 }

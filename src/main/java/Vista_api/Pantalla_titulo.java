@@ -13,6 +13,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
 import static Vista_api.ConstantesInterfaz.*;
 
 public class Pantalla_titulo implements Manipulador_escenarios {
@@ -50,6 +51,7 @@ public class Pantalla_titulo implements Manipulador_escenarios {
         VBox vbox = new VBox(20,Imagen_titulo,debug_info,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
+
 
         //aplico la escena al Stage
         this.titulo = new Scene(vbox);
