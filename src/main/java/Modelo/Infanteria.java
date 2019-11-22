@@ -33,18 +33,13 @@ public class Infanteria extends Atacante {
 
         if (listaInfanteria.size() >= 3) { //TODO Hacer batallon en clase aparte.
             for (int i = 0; i < 3; i++) {
-                Infanteria infanteria = (Infanteria)listaInfanteria.get(i);
-                infanteria.moverInfanteria(direccion);
+                Unidad infanteria = listaInfanteria.get(i);
+                infanteria.doMover(direccion);
             }
         }
         else{ //No hay batallon,se mueve solo una Infanteria.
-            this.moverInfanteria(direccion);
+            this.doMover(direccion);
         }
-    }
-
-
-    public void moverInfanteria(Direccion direccion){
-        super.mover(direccion);
     }
 
 }
