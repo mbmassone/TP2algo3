@@ -30,14 +30,14 @@ public class Mapa extends VBox {
             for (int y = 1; y <= this.filas; y++) {
                 //Aqui la anterior mencionada clase obtiene la casilla y le coloca la imagen que le pertenece
                 ImageView vacio = (new ImageView(new Image(IMG_VACIO)));
-                //vacio.setFitHeight(25);
-                //vacio.setFitWidth(25);
+
                 this.matriz.add(vacio, y, x);
             }
         }
-        ImageView vacio = (new ImageView(new Image(IMG_JINETE)));
+        ImageView vacio = (new ImageView(new Image(IMG_CURANDERO)));
         //vacio.setFitHeight(25);
         //vacio.setFitWidth(25);
         this.matriz.add(vacio, 20, 20);
+        System.out.println("Mapa actualizado");
     }
 }

@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -16,7 +17,7 @@ import javafx.stage.Stage;
 
 import static Vista_api.ConstantesInterfaz.*;
 
-public class Pantalla_titulo implements Manipulador_escenarios {
+public class PantallaTitulo implements Manipulador_escenarios {
 
     public Scene titulo;
 
@@ -25,7 +26,17 @@ public class Pantalla_titulo implements Manipulador_escenarios {
         //abro una imagen y se lo asigno a un visor
         ImageView Imagen_titulo = (new ImageView(new Image(IMG_TITULO)));
 
-        Label debug_info = new Label("Debug Info");
+
+        TextField textfield1 = new TextField();
+        textfield1.setPromptText("Jugador1");
+        TextField textfield2 = new TextField();
+        textfield2.setPromptText("Jugador2");
+        Label informacion = new Label();
+
+        VBox contenedor_text_fields = new VBox();
+        contenedor_text_fields.prefWidth(20);
+
+        contenedor_text_fields.getChildren().addAll(textfield1,textfield2, informacion);
 
         //Creo botones
         Button boton_dummy = new Button("Dummy");
@@ -34,7 +45,7 @@ public class Pantalla_titulo implements Manipulador_escenarios {
 
         //Creacion de Handlers y sus iniciaciones
         Salir_Juego_Handler salir_juego_handler = new Salir_Juego_Handler(stage);
-        Empezar_juego_Handler jugarHandler = new Empezar_juego_Handler(stage);
+        Empezar_juego_Handler jugarHandler = new Empezar_juego_Handler(stage,textfield1,textfield2,informacion);
         EasterEggLogo logo_bonus = new EasterEggLogo();
 
         //Asignacion de triggers de eventos a los botones
@@ -48,7 +59,7 @@ public class Pantalla_titulo implements Manipulador_escenarios {
 
         //Creo contenedores y
         HBox hbox = new HBox(boton_dummy,boton_iniciar, boton_salir);
-        VBox vbox = new VBox(20,Imagen_titulo,debug_info,hbox);
+        VBox vbox = new VBox(20,Imagen_titulo,contenedor_text_fields,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
 

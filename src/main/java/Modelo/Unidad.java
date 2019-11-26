@@ -47,7 +47,7 @@ public abstract class Unidad{
         return this.vida;
     }
 
-    public void mover(Direccion direccion){
+    protected void doMover(Direccion direccion) {
         if (!puedeMover(direccion)){
             return;
         }
@@ -55,6 +55,10 @@ public abstract class Unidad{
         nuevoCasillero.agregarUnidad(this);
         this.casillero.destruirUnidad();
         this.casillero = nuevoCasillero;
+    }
+
+    public void mover(Direccion direccion){
+        this.doMover(direccion);
     }
 
     public void agregarCasillero(Casillero casillero){

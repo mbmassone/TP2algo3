@@ -1,4 +1,4 @@
-import Vista_api.Pantalla_titulo;
+import Vista_api.PantallaTitulo;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -14,7 +14,7 @@ public class Main extends Application {
         stage.setWidth(1280);
 
         //Instancio mi clase de Pantalla de titulo que colocara contenido en el Stage
-        Pantalla_titulo wn = new Pantalla_titulo();
+        PantallaTitulo wn = new PantallaTitulo();
         wn.inicializar(stage);
         wn.mostrar(stage);
         //La muestra
