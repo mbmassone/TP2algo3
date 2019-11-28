@@ -1,5 +1,6 @@
 package Modelo;
 
+import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 
 public class Inicializador {
@@ -12,24 +13,10 @@ public class Inicializador {
     }
 
     //Metodos
-    //public void pedirFilaYColumna(int fila, int columna){} //TODO No se como sera esto con la interfaz grafica.
-
-    //public Unidad pedirUnidad()// TODO Lo que Tomy decía del indicador.
-
-
-
-
-
-
-
-
-
-
-
-    /*public void agregarUnidad(Jugador jugador, int fila, int columna, Unidad unidad){
-        try {
-            tablero.agregarUnidad(fila, columna, unidad);
+    public void agregarUnidad(Jugador jugador, Coordenada coordenada, Unidad unidad){
+        if(unidad.descontarCosto(jugador.obtenerPuntos() ) >= 0){
+            tablero.agregarUnidad(coordenada, unidad);
             jugador.agregarUnidad(unidad);
-        }catch (CasilleroOcupadoExcepcion | JugadorConPuntosInsuficientesExcepcion ignored){}
-    }*/
+        }
+    }
 }

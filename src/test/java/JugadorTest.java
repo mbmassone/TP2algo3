@@ -63,7 +63,7 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
         Jugador nuevoJugador = new Jugador("Eugenio");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador));
+        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
         nuevoJugador.eliminarGuerrero();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0); //TODO Consultar esto

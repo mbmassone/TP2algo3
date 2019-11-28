@@ -8,6 +8,7 @@ public class Jinete extends Atacante {
 
     public Jinete(Jugador duenio){
         super(100,3, duenio);
+        this.nombre = "jinete";
         this.danioCercano = 5;
         this.danioMediano = 15;
         this.danioLejano = 0;
