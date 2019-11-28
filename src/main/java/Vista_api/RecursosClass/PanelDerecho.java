@@ -12,6 +12,7 @@ public class PanelDerecho extends VBox {
     public PanelDerechoColocarUnidades panelColocarUnidades;
 
     public void ColocarUnidades(){
+
         this.panelColocarUnidades = new PanelDerechoColocarUnidades();
 
         this.getChildren().addAll(panelColocarUnidades);

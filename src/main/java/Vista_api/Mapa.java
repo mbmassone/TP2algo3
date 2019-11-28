@@ -12,6 +12,7 @@ public class Mapa extends VBox {
     private GridPane matriz;
     private final int filas, columnas;
     //Constructor
+
     public Mapa(){
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
