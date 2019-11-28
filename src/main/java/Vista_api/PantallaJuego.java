@@ -1,5 +1,6 @@
 package Vista_api;
 
+import Controlador.ContenedorDeClases;
 import Vista_api.RecursosClass.PanelDerecho;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
@@ -10,7 +11,7 @@ public class PantallaJuego {
 
     private Mapa mapa;
 
-    public void inicializar(Stage stage) {
+    public void inicializar(Stage stage, ContenedorDeClases contenedorDeClases) {
 
        mapa = new Mapa();
 

@@ -55,7 +55,7 @@ public class JugadorTest {
         Jugador nuevoJugador = new Jugador("Tomas");
         nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
         nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
-        nuevoJugador.eliminarGuerrero();
+        nuevoJugador.eliminarUnidad();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 1);
     }
@@ -64,7 +64,7 @@ public class JugadorTest {
     public void testMatanGuerreroAJugadorUnYEstePierde(){
         Jugador nuevoJugador = new Jugador("Eugenio");
         nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
-        nuevoJugador.eliminarGuerrero();
+        nuevoJugador.eliminarUnidad();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0); //TODO Consultar esto
     }

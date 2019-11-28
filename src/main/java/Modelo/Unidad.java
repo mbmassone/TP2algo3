@@ -38,6 +38,7 @@ public abstract class Unidad{
         this.vida -= danio;
         if(this.vida <= 0){
             this.casillero.destruirUnidad();
+            this.duenio.eliminarUnidad();
         }
     }
 
