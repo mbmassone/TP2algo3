@@ -52,7 +52,7 @@ public class Jugador {
         return cantidadUnidades == 0;
     }
 
-    public void eliminarGuerrero(){
+    public void eliminarUnidad(){
         this.cantidadUnidades--;
     }
 }
