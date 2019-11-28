@@ -5,10 +5,18 @@ import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class CuranderoTest {
+    @Test
+    public void testSeObtieneNombreDelCurandero(){
+        Curandero curandero = new Curandero(new Jugador("Lorena") );
+        String nombreEsperado = "curandero";
+        assertSame(curandero.obtenerNombre(), nombreEsperado);
+    }
+
     @Test
     public void curanderoCuraAliadoCercano(){
         Jugador j1 = new Jugador("Camila");

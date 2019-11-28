@@ -9,6 +9,7 @@ public class Catapulta extends Atacante{
 
     public Catapulta(Jugador duenio){
         super(50,5, duenio);
+        this.nombre = "catapulta";
         danioCercano = 0;
         danioMediano = 0;
         danioLejano = 20;

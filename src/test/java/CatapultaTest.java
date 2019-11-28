@@ -10,6 +10,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class CatapultaTest {
+    @Test
+    public void testSeObtieneNombreDeLaCatapulta(){
+        Catapulta catapulta = new Catapulta(new Jugador("Laureano") );
+        String nombreEsperado = "catapulta";
+        assertSame(catapulta.obtenerNombre(), nombreEsperado);
+    }
 
     @Test
     public void catapultaAtacaEnemigoLejano(){

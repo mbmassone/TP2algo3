@@ -8,12 +8,15 @@ public abstract class Unidad{
     protected int costo;
     protected Casillero casillero;
     protected Jugador duenio;
+    protected String nombre;
 
     public Unidad(int vida, int costo, Jugador duenio){
         this.vida = vida;
         this.costo = costo;
         this.duenio = duenio;
     }
+
+    public String obtenerNombre(){ return nombre; }
 
     public void asignarCasillero(Casillero casillero){
         this.casillero = casillero;

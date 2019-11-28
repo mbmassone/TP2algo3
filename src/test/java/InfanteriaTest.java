@@ -11,6 +11,12 @@ import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class InfanteriaTest{
+    @Test
+    public void TestseObtieneNombreDeInfanteria(){
+        Infanteria infanteria = new Infanteria(new Jugador("Claudia") );
+        String nombreEsperado = "infanteria";
+        assertSame(infanteria.obtenerNombre(), nombreEsperado);
+    }
 
     @Test
     public void testInfanteriaAtacaEnemigoCercano(){

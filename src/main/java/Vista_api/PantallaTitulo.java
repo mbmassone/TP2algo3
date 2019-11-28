@@ -34,7 +34,7 @@ public class PantallaTitulo implements Manipulador_escenarios {
         Label informacion = new Label();
 
         VBox contenedor_text_fields = new VBox();
-        contenedor_text_fields.prefWidth(20);
+        contenedor_text_fields.prefWidth(20); //Pixeles de distancia entre las cosas
 
         contenedor_text_fields.getChildren().addAll(textfield1,textfield2, informacion);
 

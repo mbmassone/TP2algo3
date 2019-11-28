@@ -4,10 +4,18 @@ import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 
 public class JineteTest {
+    @Test
+    public void testSeObtieneNombreDeJinete(){
+        Jinete jinete = new Jinete(new Jugador("Laureano") );
+        String nombreEsperado = "jinete";
+        assertSame(jinete.obtenerNombre(), nombreEsperado);
+    }
 
     @Test
     public void testJineteAtacaEnemigoCercano(){
