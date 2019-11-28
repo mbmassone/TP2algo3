@@ -28,7 +28,7 @@ public class Mapa extends VBox {
         //aqui colocar clase que obtiene y actualiza cada uno de los casilleros
         for (int x=1; x<=this.columnas; x++) {
             for (int y = 1; y <= this.filas; y++) {
-                //Aqui la anterior mencionada clase obtiene la casilla y le coloca la imagen que le pertenece
+                //TODO obtener el estado de una casilla e iterar a la siguiente.
                 ImageView vacio = (new ImageView(new Image(IMG_VACIO)));
 
                 this.matriz.add(vacio, y, x);
