@@ -10,6 +10,7 @@ import javafx.scene.text.TextAlignment;
 public class PanelDerecho extends VBox {
 
     public PanelDerechoColocarUnidades panelColocarUnidades;
+//TODO Deberia recibir el handler que manipula la creacion de unidades, que a si mismo se comuinicara con el tablero para crearlo
 
     public void ColocarUnidades(){
 

@@ -1,5 +1,6 @@
 package Vista_api.ManipuladorEventos;
 
+import Controlador.ContenedorDeClases;
 import Vista_api.PantallaJuego;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -32,10 +33,12 @@ public class Empezar_juego_Handler implements EventHandler<ActionEvent> {
         } else {
             //TODO hacer que el tablero guarde el nombre de ambos jugadores
             System.out.println("a jugar BO");
+            ContenedorDeClases contenedordeclases = new ContenedorDeClases(textfield.getText(),textfield2.getText());
             pantalla_juego = new PantallaJuego();
 
             //Le encargo a pantalla_juego a que setupee el Scenario y lo setee, en el main, se mostrara con el metodo .show.
-            pantalla_juego.inicializar(this.jugando);
+
+            pantalla_juego.inicializar(this.jugando,contenedordeclases);
         }
     }
 }
