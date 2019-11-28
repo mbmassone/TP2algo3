@@ -14,8 +14,8 @@ public class ControladorTurno {
         this.actual = jugador1; //Siempre empieza el jugador1.
     }
 
-    public String jugadorActual(){
-        return this.actual.obtenerNombre();
+    public Jugador jugadorActual(){
+        return this.actual;
     }
 
     public boolean siguienteTurno(){
@@ -23,8 +23,8 @@ public class ControladorTurno {
         return jugador1.esGanador() || jugador2.esGanador();
     }
 
-    public String obtenerGanador(){
-        if(jugador1.esGanador()) return jugador1.obtenerNombre();
-        else return jugador2.obtenerNombre();
+    public Jugador obtenerGanador(){
+        if(jugador1.esGanador()) return jugador1;
+        else return jugador2;
     }
 }
