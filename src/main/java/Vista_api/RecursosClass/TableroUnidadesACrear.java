@@ -32,10 +32,10 @@ public class TableroUnidadesACrear extends HBox {
         imagen_infanteria = new ImageView(new Image(IMG_INFANTERIA));
         imagen_jinete = new ImageView(new Image(IMG_JINETE));
 
-        texto_catapulta = new Label("Catapulta");
-        texto_curandero = new Label("Curandero");
-        texto_infanteria= new Label("Infanteria");
-        texto_jinete= new Label("Jinete");
+        texto_catapulta = new Label("Catapulta\n5");
+        texto_curandero = new Label("Curandero\n2");
+        texto_infanteria= new Label("Infanteria\n1");
+        texto_jinete= new Label("Jinete\n3");
 
         this.matriz.add(imagen_catapulta,0,0);
         this.matriz.add(texto_catapulta,1,0);

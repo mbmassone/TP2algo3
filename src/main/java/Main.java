@@ -7,7 +7,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage stage) {
-        stage.setTitle("AlgoChessApp Beta0.0.1");
+        stage.setTitle("AlgoChessApp Beta0.0.3");
 
         //Fijo las dimensiones de la ventana
         stage.setHeight(720);
