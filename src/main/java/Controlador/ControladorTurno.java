@@ -7,9 +7,9 @@ public class ControladorTurno {
     Jugador jugador2;
     Jugador actual;
 
-    public ControladorTurno(Jugador jugador1, Jugador jugador2){
-        this.jugador1 = jugador1;
-        this.jugador2 = jugador2;
+    public ControladorTurno(ContenedorDeClases contenedor){
+        this.jugador1 = contenedor.obtenerJugador1();
+        this.jugador2 = contenedor.obtenerJugador2();
 
         this.actual = jugador1; //Siempre empieza el jugador1.
     }

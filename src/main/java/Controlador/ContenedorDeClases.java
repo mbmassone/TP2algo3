@@ -22,9 +22,23 @@ public class ContenedorDeClases {
         return this.tablero;
     }
 
-    public Jugador obtenerJugador(String nombreDuenio) {
-        if (j1.obtenerNombre().equals(nombreDuenio)) return j1;
-        else if (j2.obtenerNombre().equals(nombreDuenio)) return j2;
+
+
+    public Jugador obtenerJugador(String nombreJugador) {
+        if (j1.obtenerNombre().equals(nombreJugador)) return j1;
+        else if (j2.obtenerNombre().equals(nombreJugador)) return j2;
         else return null;
+    }
+
+    public int obtenerPuntos(String nombreJugador){
+        return obtenerJugador(nombreJugador).obtenerPuntos();
+    }
+
+    public Jugador obtenerJugador1(){
+        return j1;
+    }
+
+    public Jugador obtenerJugador2(){
+        return j2;
     }
 }
