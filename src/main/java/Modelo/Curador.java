@@ -3,11 +3,11 @@ package Modelo;
 import Modelo.Casillero.Casillero;
 
 public abstract class Curador extends Unidad {
-    protected int curacionCercana;
-    protected int curacionMediana;
-    protected int curacionLejana;
+    protected float curacionCercana;
+    protected float curacionMediana;
+    protected float curacionLejana;
 
-    public Curador(int vida, int costo, Jugador duenio){
+    public Curador(float vida, int costo, Jugador duenio){
         super(75,1, duenio);
     }
 

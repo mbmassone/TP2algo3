@@ -5,8 +5,7 @@ import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CatapultaTest {
@@ -33,7 +32,7 @@ public class CatapultaTest {
         tablero.agregarUnidad(coordenadaCatapulta, catapulta);
 
         catapulta.accion(infanteria);
-        assertSame(infanteria.getVida(),80);
+        assertEquals(infanteria.getVida(),80);
     }
 
     @Test
@@ -51,7 +50,7 @@ public class CatapultaTest {
         tablero.agregarUnidad(coordenadaCatapultaEnemiga, catapultaEnemiga);
 
         catapulta.accion(catapultaEnemiga);
-        assertSame(catapulta.getVida(),50);
+        assertEquals(catapulta.getVida(),50);
     }
 
     @Test
@@ -78,10 +77,10 @@ public class CatapultaTest {
 
         catapultaAliada.accion(infanteriaEnemiga);
 
-        assertSame(catapultaAliada.getVida(),50);
-        assertSame(curanderoAliado.getVida(),55);
-        assertSame(infanteriaEnemiga.getVida(),80);
-        assertSame(catapultaEnemiga.getVida(),30);
+        assertEquals(catapultaAliada.getVida(),50);
+        assertEquals(curanderoAliado.getVida(),55);
+        assertEquals(infanteriaEnemiga.getVida(),80);
+        assertEquals(catapultaEnemiga.getVida(),30);
     }
 
     @Test
@@ -104,8 +103,8 @@ public class CatapultaTest {
 
         catapultaAliada.accion(infanteriaEnemiga);
 
-        assertSame(infanteriaEnemiga.getVida(),80);
-        assertSame(jineteEnemigo.getVida(),100);
+        assertEquals(infanteriaEnemiga.getVida(),80);
+        assertEquals(jineteEnemigo.getVida(),100);
     }
 
 

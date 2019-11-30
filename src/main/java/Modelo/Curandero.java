@@ -12,7 +12,7 @@ public class Curandero extends Curador{
     }
 
     @Override
-    public void recibirCuracion(int curacion){
+    public void recibirCuracion(float curacion){
         this.vida += curacion;
     }
 }

@@ -7,8 +7,7 @@ import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class InfanteriaTest{
     @Test
@@ -32,7 +31,7 @@ public class InfanteriaTest{
         tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
 
         infanteriaAliada.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),90);
+        assertEquals(infanteriaEnemiga.getVida(),90);
     }
 
     @Test
@@ -49,7 +48,7 @@ public class InfanteriaTest{
         tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
 
         infanteriaAliada.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),100);
+        assertEquals(infanteriaEnemiga.getVida(),100);
     }
 
     @Test
@@ -70,7 +69,7 @@ public class InfanteriaTest{
         for (int i = 0; i < 10; i++) {
             infanteriaAliada.accion(jineteEnemigo);
         }
-        Assert.assertEquals(jineteEnemigo.getVida(),0);
+        assertEquals(jineteEnemigo.getVida(),0);
         Assert.assertTrue(tablero.estaLibre(coordenadaEnemiga));
     }
 
@@ -107,7 +106,7 @@ public class InfanteriaTest{
 
         curanderoAliado.accion(infanteria);
 
-        assertSame(infanteria.getVida(),115);
+        assertEquals(infanteria.getVida(),115);
     }
 
     @Test
