@@ -9,7 +9,7 @@ public class ConstantesInterfaz {
     public static final String IMG_CURANDERO = "file:curandero.png";
     public static final String IMG_INFANTERIA = "file:infanteria.png";
     public static final String IMG_JINETE = "file:jinete.png";
-    public static final String IMG_VACIO = "file:vacio.png";
+    public static final String IMG_VACIO = "file:libre.png";
 
     //Agregar aun mas....
 

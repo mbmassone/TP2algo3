@@ -78,4 +78,8 @@ public class Tablero {
         Direccion direccion = actualCasillero.obtenerDireccionDeAdyacente(nuevoCasillero);
         actualCasillero.moverUnidad(direccion);
     }
+
+    public String contenidoCasillero(Coordenada coordenada){
+        return obtenerCasillero(coordenada).obtenerContenido();
+    }
 }
