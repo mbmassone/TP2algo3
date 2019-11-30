@@ -36,6 +36,27 @@ public class CatapultaTest {
     }
 
     @Test
+    public void catapultaAtacaEnemigoLejanoEnTerritorioEnemigo(){ //El enemigo se encuentra en el territorio de la catapulta
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+
+        Infanteria infanteria = new Infanteria(j1);
+        Catapulta catapulta = new Catapulta(j2);
+
+        Coordenada coordenadaInfanteria = new Coordenada(9, 0);
+        Coordenada coordenadaCatapulta = new Coordenada(19, 0);
+
+        tablero.agregarUnidad(coordenadaInfanteria, infanteria);
+        tablero.agregarUnidad(coordenadaCatapulta, catapulta);
+
+        infanteria.mover(Direccion.ABAJO);
+
+        catapulta.accion(infanteria);
+        assertEquals(infanteria.getVida(),79);
+    }
+
+    @Test
     public void catapultaAtacaEnemigoCercano(){
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");

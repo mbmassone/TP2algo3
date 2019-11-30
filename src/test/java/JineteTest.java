@@ -1,6 +1,7 @@
 import Modelo.*;
 import Modelo.Casillero.Casillero;
 import Modelo.Tablero.Coordenada;
+import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
@@ -31,6 +32,25 @@ public class JineteTest {
 
         jineteAliado.accion(infanteriaEnemiga);
         assertEquals(infanteriaEnemiga.getVida(),95);
+    }
+
+    @Test
+    public void testJineteAtacaEnemigoCercanoEnTerritorioEnemigo(){ //El enemigo se encuentra en el territorio del jinete
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Jinete jineteAliado = new Jinete(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
+
+        Coordenada coordenadaAliada = new Coordenada(9,9);
+        Coordenada coordenadaEnemiga = new Coordenada(10,10);
+        tablero.agregarUnidad(coordenadaAliada,jineteAliado);
+        tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
+
+        infanteriaEnemiga.mover(Direccion.ARRIBA);
+
+        jineteAliado.accion(infanteriaEnemiga);
+        assertEquals(infanteriaEnemiga.getVida(),94.75);
     }
 
     @Test
@@ -70,6 +90,24 @@ public class JineteTest {
 
         jineteAliado.accion(infanteriaEnemiga);
         assertEquals(infanteriaEnemiga.getVida(),85);
+    }
+
+    @Test
+    public void testJineteAtacaEnemigoMedianoEnTerritorioEnemigo(){ //El enemigo se encuentra en el territorio del jinete
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Jinete jineteAliado = new Jinete(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
+
+        Coordenada coordenadaAliada = new Coordenada(6,6);
+        Coordenada coordenadaEnemiga = new Coordenada(10,10);
+        tablero.agregarUnidad(coordenadaAliada,jineteAliado);
+        tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
+
+        infanteriaEnemiga.mover(Direccion.ARRIBA);
+        jineteAliado.accion(infanteriaEnemiga);
+        assertEquals(infanteriaEnemiga.getVida(),84.25);
     }
 
     @Test

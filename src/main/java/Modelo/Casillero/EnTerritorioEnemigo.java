@@ -9,7 +9,7 @@ public class EnTerritorioEnemigo implements EstadoTerritorio {
     }
 
     public void actualizarEstado(Unidad unidad, Casillero casillero){
-        if(casillero.obtenerDuenio().obtenerNombre().equals(unidad.obtenerDuenio().obtenerNombre()))
+        if(!casillero.obtenerDuenio().obtenerNombre().equals(unidad.obtenerDuenio().obtenerNombre() ) )
             unidad.actualizarEstadoTerritorio(new EnTerritorioAliado() );
     }
 }

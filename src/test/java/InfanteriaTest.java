@@ -35,6 +35,25 @@ public class InfanteriaTest{
     }
 
     @Test
+    public void testInfanteriaAtacaEnemigoCercanoEnTerritorioEnemigo(){ //El enemigo esta en el territorio de la infanteria
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Roberto");
+        Tablero tablero = new Tablero(j1, j2);
+        Infanteria infanteriaAliada = new Infanteria(j1);
+        Infanteria infanteriaEnemiga = new Infanteria(j2);
+
+        Coordenada coordenadaAliada = new Coordenada(8,9);
+        Coordenada coordenadaEnemiga = new Coordenada(10,9);
+        tablero.agregarUnidad(coordenadaAliada,infanteriaAliada);
+        tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
+
+        infanteriaEnemiga.mover(Direccion.ARRIBA);
+
+        infanteriaAliada.accion(infanteriaEnemiga);
+        assertEquals(infanteriaEnemiga.getVida(),89.5);
+    }
+
+    @Test
     public void testInfanteriaAtacaEnemigoLejano(){
         Jugador j1 = new Jugador("Camila");
         Jugador j2 = new Jugador("Josefina");
@@ -71,6 +90,30 @@ public class InfanteriaTest{
         }
         assertEquals(jineteEnemigo.getVida(),0);
         Assert.assertTrue(tablero.estaLibre(coordenadaEnemiga));
+    }
+
+    @Test
+    public void testInfanteriaMataAEnemigoEnTerritorioEnemigo() { //El enemigo esta en el territorio de la infanteria
+        Jugador j1 = new Jugador("Camila");
+        Jugador j2 = new Jugador("Josefina");
+        Tablero tablero = new Tablero(j1, j2);
+        Infanteria infanteriaAliada = new Infanteria(j1);
+        Jinete jineteEnemigo = new Jinete(j2);
+
+        Coordenada coordenadaAliada = new Coordenada(9,9);
+        Coordenada coordenadaEnemiga = new Coordenada(11,11);
+        tablero.agregarUnidad(coordenadaAliada,infanteriaAliada);
+        tablero.agregarUnidad(coordenadaEnemiga,jineteEnemigo);
+
+        jineteEnemigo.mover(Direccion.ARRIBA);
+        jineteEnemigo.mover(Direccion.ARRIBA);
+
+        Assert.assertFalse(tablero.estaLibre(jineteEnemigo.obtenerCasillero().obtenerCoordenada() ) );
+        for (int i = 0; i < 10; i++) {
+            infanteriaAliada.accion(jineteEnemigo);
+        }
+        Assert.assertTrue(jineteEnemigo.getVida() < 0);
+        Assert.assertTrue(tablero.estaLibre(jineteEnemigo.obtenerCasillero().obtenerCoordenada() ) );
     }
 
     @Test
