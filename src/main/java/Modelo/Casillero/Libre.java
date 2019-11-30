@@ -17,5 +17,10 @@ public class Libre implements EstadoCasilla {
         throw new CasilleroYaEstaLibreExcepcion();
     }
 
+    @Override
+    public String obtenerContenido(Casillero casillero) {
+        return "libre";
+    }
+
 
 }

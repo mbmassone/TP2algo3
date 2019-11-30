@@ -15,4 +15,9 @@ public class Ocupado implements EstadoCasilla {
     public void destruirUnidad(Casillero casillero) {
         casillero.actualizarEstado(new Libre());
     }
+
+    @Override
+    public String obtenerContenido(Casillero casillero) {
+        return casillero.obtenerUnidad().obtenerNombre();
+    }
 }

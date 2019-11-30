@@ -149,4 +149,8 @@ public class Casillero {
         else if (distancia < 6) return new DistanciaMediana();
         else return new DistanciaLejana();
     }
+
+    public String obtenerContenido() {
+        return estado.obtenerContenido(this);
+    }
 }

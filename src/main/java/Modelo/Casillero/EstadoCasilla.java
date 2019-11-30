@@ -8,4 +8,6 @@ public interface EstadoCasilla {
     void agregarUnidad(Casillero casillero, Unidad unidad);
 
     void destruirUnidad(Casillero casillero);
+
+    String obtenerContenido(Casillero casillero);
 }
