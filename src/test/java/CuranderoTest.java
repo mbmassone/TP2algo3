@@ -5,8 +5,7 @@ import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class CuranderoTest {
@@ -39,7 +38,7 @@ public class CuranderoTest {
 
         curandero.accion(infanteriaAliada);
 
-        Assert.assertSame(infanteriaAliada.getVida(), 95);
+        assertEquals(infanteriaAliada.getVida(), 95);
     }
     @Test
     public void curanderoCuraAliadoLejano(){
@@ -57,7 +56,7 @@ public class CuranderoTest {
 
 
         curandero.accion(infanteriaAliada);
-        Assert.assertSame(infanteriaAliada.getVida(), 100);
+        assertEquals(infanteriaAliada.getVida(), 100);
     }
 
 
@@ -86,7 +85,7 @@ public class CuranderoTest {
         tablero.agregarUnidad(coordenada,curandero);
         curandero.accion(curandero);
 
-        Assert.assertSame(curandero.getVida(),90);
+        assertEquals(curandero.getVida(),90);
     }
 
 }

@@ -16,7 +16,7 @@ public class Catapulta extends Atacante{
     }
 
     @Override
-    public void recibirCuracion(int curacion){
+    public void recibirCuracion(float curacion){
         throw new CatapultaCuracionException();
     }
 

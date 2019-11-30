@@ -3,11 +3,11 @@ package Modelo;
 import Modelo.Casillero.Casillero;
 
 public abstract class Atacante extends Unidad {
-    protected int danioCercano;
-    protected int danioMediano;
-    protected int danioLejano;
+    protected float danioCercano;
+    protected float danioMediano;
+    protected float danioLejano;
 
-    public Atacante(int vida, int costo, Jugador duenio){
+    public Atacante(float vida, int costo, Jugador duenio){
         super(vida, costo, duenio);
     }
 

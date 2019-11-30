@@ -4,13 +4,13 @@ import Modelo.Casillero.Casillero;
 import Modelo.Tablero.Direccion;
 
 public abstract class Unidad{
-    protected int vida;
+    protected float vida;
     protected int costo;
     protected Casillero casillero;
     protected Jugador duenio;
     protected String nombre;
 
-    public Unidad(int vida, int costo, Jugador duenio){
+    public Unidad(float vida, int costo, Jugador duenio){
         this.vida = vida;
         this.costo = costo;
         this.duenio = duenio;
@@ -34,7 +34,7 @@ public abstract class Unidad{
         return this.casillero;
     }
 
-    public void sufrirAtaque(int danio){
+    public void sufrirAtaque(float danio){
         this.vida -= danio;
         if(this.vida <= 0){
             this.casillero.destruirUnidad();
@@ -47,7 +47,7 @@ public abstract class Unidad{
         return this.casillero.obtenerAdyacente(direccion).estaLibre();
     }
 
-    public int getVida(){
+    public float getVida(){
         return this.vida;
     }
 
@@ -85,7 +85,7 @@ public abstract class Unidad{
         }
     }
 
-    public abstract void recibirCuracion(int curacion);
+    public abstract void recibirCuracion(float curacion);
     public abstract void accion(Unidad unidad);
     public abstract void accionCercana(Unidad unidad);
     public abstract void accionMediana(Unidad unidad);

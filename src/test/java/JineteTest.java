@@ -5,8 +5,7 @@ import Modelo.Tablero.Tablero;
 import org.junit.Assert;
 import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.assertSame;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class JineteTest {
@@ -31,7 +30,7 @@ public class JineteTest {
         tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
 
         jineteAliado.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),95);
+        assertEquals(infanteriaEnemiga.getVida(),95);
     }
 
     @Test
@@ -70,7 +69,7 @@ public class JineteTest {
         tablero.agregarUnidad(coordenadaEnemiga,infanteriaEnemiga);
 
         jineteAliado.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),85);
+        assertEquals(infanteriaEnemiga.getVida(),85);
     }
 
     @Test
@@ -90,7 +89,7 @@ public class JineteTest {
         tablero.agregarUnidad(coordenadaEnemiga2, infanteriaEnemiga2);
 
         jineteAliado.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),100);
+        assertEquals(infanteriaEnemiga.getVida(),100);
     }
 
     @Test
@@ -113,7 +112,7 @@ public class JineteTest {
         tablero.agregarUnidad(coordenadaEnemiga2, infanteriaEnemiga2);
 
         jineteAliado.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),85);
+        assertEquals(infanteriaEnemiga.getVida(),85);
     }
 
     @Test
@@ -136,7 +135,7 @@ public class JineteTest {
         tablero.agregarUnidad(coordenadaEnemiga2, infanteriaEnemiga2);
 
         jineteAliado.accion(infanteriaEnemiga);
-        Assert.assertSame(infanteriaEnemiga.getVida(),100);
+        assertEquals(infanteriaEnemiga.getVida(),100);
     }
 
     @Test
@@ -156,7 +155,7 @@ public class JineteTest {
 
         curanderoAliado.accion(jineteAliado);
 
-        Assert.assertSame(jineteAliado.getVida(),115);
+        assertEquals(jineteAliado.getVida(),115);
 
     }
 

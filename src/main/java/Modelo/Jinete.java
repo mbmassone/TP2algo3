@@ -34,7 +34,7 @@ public class Jinete extends Atacante {
     }
 
     @Override
-    public void recibirCuracion(int curacion){
+    public void recibirCuracion(float curacion){
         vida += curacion;
     }
 }
