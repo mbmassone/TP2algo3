@@ -2,8 +2,10 @@ package Vista_api;
 
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
+import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import static Vista_api.ConstantesInterfaz.*;
@@ -13,6 +15,7 @@ public class Mapa extends VBox {
 
     private GridPane matriz;
     private final int filas, columnas;
+    private Coordenada coordenada_celda;
     //Constructor
 
     public Mapa(Tablero tablero){
@@ -38,8 +41,13 @@ public class Mapa extends VBox {
                 String string = tablero.contenidoCasillero(coordenada_temp);
                 System.out.println(string);
 
-                //Cargo un visor d eimagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
+                //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
+
+                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp);
+
+                //Se deberia crear el handler primero y despues asignarlo
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
                 this.matriz.add(visor, y, x);
             }
         }
