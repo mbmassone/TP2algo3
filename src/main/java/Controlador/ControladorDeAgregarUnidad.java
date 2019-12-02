@@ -25,7 +25,7 @@ public class ControladorDeAgregarUnidad implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         try{
-            tablero.agregarUnidad(coordenada, creador.crearUnidad(turno.obtenerJugadorActual()));
+            tablero.agregarUnidad(coordenada, creador.crearUnidad(turno.obtenerJugadorActual())); //TODO falta chequear los puntos.
         } catch (Exception exception){
             System.out.println("No se puede agregar ahí"); //TODO avisar a usuario.
         }
