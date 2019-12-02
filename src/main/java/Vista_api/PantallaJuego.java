@@ -1,6 +1,7 @@
 package Vista_api;
 
 import Controlador.ContenedorDeClases;
+import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.RecursosClass.PanelDerecho;
 import javafx.scene.Scene;
@@ -13,8 +14,8 @@ public class PantallaJuego {
     private Mapa mapa;
 
     public void inicializar(Stage stage, ContenedorDeClases contenedorDeClases) {
-
-       mapa = new Mapa(contenedorDeClases.obtenerTablero());
+        Coordenada ultimaCoordenadaTocada = new Coordenada(0,0); //Le pongo una posicion inicial
+       mapa = new Mapa(contenedorDeClases.obtenerTablero(), ultimaCoordenadaTocada);
 
        //contenedor principal es el grupo de nodos mas externo de toda la pantalla
        HBox contenedor_principal = new HBox();
@@ -26,7 +27,7 @@ public class PantallaJuego {
 
         //Metemos los contenidos
        contenedor_principal.getChildren().addAll(mapa,panel_derecho);
-        panel_derecho.ColocarUnidades();
+        panel_derecho.ColocarUnidades(contenedorDeClases, ultimaCoordenadaTocada, mapa);
 
         //Creamos la escena
        Scene escena_juego = new Scene(contenedor_principal);
@@ -35,9 +36,9 @@ public class PantallaJuego {
        stage.setScene(escena_juego);
     }
 
-    public void actualizar(Tablero tablero) {
+    public void actualizar() {
         //Actualizar el tablero de la izquierda
-        this.mapa.actualizarTablero(tablero);
+        this.mapa.actualizarTablero();
         //Actualizar el panel derecho
     }
 

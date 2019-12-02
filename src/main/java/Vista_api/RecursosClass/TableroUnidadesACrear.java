@@ -1,5 +1,13 @@
 package Vista_api.RecursosClass;
 
+import Controlador.ContenedorDeClases;
+import Controlador.ControladorDeAgregarUnidad;
+import Controlador.CreadorDeUnidad.CreadorDeCatapulta;
+import Controlador.CreadorDeUnidad.CreadorDeCurandero;
+import Controlador.CreadorDeUnidad.CreadorDeInfanteria;
+import Controlador.CreadorDeUnidad.CreadorDeJinete;
+import Modelo.Tablero.Coordenada;
+import Vista_api.Mapa;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -22,7 +30,7 @@ public class TableroUnidadesACrear extends HBox {
 
     GridPane matriz;
 
-    public TableroUnidadesACrear(){
+    public TableroUnidadesACrear(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Label labelPuntos){
         //Setup de la grilla que contiene a la muestra d eunidades
         this.matriz = new GridPane();
         this.matriz.setHgap(20);
@@ -39,10 +47,11 @@ public class TableroUnidadesACrear extends HBox {
 
 
         //Los asocio al hacer click en cada unidad.
-        imagen_catapulta.addEventFilter(MouseEvent.MOUSE_CLICKED, (event) -> System.out.println("Tocaboton"));
-        imagen_curandero.addEventFilter(MouseEvent.MOUSE_CLICKED, (event) -> System.out.println("Tocaboton"));
-        imagen_infanteria.addEventFilter(MouseEvent.MOUSE_CLICKED, (event) -> System.out.println("Tocaboton"));
-        imagen_jinete.addEventFilter(MouseEvent.MOUSE_CLICKED, (event) -> System.out.println("Tocaboton"));
+
+        imagen_catapulta.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCatapulta(), mapa, labelPuntos));
+        imagen_curandero.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCurandero(), mapa, labelPuntos));
+        imagen_infanteria.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeInfanteria(), mapa, labelPuntos));
+        imagen_jinete.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeJinete(), mapa, labelPuntos));
 
         //Setup de textos
         texto_catapulta = new Label("Catapulta\n5");

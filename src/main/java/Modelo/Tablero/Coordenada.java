@@ -33,4 +33,10 @@ public class Coordenada {
     public int obtenerFila(){ return fila; }
 
     public int obtenerColumna(){ return columna; }
+
+    public void cambiarCoordenada(Coordenada coordenada){
+        //SOLO USAR EN VISTA
+        this.fila = coordenada.obtenerFila();
+        this.columna = coordenada.obtenerColumna();
+    }
 }

@@ -6,16 +6,18 @@ import javafx.scene.input.MouseEvent;
 
 public class EventHandlerCeldaMapa implements EventHandler<MouseEvent> {
 
-    private Coordenada coordenada;
+    private Coordenada posicionEnTablero;
+    private Coordenada ultimaCoordenadaTocada;
 
-    public EventHandlerCeldaMapa(Coordenada coordenada) {
-        this.coordenada = coordenada;
+    public EventHandlerCeldaMapa(Coordenada posicionEnTablero, Coordenada ultimaCoordenadaTocada) {
+        this.posicionEnTablero = posicionEnTablero;
+        this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
     }
 
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-
-        System.out.println(coordenada.obtenerColumna() + "," + coordenada.obtenerFila());
+        ultimaCoordenadaTocada.cambiarCoordenada(posicionEnTablero);
+        System.out.println(posicionEnTablero.obtenerColumna() + "," + posicionEnTablero.obtenerFila());
     }
 }
