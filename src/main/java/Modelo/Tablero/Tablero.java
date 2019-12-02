@@ -25,7 +25,7 @@ public class Tablero {
         for (int i = 0; i < TAMANIO; i++) {
             for (int j = 0; j < TAMANIO; j++) {
                 Coordenada coordenada = new Coordenada(i, j);
-                if(i < TAMANIO/2) tablero.put(coordenada, new Casillero(j1, coordenada));
+                if(i < (TAMANIO/2) ) tablero.put(coordenada, new Casillero(j1, coordenada));
                 else tablero.put(coordenada, new Casillero(j2, coordenada));
 
             }

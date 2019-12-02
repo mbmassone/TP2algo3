@@ -1,6 +1,8 @@
 package Modelo;
 
 import Modelo.Casillero.Casillero;
+import Modelo.Casillero.EnTerritorioAliado;
+import Modelo.Casillero.EstadoTerritorio;
 import Modelo.Tablero.Direccion;
 
 public abstract class Unidad{
@@ -9,11 +11,13 @@ public abstract class Unidad{
     protected Casillero casillero;
     protected Jugador duenio;
     protected String nombre;
+    protected EstadoTerritorio territorio;
 
     public Unidad(float vida, int costo, Jugador duenio){
         this.vida = vida;
         this.costo = costo;
         this.duenio = duenio;
+        this.territorio = new EnTerritorioAliado();
     }
 
     public String obtenerNombre(){ return nombre; }
@@ -35,6 +39,10 @@ public abstract class Unidad{
     }
 
     public void sufrirAtaque(float danio){
+        territorio.analizarDanio(this, danio);
+    }
+
+    public void descontarVida(float danio){
         this.vida -= danio;
         if(this.vida <= 0){
             this.casillero.destruirUnidad();
@@ -59,6 +67,7 @@ public abstract class Unidad{
         nuevoCasillero.agregarUnidad(this);
         this.casillero.destruirUnidad();
         this.casillero = nuevoCasillero;
+        territorio.actualizarEstado(this, this.casillero);
     }
 
     public void mover(Direccion direccion){
@@ -83,6 +92,10 @@ public abstract class Unidad{
         if (this.obtenerDuenio() != unidad.obtenerDuenio()){
             throw new CurarEnemigoExcepcion();
         }
+    }
+
+    public void actualizarEstadoTerritorio(EstadoTerritorio nuevoEstado){
+        this.territorio = nuevoEstado;
     }
 
     public abstract void recibirCuracion(float curacion);

@@ -1,7 +1,11 @@
 package Vista_api;
 
+import Modelo.Tablero.Coordenada;
+import Modelo.Tablero.Tablero;
+import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import static Vista_api.ConstantesInterfaz.*;
@@ -11,28 +15,40 @@ public class Mapa extends VBox {
 
     private GridPane matriz;
     private final int filas, columnas;
+    private Coordenada coordenada_celda;
     //Constructor
 
-    public Mapa(){
+    public Mapa(Tablero tablero){
+
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
         this.matriz.setVgap(2);
-        //TODO cambiar harcoding de aqui
+        //TODO cambiar harcoding de aqui, el tablero o loqeusea deberia decirme de cuanto es la matriz
         this.filas = 20;
         this.columnas = 20;
         this.getChildren().add(this.matriz);
-        this.actualizarTablero();
+        this.actualizarTablero(tablero);
     }
 
     //Actualiza la vista del mapa
-    public void actualizarTablero(){
-        //aqui colocar clase que obtiene y actualiza cada uno de los casilleros
-        for (int x=1; x<=this.columnas; x++) {
-            for (int y = 1; y <= this.filas; y++) {
+    public void actualizarTablero(Tablero tablero){
+        //Recorro todos los casilleros
+        for (int x=0; x<this.columnas; x++) {
+            for (int y = 0; y < this.filas; y++) {
                 //TODO obtener el estado de una casilla e iterar a la siguiente.
-                ImageView vacio = (new ImageView(new Image(IMG_VACIO)));
 
-                this.matriz.add(vacio, y, x);
+                Coordenada coordenada_temp = new Coordenada(x,y);
+                String string = tablero.contenidoCasillero(coordenada_temp);
+                System.out.println(string);
+
+                //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
+                ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
+
+                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp);
+
+                //Se deberia crear el handler primero y despues asignarlo
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+                this.matriz.add(visor, y, x);
             }
         }
         ImageView vacio = (new ImageView(new Image(IMG_CURANDERO)));
