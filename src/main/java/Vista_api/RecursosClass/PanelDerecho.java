@@ -1,6 +1,7 @@
 package Vista_api.RecursosClass;
 
 import Controlador.ContenedorDeClases;
+import Controlador.ControladorDeMovimientoYAccion;
 import Modelo.Tablero.Coordenada;
 import Vista_api.ManipuladorEventos.Salir_Juego_Handler;
 import Vista_api.Mapa;
@@ -49,8 +50,6 @@ public class PanelDerecho extends VBox {
         Label vida = new Label("");
         Label unidad = new Label("");
         Button boton_terminar = new Button("Pasar Turno");
-        Label intrucciones = new Label("\n\nBienvenido/a " + jugador_actual.getText() + " INSTRUCCIONES\n De como jugar AQUI\n y nada mas\n\n\n\n");
-        Button boton_terminar = new Button("Terminar turno");
         boton_terminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa));
 
         HBox banner_jugador = new HBox(texto_jugador_actual,jugador_actual);
