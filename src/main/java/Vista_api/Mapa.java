@@ -32,7 +32,7 @@ public class Mapa extends VBox {
         this.getChildren().add(this.matriz);
         this.tablero = tablero;
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
-        this.actualizarTablero();
+        //this.actualizarTablero();
     }
 
     //Actualiza la vista del mapa
@@ -54,32 +54,46 @@ public class Mapa extends VBox {
                 //Se deberia crear el handler primero y despues asignarlo
                 visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
                 this.matriz.add(visor, y, x);
+
             }
         }
 
         System.out.println("Mapa actualizado");
     }
 
-    public void actualizarTableroBatalla(Tablero tablero, Coordenada ultimaCoordenadaTocada){
+    public void actualizarTableroBatalla(){
+
+        this.getChildren().remove(this.matriz);
+
+        this.matriz = new GridPane();
+
+        this.getChildren().add(this.matriz);
+
+        this.matriz.setHgap(2);
+        this.matriz.setVgap(2);
 
         for (int x=0; x<this.columnas; x++) {
             for (int y = 0; y < this.filas; y++) {
 
                 Coordenada coordenada_temp = new Coordenada(x,y);
-                String string = tablero.contenidoCasillero(coordenada_temp);
+                String string = this.tablero.contenidoCasillero(coordenada_temp);
                 //System.out.println(string);
 
-                //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
+                //Capas
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
-
+                ImageView vacio = (new ImageView(new Image("file:libre.png")));
                 //TODO cambiar el handler por los handlers que correspondan
                 //EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
 
                 //TODO bindiar el handler
                 //visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+
+                this.matriz.add(vacio, y, x);
                 this.matriz.add(visor, y, x);
+
             }
         }
+        System.out.println("Mapa de Batalla actualizado");
     }
 
 }
