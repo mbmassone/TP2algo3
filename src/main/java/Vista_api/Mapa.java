@@ -61,27 +61,39 @@ public class Mapa extends VBox {
         System.out.println("Mapa actualizado");
     }
 
-    public void actualizarTableroBatalla(Tablero tablero, Coordenada ultimaCoordenadaTocada){
+    public void actualizarTableroBatalla(){
+
+        this.getChildren().remove(this.matriz);
+
+        this.matriz = new GridPane();
+
+        this.getChildren().add(this.matriz);
+
+        this.matriz.setHgap(2);
+        this.matriz.setVgap(2);
 
         for (int x=0; x<this.columnas; x++) {
             for (int y = 0; y < this.filas; y++) {
 
                 Coordenada coordenada_temp = new Coordenada(x,y);
-                String string = tablero.contenidoCasillero(coordenada_temp);
+                String string = this.tablero.contenidoCasillero(coordenada_temp);
                 //System.out.println(string);
 
                 //Capas
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
-
+                ImageView vacio = (new ImageView(new Image("file:libre.png")));
                 //TODO cambiar el handler por los handlers que correspondan
                 //EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
 
                 //TODO bindiar el handler
                 //visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+
+                this.matriz.add(vacio, y, x);
                 this.matriz.add(visor, y, x);
 
             }
         }
+        System.out.println("Mapa de Batalla actualizado");
     }
 
 }
