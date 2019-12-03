@@ -23,11 +23,11 @@ public class PantallaJuego {
         contenedor_principal.setSpacing(20);
 
        //panel Derecho donde estaran los controles o la informacion del tablero
-        PanelDerecho panel_derecho = new PanelDerecho();
+        PanelDerecho panel_derecho = new PanelDerecho(contenedorDeClases, ultimaCoordenadaTocada, mapa);
 
         //Metemos los contenidos
        contenedor_principal.getChildren().addAll(mapa,panel_derecho);
-        panel_derecho.ColocarUnidades(contenedorDeClases, ultimaCoordenadaTocada, mapa);
+        panel_derecho.colocarUnidades();
 
         //Creamos la escena
        Scene escena_juego = new Scene(contenedor_principal);

@@ -51,7 +51,6 @@ public abstract class Unidad{
     }
 
     public boolean puedeMover(Direccion direccion){
-        //TODO usar esta funcion para eliminar excepciones
         return this.casillero.obtenerAdyacente(direccion).estaLibre();
     }
 

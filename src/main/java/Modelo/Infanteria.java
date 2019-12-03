@@ -32,7 +32,7 @@ public class Infanteria extends Atacante {
         List<Unidad> listaInfanteria;
         listaInfanteria = this.casillero.encontrarUnidadesEnCadena(new IdentificadorDeInfanterias( this.obtenerDuenio() ) );
 
-        if (listaInfanteria.size() >= 3) { //TODO Hacer batallon en clase aparte.
+        if (listaInfanteria.size() >= 3) {
             for (int i = 0; i < 3; i++) {
                 Unidad infanteria = listaInfanteria.get(i);
                 infanteria.doMover(direccion);

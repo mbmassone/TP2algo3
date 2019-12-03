@@ -21,7 +21,6 @@ public class Casillero {
     public Casillero(){
         this.estado = new Libre();
         this.adyacentes = new HashMap<Direccion, Casillero>();
-        //TODO hacer con mocks.
     }
 
     public Casillero(Jugador duenio, Coordenada coordenada){
@@ -95,7 +94,6 @@ public class Casillero {
     }
 
     public List<Unidad> encontrarUnidadesEnCadena(Identificador identificador){
-        //TODO Cambiar a su propia clase.
         List<Unidad> listaUnidades = new ArrayList<>();
         this.encontrarUnidadesEnCadenaRec(listaUnidades, identificador);
 
@@ -143,7 +141,6 @@ public class Casillero {
     }
 
     public TipoDistancia obtenerTipoDistancia(Casillero casillero) {
-        //TODO refactorizar y hacer con polimorfismo
         int distancia = this.coordenada.calcularDistancia(casillero.obtenerCoordenada());
         if(distancia < 3) return new DistanciaCercana();
         else if (distancia < 6) return new DistanciaMediana();

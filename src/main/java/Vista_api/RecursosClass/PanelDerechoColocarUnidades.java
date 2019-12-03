@@ -14,7 +14,7 @@ import javafx.scene.text.TextAlignment;
 
 public class PanelDerechoColocarUnidades extends VBox {
 
-    public PanelDerechoColocarUnidades(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa){
+    public PanelDerechoColocarUnidades(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, PanelDerecho panelDerecho){
         //Coloco todos los nodos a usar
         Label texto_superior = new Label("Por favor, Creen su batallon");
         Label texto_jugador_actual = new Label("Turno actual: ");
@@ -23,7 +23,7 @@ public class PanelDerechoColocarUnidades extends VBox {
         Label puntos_restantes = new Label(Integer.toString(contenedor.obtenerTurno().obtenerJugadorActual().obtenerPuntos()));
         Label intrucciones = new Label("\n\nBienvenido/a " + jugador_actual.getText() + " para continuar haga click en una unidad y haga click de nuevo\n donde quiera colocarla, repita este porceso hasta que se acaben\n sus puntos o haga click en el boton Terminar\n\n\n\n");
         Button boton_terminar = new Button("Terminar turno");
-        boton_terminar.setOnAction(new TerminarTurnoHandler(jugador_actual, puntos_restantes, contenedor.obtenerTurno()));
+        boton_terminar.setOnAction(new TerminarTurnoHandler(jugador_actual, puntos_restantes, contenedor.obtenerTurno(), panelDerecho));
 
         //Arego los contenedores
         HBox banner_jugador = new HBox(texto_jugador_actual,jugador_actual);
