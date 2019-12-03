@@ -38,8 +38,6 @@ public class ControladorDeAgregarUnidad implements EventHandler<MouseEvent> {
 
                 tablero.agregarUnidad(ultimaCoordenadaTocada, nuevaUnidad);
                 turno.obtenerJugadorActual().agregarUnidad(nuevaUnidad);
-                turno.obtenerJugadorActual().asignarPuntos(nuevaUnidad.descontarCosto(nuevaUnidad.obtenerDuenio().obtenerPuntos() ) );
-                turno.obtenerJugadorActual().aumentarCantidadUnidades();
 
                 labelPuntos.setText(Integer.toString(turno.obtenerJugadorActual().obtenerPuntos()));
 
