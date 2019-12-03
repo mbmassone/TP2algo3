@@ -43,7 +43,7 @@ public class PantallaJuego {
         mapa.actualizarTablero();
 
         //Metemos los contenidos
-       contenedor_principal.getChildren().addAll(mapa,panel_derecho);
+        contenedor_principal.getChildren().addAll(mapa,panel_derecho);
         panel_derecho.colocarUnidades();
 
         //Creamos la escena

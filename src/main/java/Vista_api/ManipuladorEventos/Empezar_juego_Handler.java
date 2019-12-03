@@ -30,7 +30,11 @@ public class Empezar_juego_Handler implements EventHandler<ActionEvent> {
 
         if ((textfield.getText().trim().equals("")) || (textfield2.getText().trim().equals(""))) {
             texto.setText("Todos los jugadores deben tener nombres");
-        } else {
+        }
+        else if (textfield.getText().trim().equals(textfield2.getText().trim() ) ) {
+            texto.setText("Los jugadores deben tener distintos nombres");
+        }
+        else {
             System.out.println("a jugar BO");
             ContenedorDeClases contenedordeclases = new ContenedorDeClases(textfield.getText(),textfield2.getText());
             pantalla_juego = new PantallaJuego();
