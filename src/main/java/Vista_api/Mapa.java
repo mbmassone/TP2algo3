@@ -6,6 +6,7 @@ import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -55,10 +56,30 @@ public class Mapa extends VBox {
                 this.matriz.add(visor, y, x);
             }
         }
-        //ImageView vacio = (new ImageView(new Image(IMG_CURANDERO)));
-        //vacio.setFitHeight(25);
-        //vacio.setFitWidth(25);
-        //this.matriz.add(vacio, 20, 20);
+
         System.out.println("Mapa actualizado");
     }
+
+    public void actualizarTableroBatalla(Tablero tablero, Coordenada ultimaCoordenadaTocada){
+
+        for (int x=0; x<this.columnas; x++) {
+            for (int y = 0; y < this.filas; y++) {
+
+                Coordenada coordenada_temp = new Coordenada(x,y);
+                String string = tablero.contenidoCasillero(coordenada_temp);
+                //System.out.println(string);
+
+                //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
+                ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
+
+                //TODO cambiar el handler por los handlers que correspondan
+                //EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
+
+                //TODO bindiar el handler
+                //visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+                this.matriz.add(visor, y, x);
+            }
+        }
+    }
+
 }
