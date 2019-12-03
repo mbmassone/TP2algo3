@@ -17,6 +17,8 @@ public class PantallaJuego {
     public void inicializar(Stage stage, ContenedorDeClases contenedorDeClases) {
 
         Coordenada ultimaCoordenadaTocada = new Coordenada(0,0); //Le pongo una posicion inicial
+        Coordenada coordenadaOrigen = new Coordenada(0,0);
+        Coordenada coordenadaDestino = new Coordenada(0,0);
 
         //Seteo el fondo del mapa
         Image image = new Image("file:FondoMapa.png");
@@ -27,7 +29,7 @@ public class PantallaJuego {
                 BackgroundSize.DEFAULT);
         Background background = new Background(backgroundMapa);
 
-        mapa = new Mapa(contenedorDeClases, ultimaCoordenadaTocada);
+        mapa = new Mapa(contenedorDeClases, ultimaCoordenadaTocada, coordenadaOrigen, coordenadaDestino);
 
         mapa.setBackground(background);
 
@@ -37,7 +39,7 @@ public class PantallaJuego {
        contenedor_principal.setSpacing(20);
 
        //panel Derecho donde estaran los controles o la informacion del tablero
-        PanelDerecho panel_derecho = new PanelDerecho(contenedorDeClases, ultimaCoordenadaTocada, mapa);
+        PanelDerecho panel_derecho = new PanelDerecho(contenedorDeClases, ultimaCoordenadaTocada, mapa, coordenadaOrigen, coordenadaDestino);
 
 
         mapa.actualizarTablero();
