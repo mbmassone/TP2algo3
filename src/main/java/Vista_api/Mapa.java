@@ -32,7 +32,7 @@ public class Mapa extends VBox {
         this.getChildren().add(this.matriz);
         this.tablero = tablero;
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
-        this.actualizarTablero();
+        //this.actualizarTablero();
     }
 
     //Actualiza la vista del mapa
@@ -54,6 +54,7 @@ public class Mapa extends VBox {
                 //Se deberia crear el handler primero y despues asignarlo
                 visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
                 this.matriz.add(visor, y, x);
+
             }
         }
 
@@ -69,7 +70,7 @@ public class Mapa extends VBox {
                 String string = tablero.contenidoCasillero(coordenada_temp);
                 //System.out.println(string);
 
-                //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
+                //Capas
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
 
                 //TODO cambiar el handler por los handlers que correspondan
@@ -78,6 +79,7 @@ public class Mapa extends VBox {
                 //TODO bindiar el handler
                 //visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
                 this.matriz.add(visor, y, x);
+
             }
         }
     }

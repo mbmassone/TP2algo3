@@ -26,6 +26,7 @@ public class PantallaJuego {
                 BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         Background background = new Background(backgroundMapa);
+
         mapa = new Mapa(contenedorDeClases.obtenerTablero(), ultimaCoordenadaTocada);
 
         mapa.setBackground(background);
@@ -38,6 +39,8 @@ public class PantallaJuego {
        //panel Derecho donde estaran los controles o la informacion del tablero
         PanelDerecho panel_derecho = new PanelDerecho(contenedorDeClases, ultimaCoordenadaTocada, mapa);
 
+        mapa.actualizarTablero();
+        
         //Metemos los contenidos
        contenedor_principal.getChildren().addAll(mapa,panel_derecho);
         panel_derecho.colocarUnidades();
