@@ -82,4 +82,15 @@ public class Tablero {
     public String contenidoCasillero(Coordenada coordenada){
         return obtenerCasillero(coordenada).obtenerContenido();
     }
+
+    public Jugador obtenerDuenioUnidad(Coordenada coordenada){
+        if(obtenerCasillero(coordenada).estaLibre()){
+            return null;
+        }
+        return obtenerCasillero(coordenada).obtenerUnidad().obtenerDuenio();
+    }
+
+    public Jugador obtenerDuenioCasillero(Coordenada coordenada){
+        return obtenerCasillero(coordenada).obtenerDuenio();
+    }
 }
