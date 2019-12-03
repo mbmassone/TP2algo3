@@ -1,6 +1,7 @@
 package Vista_api.RecursosClass;
 
 import Controlador.ContenedorDeClases;
+import Controlador.ControladorDeMovimientoYAccion;
 import Modelo.Tablero.Coordenada;
 import Vista_api.ManipuladorEventos.Salir_Juego_Handler;
 import Vista_api.Mapa;
@@ -17,12 +18,16 @@ public class PanelDerecho extends VBox {
 
     private ContenedorDeClases contenedor;
     private Coordenada ultimaCoordenadaTocada;
+    private Coordenada coordenadaOrigen;
+    private Coordenada coordenadaDestino;
     private Mapa mapa;
 
-    public PanelDerecho(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa){
+    public PanelDerecho(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Coordenada coordenadaOrigen, Coordenada coordenadaDestino){
         this.contenedor = contenedor;
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
         this.mapa = mapa;
+        this.coordenadaOrigen = coordenadaOrigen;
+        this.coordenadaDestino = coordenadaDestino;
     }
 //TODO Deberia recibir el handler que manipula la creacion de unidades, que a si mismo se comuinicara con el tablero para crearlo
 
@@ -40,6 +45,7 @@ public class PanelDerecho extends VBox {
         Label jugador_actual = new Label(this.contenedor.obtenerTurno().obtenerJugadorActual().obtenerNombre());
         Label intrucciones = new Label("\n\nBienvenido/a " + jugador_actual.getText() + " INSTRUCCIONES\n De como jugar AQUI\n y nada mas\n\n\n\n");
         Button boton_terminar = new Button("Terminar turno");
+        boton_terminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa));
 
         HBox banner_jugador = new HBox(texto_jugador_actual,jugador_actual);
 

@@ -5,6 +5,7 @@ import Modelo.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
+import Vista_api.ManipuladorEventos.TocarCasilleroEnBatallaHandler;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,13 +21,15 @@ public class Mapa extends VBox {
     private GridPane matriz;
     private final int filas, columnas;
     private Coordenada ultimaCoordenadaTocada;
+    private Coordenada coordenadaOrigen;
+    private Coordenada coordenadaDestino;
     private Tablero tablero;
     private Jugador jugador1;
     private Jugador jugador2;
     private ContenedorDeClases contenedor;
     //Constructor
 
-    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada){
+    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Coordenada coordenadaOrigen, Coordenada coordenadaDestino){ //TODO buscar alternativa para pasar las coordenadas
 
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
@@ -39,6 +42,8 @@ public class Mapa extends VBox {
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
         this.jugador1 = contenedor.obtenerJugador1();
         this.jugador2 = contenedor.obtenerJugador2();
+        this.coordenadaOrigen = coordenadaOrigen;
+        this.coordenadaDestino = coordenadaDestino;
         //this.actualizarTablero();
     }
 
@@ -91,10 +96,9 @@ public class Mapa extends VBox {
 
                 ImageView vacio = (new ImageView(new Image("file:libre.png")));
                 //TODO cambiar el handler por los handlers que correspondan
-                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
 
                 //TODO bindiar el handler
-                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, new TocarCasilleroEnBatallaHandler(new Coordenada(x,y), coordenadaOrigen, coordenadaDestino));
 
                 this.matriz.add(vacio, y, x);
                 if (this.jugador1 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){
