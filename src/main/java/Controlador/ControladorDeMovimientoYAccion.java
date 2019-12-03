@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.AtacarAliadoExcepcion;
 import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
+import Modelo.CatapultaNoSePuedeMoverExcepcion;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Modelo.Turno;
@@ -35,6 +36,9 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
                 tablero.moverUnidad(coordenadaOrigen, coordenadaDestino);
             } catch (CasilleroNoEsAdyacenteExcepcion excepcion) {
                 System.out.println("Solo se puede mover a adyacentes"); //TODO avisar a usuario.
+            }
+            catch (CatapultaNoSePuedeMoverExcepcion exception) {
+                System.out.println("Las cataputas no se mueven"); //TODO avisar a usuario.
             }
         } else {
             //Atacar

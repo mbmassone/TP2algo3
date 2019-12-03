@@ -37,7 +37,7 @@ public class PanelDerecho extends VBox {
 
         this.getChildren().addAll(panelColocarUnidades);
     }
-
+    //Panel derecho con infromacion de batalla
     public void batalla(){
 
         Label texto_superior = new Label("Panel de Batalla");
@@ -50,6 +50,8 @@ public class PanelDerecho extends VBox {
         Label vida = new Label("");
         Label unidad = new Label("");
         Button boton_terminar = new Button("Pasar Turno");
+        Label informacion = new Label("");
+
         boton_terminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa));
 
         HBox banner_jugador = new HBox(texto_jugador_actual,jugador_actual);
@@ -59,11 +61,15 @@ public class PanelDerecho extends VBox {
 
         HBox hbox = new HBox(texto_unidad, unidad);
         HBox hbox2 = new HBox(texto_vida_restante,vida);
-        VBox vbox = new VBox(informacion_unidad,hbox,hbox2);
+        VBox vbox = new VBox(informacion_unidad,hbox,hbox2, informacion);
 
         this.getChildren().addAll(texto_superior,banner_jugador,intrucciones,vbox, boton_terminar);
 
 
         this.mapa.actualizarTableroBatalla();
+    }
+    //Panel derecho con informacion de
+    public void ganador(){
+        
     }
 }
