@@ -1,11 +1,14 @@
 package Vista_api;
 
+import Controlador.ContenedorDeClases;
+import Modelo.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 
@@ -18,9 +21,12 @@ public class Mapa extends VBox {
     private final int filas, columnas;
     private Coordenada ultimaCoordenadaTocada;
     private Tablero tablero;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private ContenedorDeClases contenedor;
     //Constructor
 
-    public Mapa(Tablero tablero, Coordenada ultimaCoordenadaTocada){
+    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada){
 
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
@@ -29,9 +35,11 @@ public class Mapa extends VBox {
         this.filas = 20;
         this.columnas = 20;
         this.getChildren().add(this.matriz);
-        this.tablero = tablero;
+        this.tablero = contenedor.obtenerTablero();
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
-        this.actualizarTablero();
+        this.jugador1 = contenedor.obtenerJugador1();
+        this.jugador2 = contenedor.obtenerJugador2();
+        //this.actualizarTablero();
     }
 
     //Actualiza la vista del mapa
@@ -53,12 +61,56 @@ public class Mapa extends VBox {
                 //Se deberia crear el handler primero y despues asignarlo
                 visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
                 this.matriz.add(visor, y, x);
+
             }
         }
-        //ImageView vacio = (new ImageView(new Image(IMG_CURANDERO)));
-        //vacio.setFitHeight(25);
-        //vacio.setFitWidth(25);
-        //this.matriz.add(vacio, 20, 20);
+
         System.out.println("Mapa actualizado");
     }
+
+    public void actualizarTableroBatalla(){
+
+        this.getChildren().remove(this.matriz);
+
+        this.matriz = new GridPane();
+
+        this.getChildren().add(this.matriz);
+
+        this.matriz.setHgap(2);
+        this.matriz.setVgap(2);
+
+        for (int x=0; x<this.columnas; x++) {
+            for (int y = 0; y < this.filas; y++) {
+
+                Coordenada coordenada_temp = new Coordenada(x,y);
+                String string = this.tablero.contenidoCasillero(coordenada_temp);
+                //System.out.println(string);
+
+                //Capas
+                ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
+
+                ImageView vacio = (new ImageView(new Image("file:libre.png")));
+                //TODO cambiar el handler por los handlers que correspondan
+                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
+
+                //TODO bindiar el handler
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+
+                this.matriz.add(vacio, y, x);
+                if (this.jugador1 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){
+                    ImageView duenio = (new ImageView(new Image("file:azul.png")));
+                    this.matriz.add(duenio,y,x);
+                }
+                if (this.jugador2 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){
+                    ImageView duenio = (new ImageView(new Image("file:rojo.png")));
+                    this.matriz.add(duenio,y,x);
+                }
+
+                this.matriz.add(visor, y, x);
+
+            }
+        }
+        System.out.println("Mapa de Batalla actualizado");
+    }
+
 }

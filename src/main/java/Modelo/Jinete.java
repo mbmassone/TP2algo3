@@ -15,7 +15,7 @@ public class Jinete extends Atacante {
     }
 
 
-    private boolean atacaADistancia(){ //TODO Hacer con un patron de Strategy
+    private boolean atacaADistancia(){
         return this.casillero.hayUnidadesADistanciaCercana(new IdentificadorDeInfanterias(this.duenio)) || !this.casillero.hayUnidadesADistanciaCercana(new IdentificadorDeEnemigos(this.duenio));
     }
 

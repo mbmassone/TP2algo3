@@ -8,7 +8,7 @@ public abstract class Curador extends Unidad {
     protected float curacionLejana;
 
     public Curador(float vida, int costo, Jugador duenio){
-        super(75,1, duenio);
+        super(vida,costo, duenio);
     }
 
     @Override

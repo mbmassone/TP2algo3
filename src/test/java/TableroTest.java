@@ -19,8 +19,6 @@ public class TableroTest {
         Tablero tablero = new Tablero(j1, j2);
 
         Assert.assertTrue(tablero != null);
-
-        //TODO agregar mas cosas.
     }
 
     @Test
