@@ -35,8 +35,15 @@ public class ControladorDeAgregarUnidad implements EventHandler<MouseEvent> {
         try{
             Unidad nuevaUnidad = creador.crearUnidad(turno.obtenerJugadorActual());
             if(turno.obtenerJugadorActual().agregarUnidad(nuevaUnidad)){
-                tablero.agregarUnidad(ultimaCoordenadaTocada, nuevaUnidad); //TODO agregar unidades en posiciones invalidas resta puntos
+
+                tablero.agregarUnidad(ultimaCoordenadaTocada, nuevaUnidad);
+
+                turno.obtenerJugadorActual().asignarPuntos(nuevaUnidad.descontarCosto(nuevaUnidad.obtenerDuenio().obtenerPuntos() ) );
+                turno.obtenerJugadorActual().aumentarCantidadUnidades();
+
                 labelPuntos.setText(Integer.toString(turno.obtenerJugadorActual().obtenerPuntos()));
+
+
             } else {
                 System.out.println("No tienes puntos suficientes"); //TODO avisar a usuario.
             }

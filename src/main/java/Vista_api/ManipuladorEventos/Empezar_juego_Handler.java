@@ -31,7 +31,6 @@ public class Empezar_juego_Handler implements EventHandler<ActionEvent> {
         if ((textfield.getText().trim().equals("")) || (textfield2.getText().trim().equals(""))) {
             texto.setText("Todos los jugadores deben tener nombres");
         } else {
-            //TODO hacer que el tablero guarde el nombre de ambos jugadores
             System.out.println("a jugar BO");
             ContenedorDeClases contenedordeclases = new ContenedorDeClases(textfield.getText(),textfield2.getText());
             pantalla_juego = new PantallaJuego();

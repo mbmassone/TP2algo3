@@ -40,8 +40,8 @@ public class Jugador {
     public boolean agregarUnidad(Unidad unidad){
         if(unidad.descontarCosto(puntos) < 0) return false;
 
-        asignarPuntos(unidad.descontarCosto(puntos) );
-        (this.cantidadUnidades)++;
+        /*asignarPuntos(unidad.descontarCosto(puntos) );
+        (this.cantidadUnidades)++;*/
         return true;
 
     }
@@ -49,6 +49,8 @@ public class Jugador {
     public int obtenerPuntos() { return puntos; }
 
     public int obtenerCantidadUnidades(){ return cantidadUnidades; }
+
+    public void aumentarCantidadUnidades(){ (this.cantidadUnidades)++; }
 
     public boolean esGanador(){
         return cantidadUnidades == 0;

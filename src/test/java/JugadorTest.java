@@ -15,9 +15,12 @@ public class JugadorTest {
     }
 
     @Test
-    public void testVerificarReduccionDePuntos() {
+    public void testVerificarReduccionDePuntos() { //TODO ACOMODAR ESTO
         Jugador nuevoJugador = new Jugador("Andoni");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
+        Infanteria nuevaUnidad = new Infanteria(nuevoJugador);
+        nuevoJugador.agregarUnidad(nuevaUnidad );
+        nuevoJugador.asignarPuntos(nuevaUnidad.descontarCosto(nuevoJugador.obtenerPuntos() ));
+        nuevoJugador.aumentarCantidadUnidades();
 
         Assert.assertSame(nuevoJugador.obtenerPuntos(), 19);
     }
@@ -53,8 +56,15 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAUnJugador(){
         Jugador nuevoJugador = new Jugador("Tomas");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
+
+        Infanteria nuevaUnidad1 = new Infanteria(nuevoJugador);
+        Infanteria nuevaUnidad2 = new Infanteria(nuevoJugador);
+
+        nuevoJugador.agregarUnidad(nuevaUnidad1 );
+        nuevoJugador.agregarUnidad(nuevaUnidad2 );
+        nuevoJugador.asignarPuntos(nuevaUnidad1.descontarCosto(nuevoJugador.obtenerPuntos() ) );
+        nuevoJugador.aumentarCantidadUnidades();
+        nuevoJugador.aumentarCantidadUnidades(); //TODO acomodar esto
         nuevoJugador.eliminarUnidad();
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 1);
@@ -63,8 +73,12 @@ public class JugadorTest {
     @Test
     public void testMatanGuerreroAJugadorUnYEstePierde(){
         Jugador nuevoJugador = new Jugador("Eugenio");
-        nuevoJugador.agregarUnidad(new Infanteria(nuevoJugador) );
+        Infanteria nuevaUnidad = new Infanteria(nuevoJugador);
+        nuevoJugador.agregarUnidad(nuevaUnidad );
+        nuevoJugador.asignarPuntos(nuevaUnidad.descontarCosto(nuevoJugador.obtenerPuntos() ) );
+        nuevoJugador.aumentarCantidadUnidades();
         nuevoJugador.eliminarUnidad();
+
 
         Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0); //TODO Consultar esto
     }

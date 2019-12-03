@@ -58,7 +58,7 @@ public class PantallaTitulo implements Manipulador_escenarios {
         Imagen_titulo.addEventFilter(MouseEvent.MOUSE_CLICKED, logo_bonus);
 
         //Creo contenedores y
-        HBox hbox = new HBox(boton_dummy,boton_iniciar, boton_salir);
+        HBox hbox = new HBox(boton_dummy, boton_iniciar, boton_salir);
         VBox vbox = new VBox(20,Imagen_titulo,contenedor_text_fields,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
