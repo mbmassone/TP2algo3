@@ -1,5 +1,7 @@
 package Vista_api;
 
+import Controlador.ContenedorDeClases;
+import Modelo.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
@@ -19,9 +21,12 @@ public class Mapa extends VBox {
     private final int filas, columnas;
     private Coordenada ultimaCoordenadaTocada;
     private Tablero tablero;
+    private Jugador jugador1;
+    private Jugador jugador2;
+    private ContenedorDeClases contenedor;
     //Constructor
 
-    public Mapa(Tablero tablero, Coordenada ultimaCoordenadaTocada){
+    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada){
 
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
@@ -30,8 +35,10 @@ public class Mapa extends VBox {
         this.filas = 20;
         this.columnas = 20;
         this.getChildren().add(this.matriz);
-        this.tablero = tablero;
+        this.tablero = contenedor.obtenerTablero();
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
+        this.jugador1 = contenedor.obtenerJugador1();
+        this.jugador2 = contenedor.obtenerJugador2();
         //this.actualizarTablero();
     }
 
@@ -81,14 +88,24 @@ public class Mapa extends VBox {
 
                 //Capas
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
+
                 ImageView vacio = (new ImageView(new Image("file:libre.png")));
                 //TODO cambiar el handler por los handlers que correspondan
-                //EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
+                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
 
                 //TODO bindiar el handler
-                //visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
 
                 this.matriz.add(vacio, y, x);
+                if (this.jugador1 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){
+                    ImageView duenio = (new ImageView(new Image("file:azul.png")));
+                    this.matriz.add(duenio,y,x);
+                }
+                if (this.jugador2 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){
+                    ImageView duenio = (new ImageView(new Image("file:rojo.png")));
+                    this.matriz.add(duenio,y,x);
+                }
+
                 this.matriz.add(visor, y, x);
 
             }

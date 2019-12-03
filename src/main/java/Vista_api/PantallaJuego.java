@@ -27,7 +27,7 @@ public class PantallaJuego {
                 BackgroundSize.DEFAULT);
         Background background = new Background(backgroundMapa);
 
-        mapa = new Mapa(contenedorDeClases.obtenerTablero(), ultimaCoordenadaTocada);
+        mapa = new Mapa(contenedorDeClases, ultimaCoordenadaTocada);
 
         mapa.setBackground(background);
 
