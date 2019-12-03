@@ -34,10 +34,10 @@ public class ControladorDeAgregarUnidad implements EventHandler<MouseEvent> {
     public void handle(MouseEvent mouseEvent) {
         try{
             Unidad nuevaUnidad = creador.crearUnidad(turno.obtenerJugadorActual());
-            if(turno.obtenerJugadorActual().agregarUnidad(nuevaUnidad)){
+            if(turno.obtenerJugadorActual().sePuedeAgregarUnidad(nuevaUnidad) ){
 
                 tablero.agregarUnidad(ultimaCoordenadaTocada, nuevaUnidad);
-
+                turno.obtenerJugadorActual().agregarUnidad(nuevaUnidad);
                 turno.obtenerJugadorActual().asignarPuntos(nuevaUnidad.descontarCosto(nuevaUnidad.obtenerDuenio().obtenerPuntos() ) );
                 turno.obtenerJugadorActual().aumentarCantidadUnidades();
 

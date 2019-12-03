@@ -37,13 +37,16 @@ public class Jugador {
         this.puntos = puntos;
     }
 
-    public boolean agregarUnidad(Unidad unidad){
-        if(unidad.descontarCosto(puntos) < 0) return false;
+    public void agregarUnidad(Unidad unidad){
+        asignarPuntos(unidad.descontarCosto(puntos) );
+        (this.cantidadUnidades)++;
+    }
 
-        /*asignarPuntos(unidad.descontarCosto(puntos) );
-        (this.cantidadUnidades)++;*/
+    public boolean sePuedeAgregarUnidad(Unidad unidad){
+        if(unidad.descontarCosto(puntos) < 0)
+            return false;
+
         return true;
-
     }
 
     public int obtenerPuntos() { return puntos; }
