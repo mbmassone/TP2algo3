@@ -52,7 +52,7 @@ public class PanelDerecho extends VBox {
         Button boton_terminar = new Button("Pasar Turno");
         Label informacion = new Label("");
 
-        boton_terminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa));
+        boton_terminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa, informacion));
 
         HBox banner_jugador = new HBox(texto_jugador_actual,jugador_actual);
 
@@ -63,13 +63,13 @@ public class PanelDerecho extends VBox {
         HBox hbox2 = new HBox(texto_vida_restante,vida);
         VBox vbox = new VBox(informacion_unidad,hbox,hbox2, informacion);
 
-        this.getChildren().addAll(texto_superior,banner_jugador,intrucciones,vbox, boton_terminar);
+        this.getChildren().addAll(texto_superior,banner_jugador,intrucciones, boton_terminar,vbox);
 
 
         this.mapa.actualizarTableroBatalla();
     }
     //Panel derecho con informacion de
     public void ganador(){
-        
+
     }
 }
