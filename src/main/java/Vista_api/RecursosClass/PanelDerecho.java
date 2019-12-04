@@ -49,7 +49,7 @@ public class PanelDerecho extends VBox {
         Label texto_vida_restante = new Label("Vida restante:");
         Label vida = new Label("");
         Label unidad = new Label("");
-        Button boton_terminar = new Button("Pasar Turno");
+        Button boton_terminar = new Button("Ejecutar y Pasar Turno");
         Label informacion = new Label("");
 
         boton_terminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa, informacion));
