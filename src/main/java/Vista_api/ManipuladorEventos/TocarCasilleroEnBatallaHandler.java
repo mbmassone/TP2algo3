@@ -39,6 +39,6 @@ public class TocarCasilleroEnBatallaHandler implements EventHandler<MouseEvent> 
         }
         System.out.println(posicionEnTablero.obtenerColumna() + "," + posicionEnTablero.obtenerFila());
 
-
     }
+
 }
