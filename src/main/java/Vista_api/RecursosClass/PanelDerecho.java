@@ -13,18 +13,23 @@ public class PanelDerecho extends VBox {
 
     public PanelDerechoColocarUnidades panelColocarUnidades;
 
+    private Label labelUnidad;
+    private Label labelVida;
     private ContenedorDeClases contenedor;
     private Coordenada ultimaCoordenadaTocada;
     private Coordenada coordenadaOrigen;
     private Coordenada coordenadaDestino;
     private Mapa mapa;
 
-    public PanelDerecho(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Coordenada coordenadaOrigen, Coordenada coordenadaDestino){
+
+    public PanelDerecho(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){
         this.contenedor = contenedor;
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
         this.mapa = mapa;
         this.coordenadaOrigen = coordenadaOrigen;
         this.coordenadaDestino = coordenadaDestino;
+        this.labelVida = labelVida;
+        this.labelUnidad = labelUnidad;
     }
 //TODO Deberia recibir el handler que manipula la creacion de unidades, que a si mismo se comuinicara con el tablero para crearlo
 
@@ -44,8 +49,6 @@ public class PanelDerecho extends VBox {
         Label informacionUnidad = new Label ("Informacion de la unidad seleccionada");
         Label textoUnidad = new Label("Unidad:");
         Label textoVidaRestante = new Label("Vida restante:");
-        Label vida = new Label("");
-        Label unidad = new Label("");
         Button botonTerminar = new Button("Ejecutar y Pasar Turno");
         Label informacion = new Label("");
 
@@ -56,8 +59,8 @@ public class PanelDerecho extends VBox {
         this.getChildren().remove(panelColocarUnidades);
         //Agregar cada elemento a si mismo
 
-        HBox hbox = new HBox(textoUnidad, unidad);
-        HBox hbox2 = new HBox(textoVidaRestante,vida);
+        HBox hbox = new HBox(textoUnidad, labelUnidad);
+        HBox hbox2 = new HBox(textoVidaRestante,labelVida);
         VBox vbox = new VBox(informacionUnidad,hbox,hbox2, informacion);
 
         this.getChildren().addAll(panelDeBatalla,banner_jugador,intrucciones, botonTerminar,vbox);

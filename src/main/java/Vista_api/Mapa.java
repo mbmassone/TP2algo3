@@ -6,6 +6,7 @@ import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
 import Vista_api.ManipuladorEventos.TocarCasilleroEnBatallaHandler;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,6 +19,8 @@ import static Vista_api.ConstantesInterfaz.*;
 
 public class Mapa extends VBox {
 
+    private Label labelUnidad;
+    private Label labelVida;
     private GridPane matriz;
     private final int filas, columnas;
     private Coordenada ultimaCoordenadaTocada;
@@ -29,7 +32,7 @@ public class Mapa extends VBox {
     private ContenedorDeClases contenedor;
     //Constructor
 
-    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Coordenada coordenadaOrigen, Coordenada coordenadaDestino){ //TODO buscar alternativa para pasar las coordenadas
+    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){ //TODO buscar alternativa para pasar las coordenadas
 
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
@@ -44,6 +47,8 @@ public class Mapa extends VBox {
         this.jugador2 = contenedor.obtenerJugador2();
         this.coordenadaOrigen = coordenadaOrigen;
         this.coordenadaDestino = coordenadaDestino;
+        this.labelVida = labelVida;
+        this.labelUnidad = labelUnidad;
         //this.actualizarTablero();
     }
 
@@ -95,7 +100,7 @@ public class Mapa extends VBox {
 
                 ImageView vacio = (new ImageView(new Image("file:libre.png")));
 
-                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, new TocarCasilleroEnBatallaHandler(new Coordenada(x,y), coordenadaOrigen, coordenadaDestino));
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, new TocarCasilleroEnBatallaHandler(tablero, new Coordenada(x,y), coordenadaOrigen, coordenadaDestino, labelVida, labelUnidad));
 
                 this.matriz.add(vacio, y, x);
                 if (this.jugador1 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){

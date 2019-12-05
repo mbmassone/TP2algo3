@@ -20,14 +20,16 @@ public class ControladorDeAgregarUnidad implements EventHandler<MouseEvent> {
     private CreadorDeUnidad creador;
     private Mapa mapa;
     private Label labelPuntos;
+    private Label informacion;
 
-    public ControladorDeAgregarUnidad(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, CreadorDeUnidad creador, Mapa mapa, Label labelPuntos){
+    public ControladorDeAgregarUnidad(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, CreadorDeUnidad creador, Mapa mapa, Label labelPuntos, Label informacion){
         this.tablero = contenedor.obtenerTablero();
         this.turno = contenedor.obtenerTurno();
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
         this.creador = creador;
         this.mapa = mapa;
         this.labelPuntos = labelPuntos;
+        this.informacion = informacion;
     }
 
     @Override
@@ -43,10 +45,12 @@ public class ControladorDeAgregarUnidad implements EventHandler<MouseEvent> {
 
 
             } else {
-                System.out.println("No tienes puntos suficientes"); //TODO avisar a usuario.
+                System.out.println("No tienes puntos suficientes");
+                informacion.setText("No tienes puntos suficientes.");
             }
         } catch (Exception exception){
-            System.out.println("No se puede agregar ahí"); //TODO avisar a usuario.
+            System.out.println("No se puede agregar ahí");
+            informacion.setText("No se puede agregar ahí.");
         }
 
         mapa.actualizarTablero();

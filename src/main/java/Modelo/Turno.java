@@ -24,6 +24,7 @@ public class Turno {
 
     public Jugador obtenerGanador(){
         if(j1.esGanador()) return j1;
-        else return j2;
+        else if(j2.esGanador()) return j2;
+        else return null;
     }
 }

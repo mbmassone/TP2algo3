@@ -24,14 +24,14 @@ public class PanelDerechoColocarUnidades extends VBox {
         Label intrucciones = new Label("\n\nBienvenido/a " + jugadorActual.getText() + "Para continuar haga click en una celda y haga click en la unidad que desea colocar\nRepita este porceso hasta que se acaben sus puntos\nAl terminar, hacer click en Terminar Turno\n\n\n\n");
         Button terminarTurno = new Button("Terminar Turno");
         Label informacion = new Label("");
-        terminarTurno.setOnAction(new TerminarTurnoHandler(jugadorActual, puntosRestantes, contenedor.obtenerTurno(), panelDerecho));
+        terminarTurno.setOnAction(new TerminarTurnoHandler(jugadorActual, puntosRestantes, contenedor.obtenerTurno(), panelDerecho, informacion));
 
         //Arego los contenedores
         HBox bannerJugador = new HBox(textoJugadorActual,jugadorActual);
         HBox bannerPuntos = new HBox(textoPuntosRestantes, puntosRestantes);
 
         //Creo la clase que contiene el tablero de unidades que el jugador puede seleccionar
-        TableroUnidadesACrear tableroUnidadesACrear = new TableroUnidadesACrear(contenedor, ultimaCoordenadaTocada, mapa, puntosRestantes);
+        TableroUnidadesACrear tableroUnidadesACrear = new TableroUnidadesACrear(contenedor, ultimaCoordenadaTocada, mapa, puntosRestantes, informacion);
         tableroUnidadesACrear.setAlignment(Pos.CENTER);
         textoSuperior.setAlignment(Pos.CENTER);
         textoSuperior.setTextAlignment(TextAlignment.CENTER);

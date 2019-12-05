@@ -93,4 +93,12 @@ public class Tablero {
     public Jugador obtenerDuenioCasillero(Coordenada coordenada){
         return obtenerCasillero(coordenada).obtenerDuenio();
     }
+
+    public String obtenerStringVida(Coordenada coordenada) {
+        if(obtenerCasillero(coordenada).estaLibre()){
+            return "-";
+        } else {
+            return String.format("%.2f", obtenerCasillero(coordenada).obtenerUnidad().getVida());
+        }
+    }
 }

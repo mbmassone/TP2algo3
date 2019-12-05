@@ -30,7 +30,7 @@ public class TableroUnidadesACrear extends HBox {
 
     GridPane matriz;
 
-    public TableroUnidadesACrear(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Label labelPuntos){
+    public TableroUnidadesACrear(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Label labelPuntos, Label labelInfromacion){
         //Setup de la grilla que contiene a la muestra d eunidades
         this.matriz = new GridPane();
         this.matriz.setHgap(20);
@@ -48,10 +48,10 @@ public class TableroUnidadesACrear extends HBox {
 
         //Los asocio al hacer click en cada unidad.
 
-        imagenCatapulta.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCatapulta(), mapa, labelPuntos));
-        imagenCurandero.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCurandero(), mapa, labelPuntos));
-        imagenInfanteria.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeInfanteria(), mapa, labelPuntos));
-        imagenJinete.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeJinete(), mapa, labelPuntos));
+        imagenCatapulta.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCatapulta(), mapa, labelPuntos, labelInfromacion));
+        imagenCurandero.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCurandero(), mapa, labelPuntos, labelInfromacion));
+        imagenInfanteria.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeInfanteria(), mapa, labelPuntos, labelInfromacion));
+        imagenJinete.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeJinete(), mapa, labelPuntos, labelInfromacion));
 
         //Setup de textos
         textoCatapulta = new Label("Catapulta\n5");
