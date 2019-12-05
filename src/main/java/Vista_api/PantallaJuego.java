@@ -16,7 +16,7 @@ public class PantallaJuego {
 
     public void inicializar(Stage stage, ContenedorDeClases contenedorDeClases) {
 
-        Coordenada ultimaCoordenadaTocada = new Coordenada(0,0); //Le pongo una posicion inicial
+        Coordenada ultimaCoordenadaTocada = new Coordenada(-1,-1); //Le pongo una posicion inicial
         Coordenada coordenadaOrigen = new Coordenada(0,0);
         Coordenada coordenadaDestino = new Coordenada(0,0);
 
