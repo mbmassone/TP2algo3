@@ -1,12 +1,9 @@
 package Controlador;
 
-import Modelo.AtacarAliadoExcepcion;
+import Modelo.*;
 import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
-import Modelo.CatapultaNoSePuedeMoverExcepcion;
-import Modelo.CurarEnemigoExcepcion;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
-import Modelo.Turno;
 import Vista_api.Mapa;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -50,10 +47,13 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
             try{
                 tablero.accionConUnidad(coordenadaOrigen, coordenadaDestino);
             } catch (AtacarAliadoExcepcion excepcion) {
-                System.out.println("No se puede atacar a aliados"); //TODO avisar a usuario.
+                this.info.setText("\nNo se puede atacar a aliados\n");
             }
             catch (CurarEnemigoExcepcion exception){
                 this.info.setText("\nNo puedes curar a una unidad enemiga\n");
+            }
+            catch (CatapultaCuracionException excepcion){
+                this.info.setText("\nNo puedes curar una catapulta\n");
             }
 
         }
