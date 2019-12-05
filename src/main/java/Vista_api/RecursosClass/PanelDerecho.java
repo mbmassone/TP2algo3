@@ -47,14 +47,14 @@ public class PanelDerecho extends VBox {
         Label panelDeBatalla = new Label("Panel de Batalla");
         Label textoJugadorActual = new Label("Turno actual:");
         Label jugadorActual = new Label(this.contenedor.obtenerTurno().obtenerJugadorActual().obtenerNombre());
-        Label intrucciones = new Label("\n\nBienvenido/a " + jugadorActual.getText() + " INSTRUCCIONES:\nClick Primario: Selecciona la unidad a usar\nClick Secundario: Elije el objetivo de la unidad\n\nSi es un espacio vacio se mueve, Si es una unidad enemiga la ataca.\n\n");
+        Label intrucciones = new Label("\n\nBienvenido/a - INSTRUCCIONES:\nClick Primario: Selecciona la unidad a usar\nClick Secundario: Elije el objetivo de la unidad\n\nSi es un espacio vacio se mueve, Si es una unidad enemiga la ataca.\n\n");
         Label informacionUnidad = new Label("Informacion de la unidad seleccionada");
         Label textoUnidad = new Label("Unidad:");
         Label textoVidaRestante = new Label("Vida restante:");
         Button botonTerminar = new Button("Ejecutar y Pasar Turno");
         Label informacion = new Label("");
 
-        botonTerminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa, informacion));
+        botonTerminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa, informacion, jugadorActual));
 
         HBox banner_jugador = new HBox(textoJugadorActual, jugadorActual);
 
