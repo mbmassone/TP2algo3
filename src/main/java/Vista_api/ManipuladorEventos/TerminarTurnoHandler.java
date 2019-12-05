@@ -29,6 +29,10 @@ public class TerminarTurnoHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        if(turno.obtenerJugadorActual().obtenerCantidadUnidades() == 0){
+            informacion.setText("Es necesario tener al menos una unidad.");
+            return;
+        }
         turno.cambiarTurno();
 
         jugadorActual.setText(turno.obtenerJugadorActual().obtenerNombre());

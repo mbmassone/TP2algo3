@@ -22,17 +22,24 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
     public ControladorDeMovimientoYAccion(ContenedorDeClases contenedor, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Mapa mapa, Label informacion){
 
         this.tablero = contenedor.obtenerTablero();
-        //this.turno = contenedor.obtenerTurno(); TODO se podria chequear el turno para mover/atacar.
         this.coordenadaOrigen = coordenadaOrigen;
         this.coordenadaDestino = coordenadaDestino;
         this.mapa = mapa;
         this.info = informacion;
+        this.turno = contenedor.obtenerTurno();
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         //Limpiar el panel de informacion
         this.info.setText("");
+        if(tablero.obtenerDuenioUnidad(coordenadaOrigen) == null){
+            this.info.setText("\nINFORMACION: No hay unidad ahí.\n");
+            return;
+        } else if(tablero.obtenerDuenioUnidad(coordenadaOrigen) != turno.obtenerJugadorActual()) {
+            this.info.setText("\nINFORMACION: Solo puedes utilizar a tus unidades.\n");
+            return;
+        }
         if(tablero.estaLibre(coordenadaDestino)){
             try{
                 tablero.moverUnidad(coordenadaOrigen, coordenadaDestino);
