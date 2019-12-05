@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.*;
+import Modelo.Casillero.CasilleroFueraDeRangoExcepcion;
 import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
@@ -59,6 +60,9 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
             }
             catch (CatapultaNoSePuedeMoverExcepcion exception) {
                 this.info.setText("\nINFORMACION: Las cataputas no se mueven\n");
+            }
+            catch (CasilleroFueraDeRangoExcepcion excepcion) {
+                
             }
         } else {
             //Atacar
