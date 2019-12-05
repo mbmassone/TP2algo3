@@ -52,7 +52,7 @@ public class Mapa extends VBox {
         this.labelUnidad = labelUnidad;
         //this.actualizarTablero();
         this.check = (new ImageView(new Image("file:check.png")));
-        this.check2 = (new ImageView(new Image("file:hitmarker2.png")));
+        this.check2 = (new ImageView(new Image("file:hitmarker.png")));
     }
 
     //Actualiza la vista del mapa
@@ -67,7 +67,7 @@ public class Mapa extends VBox {
                 //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
 
-                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(coordenada_temp, ultimaCoordenadaTocada);
+                EventHandlerCeldaMapa eventHandlerCeldaMapa = new EventHandlerCeldaMapa(this, coordenada_temp, ultimaCoordenadaTocada);
 
                 //Se deberia crear el handler primero y despues asignarlo
                 visor.addEventFilter(MouseEvent.MOUSE_CLICKED, eventHandlerCeldaMapa);
@@ -101,7 +101,7 @@ public class Mapa extends VBox {
 
                 ImageView vacio = (new ImageView(new Image("file:libre.png")));
 
-                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, new TocarCasilleroEnBatallaHandler(tablero, new Coordenada(x,y), coordenadaOrigen, coordenadaDestino, labelVida, labelUnidad));
+                visor.addEventFilter(MouseEvent.MOUSE_CLICKED, new TocarCasilleroEnBatallaHandler(this, tablero, new Coordenada(x,y), coordenadaOrigen, coordenadaDestino, labelVida, labelUnidad));
 
                 this.matriz.add(vacio, y, x);
                 if (this.jugador1 == this.tablero.obtenerDuenioUnidad(coordenada_temp)){
@@ -121,7 +121,7 @@ public class Mapa extends VBox {
     }
 
     public void colocarMarcaEnMapa(Coordenada coordenada){
-        this.matriz.add(this.check, coordenada.obtenerFila(), coordenada.obtenerColumna());
+        this.matriz.add(this.check, coordenada.obtenerColumna(), coordenada.obtenerFila());
     }
 
 
@@ -130,7 +130,7 @@ public class Mapa extends VBox {
     }
 
     public void colocarMarca2EnMapa(Coordenada coordenada){
-        this.matriz.add(this.check2, coordenada.obtenerFila(), coordenada.obtenerColumna());
+        this.matriz.add(this.check2, coordenada.obtenerColumna(), coordenada.obtenerFila());
     }
 
 

@@ -15,26 +15,32 @@ public class TocarCasilleroEnBatallaHandler implements EventHandler<MouseEvent> 
     private Coordenada coordenadaDestino;
     private Label labelVida;
     private Label labelUnidad;
+    private Mapa mapa;
 
-    public TocarCasilleroEnBatallaHandler(Tablero tablero, Coordenada posicionEnTablero, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad) {
+    public TocarCasilleroEnBatallaHandler(Mapa mapa, Tablero tablero, Coordenada posicionEnTablero, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad) {
         this.posicionEnTablero = posicionEnTablero;
         this.coordenadaOrigen = coordenadaOrigen;
         this.coordenadaDestino = coordenadaDestino;
         this.labelUnidad = labelUnidad;
         this.labelVida = labelVida;
         this.tablero = tablero;
+        this.mapa = mapa;
     }
 
 
     @Override
     public void handle(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseButton.PRIMARY){
+            mapa.sacarMarcaEnMapa(coordenadaOrigen);
+            mapa.colocarMarcaEnMapa(posicionEnTablero);
             System.out.print("Coordenada Origen");
             labelUnidad.setText(tablero.contenidoCasillero(posicionEnTablero));
             labelVida.setText(tablero.obtenerStringVida(posicionEnTablero));
             coordenadaOrigen.cambiarCoordenada(posicionEnTablero);
         } else {
             System.out.println("Coordenada Destino");
+            mapa.sacarMarca2EnMapa(coordenadaDestino);
+            mapa.colocarMarca2EnMapa(posicionEnTablero);
             coordenadaDestino.cambiarCoordenada(posicionEnTablero);
         }
         System.out.println(posicionEnTablero.obtenerColumna() + "," + posicionEnTablero.obtenerFila());
