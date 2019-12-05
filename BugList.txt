@@ -5,6 +5,7 @@ Bugs conocidos
 [] La catapulta parece no hacer daño, desde donde es larga distancia?
 [] URGENTE: La catapulta no ataca a los aliados (La consigna dice que debe atacarlos)
 [] URGENTE: donde esta que la unidad reciba 5% mas de daño si esta en terriotorio enemigo? (Modelo)
+[] URGENTE: verificar las condiciones de ataque del jinete (Modelo)
 
 Problemas (o no) que ocurren
 
