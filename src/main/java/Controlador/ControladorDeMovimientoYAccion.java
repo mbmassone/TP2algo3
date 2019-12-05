@@ -59,5 +59,6 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
         }
 
         mapa.actualizarTableroBatalla();
+
     }
 }

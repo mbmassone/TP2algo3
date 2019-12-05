@@ -1,6 +1,7 @@
 package Vista_api;
 
 import Controlador.ContenedorDeClases;
+import Modelo.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.SalirJuegoHandler;
@@ -59,12 +60,8 @@ public class PantallaJuego {
        //Seteando esta escena, ahora los eventos de esta seran manipulado por otros (manipuladores de evento)
        stage.setScene(escenaJuego);
 
-       //Como terminar el juego
-        Button botonSalir = new Button("Salir ");
-        SalirJuegoHandler salirJuegoHandler = new SalirJuegoHandler(stage);
-        botonSalir.setOnAction(salirJuegoHandler);
-
-
     }
+
+
 
 }
