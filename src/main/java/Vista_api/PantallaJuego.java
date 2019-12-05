@@ -34,9 +34,9 @@ public class PantallaJuego {
         mapa.setBackground(background);
 
         //contenedor principal es el grupo de nodos mas externo de toda la pantalla
-       HBox contenedor_principal = new HBox();
+       HBox contenedorPrincipal = new HBox();
 
-       contenedor_principal.setSpacing(20);
+       contenedorPrincipal.setSpacing(20);
 
        //panel Derecho donde estaran los controles o la informacion del tablero
         PanelDerecho panel_derecho = new PanelDerecho(contenedorDeClases, ultimaCoordenadaTocada, mapa, coordenadaOrigen, coordenadaDestino);
@@ -45,14 +45,14 @@ public class PantallaJuego {
         mapa.actualizarTablero();
 
         //Metemos los contenidos
-        contenedor_principal.getChildren().addAll(mapa,panel_derecho);
+        contenedorPrincipal.getChildren().addAll(mapa,panel_derecho);
         panel_derecho.colocarUnidades();
 
         //Creamos la escena
-       Scene escena_juego = new Scene(contenedor_principal);
+       Scene escenaJuego = new Scene(contenedorPrincipal);
 
        //Seteando esta escena, ahora los eventos de esta seran manipulado por otros (manipuladores de evento)
-       stage.setScene(escena_juego);
+       stage.setScene(escenaJuego);
     }
 
     public void actualizar() {

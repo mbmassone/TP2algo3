@@ -4,11 +4,11 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.stage.Stage;
 
-public class Salir_Juego_Handler implements EventHandler<ActionEvent> {
+public class SalirJuegoHandler implements EventHandler<ActionEvent> {
 
     private Stage stage;
 
-    public Salir_Juego_Handler(Stage stage) {
+    public SalirJuegoHandler(Stage stage) {
         this.stage = stage;
     }
 

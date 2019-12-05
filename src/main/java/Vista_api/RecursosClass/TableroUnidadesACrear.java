@@ -18,15 +18,15 @@ import static Vista_api.ConstantesInterfaz.*;
 
 public class TableroUnidadesACrear extends HBox {
 
-    ImageView imagen_catapulta;
-    ImageView imagen_curandero;
-    ImageView imagen_infanteria;
-    ImageView imagen_jinete;
+    ImageView imagenCatapulta;
+    ImageView imagenCurandero;
+    ImageView imagenInfanteria;
+    ImageView imagenJinete;
 
-    Label texto_catapulta;
-    Label texto_curandero;
-    Label texto_infanteria;
-    Label texto_jinete;
+    Label textoCatapulta;
+    Label textoCurandero;
+    Label textoInfanteria;
+    Label textoJinete;
 
     GridPane matriz;
 
@@ -37,10 +37,10 @@ public class TableroUnidadesACrear extends HBox {
         this.matriz.setVgap(20);
 
         //Carga de imagenes
-        imagen_catapulta = new ImageView(new Image(IMG_CATAPULTA));
-        imagen_curandero = new ImageView(new Image(IMG_CURANDERO));
-        imagen_infanteria = new ImageView(new Image(IMG_INFANTERIA));
-        imagen_jinete = new ImageView(new Image(IMG_JINETE));
+        imagenCatapulta = new ImageView(new Image(IMG_CATAPULTA));
+        imagenCurandero = new ImageView(new Image(IMG_CURANDERO));
+        imagenInfanteria = new ImageView(new Image(IMG_INFANTERIA));
+        imagenJinete = new ImageView(new Image(IMG_JINETE));
 
         //Creo los handlers para cada imagen
 
@@ -48,25 +48,25 @@ public class TableroUnidadesACrear extends HBox {
 
         //Los asocio al hacer click en cada unidad.
 
-        imagen_catapulta.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCatapulta(), mapa, labelPuntos));
-        imagen_curandero.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCurandero(), mapa, labelPuntos));
-        imagen_infanteria.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeInfanteria(), mapa, labelPuntos));
-        imagen_jinete.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeJinete(), mapa, labelPuntos));
+        imagenCatapulta.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCatapulta(), mapa, labelPuntos));
+        imagenCurandero.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeCurandero(), mapa, labelPuntos));
+        imagenInfanteria.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeInfanteria(), mapa, labelPuntos));
+        imagenJinete.addEventFilter(MouseEvent.MOUSE_CLICKED, new ControladorDeAgregarUnidad(contenedor, ultimaCoordenadaTocada, new CreadorDeJinete(), mapa, labelPuntos));
 
         //Setup de textos
-        texto_catapulta = new Label("Catapulta\n5");
-        texto_curandero = new Label("Curandero\n2");
-        texto_infanteria= new Label("Infanteria\n1");
-        texto_jinete= new Label("Jinete\n3");
+        textoCatapulta = new Label("Catapulta\n5");
+        textoCurandero = new Label("Curandero\n2");
+        textoInfanteria = new Label("Infanteria\n1");
+        textoJinete = new Label("Jinete\n3");
         //Coloco las imagenes y los textos en la grilla
-        this.matriz.add(imagen_catapulta,0,0);
-        this.matriz.add(texto_catapulta,1,0);
-        this.matriz.add(imagen_curandero,0,1);
-        this.matriz.add(texto_curandero,1,1);
-        this.matriz.add(imagen_infanteria,0,2);
-        this.matriz.add(texto_infanteria,1,2);
-        this.matriz.add(imagen_jinete,0,3);
-        this.matriz.add(texto_jinete,1,3);
+        this.matriz.add(imagenCatapulta,0,0);
+        this.matriz.add(textoCatapulta,1,0);
+        this.matriz.add(imagenCurandero,0,1);
+        this.matriz.add(textoCurandero,1,1);
+        this.matriz.add(imagenInfanteria,0,2);
+        this.matriz.add(textoInfanteria,1,2);
+        this.matriz.add(imagenJinete,0,3);
+        this.matriz.add(textoJinete,1,3);
 
 
 

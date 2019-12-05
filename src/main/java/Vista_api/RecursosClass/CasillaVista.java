@@ -1,12 +1,11 @@
 package Vista_api.RecursosClass;
 
-import Modelo.Unidad;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.FileInputStream;
 
-public class Casilla_vista {
+public class CasillaVista {
 
     private enum Estado{
         VACIO,
@@ -17,22 +16,22 @@ public class Casilla_vista {
     }
     //Esto seguro puede hacerce con solo un Image y un solo visor, pero ni idea por el momento
 
-    private Image casillero_image;
-    private ImageView visor_casillero_image;
+    private Image casilleroImage;
+    private ImageView visorCasilleroImage;
 
 
     //Tambien podria ser le constructor, pero dbeeria mandarle el estado de la casilla a la que pertenece
     //Desconozco si todas las unidades pueden ser reemplazadas por la clase unidad.
     //TODO cambiar lo que recibe
 
-    public Casilla_vista() {
+    public CasillaVista() {
 
     }
 
     public ImageView mostrar(){
         //Constructor, deberia setupear el estado de la casilla al iniciar
         //Talvez pueda ser reemplazado por el actualizar
-        return this.visor_casillero_image;
+        return this.visorCasilleroImage;
     }
 
     //podriamos directamente usar el constructor cada vez que quisieramos actualizar, aun estoy en duda
@@ -41,12 +40,12 @@ public class Casilla_vista {
         FileInputStream imagen = new FileInputStream(string + ".png");
 
         //Referencio todas las imagenes
-        this.casillero_image = new Image(imagen);
+        this.casilleroImage = new Image(imagen);
 
 
         //Coloco un visor de imagenes por cada flujo abierto
 
-        this.visor_casillero_image = new ImageView(casillero_image);
+        this.visorCasilleroImage = new ImageView(casilleroImage);
 
     }
 

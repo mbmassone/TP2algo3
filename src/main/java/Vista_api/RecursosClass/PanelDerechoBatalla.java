@@ -8,20 +8,20 @@ import javafx.scene.text.TextAlignment;
 public class PanelDerechoBatalla extends VBox {
 
     public PanelDerechoBatalla(){
-        Label texto_superior = new Label("Panel de controles");
-        Label texto_jugador_actual = new Label("Turno actual:");
+        Label panelDeControles = new Label("Panel de controles");
+        Label textoJugadorActual = new Label("Turno actual:");
 
 
-        texto_superior.setAlignment(Pos.CENTER);
-        texto_superior.setTextAlignment(TextAlignment.CENTER);
+        panelDeControles.setAlignment(Pos.CENTER);
+        panelDeControles.setTextAlignment(TextAlignment.CENTER);
 
 
-        texto_jugador_actual.setAlignment(Pos.CENTER_LEFT);
-        texto_jugador_actual.setTextAlignment(TextAlignment.LEFT);
+        textoJugadorActual.setAlignment(Pos.CENTER_LEFT);
+        textoJugadorActual.setTextAlignment(TextAlignment.LEFT);
 
 
         //Agregar cada elemento a si mismo
-        this.getChildren().addAll(texto_superior,texto_jugador_actual);
+        this.getChildren().addAll(panelDeControles,textoJugadorActual);
     }
 
     public void actualizar(){

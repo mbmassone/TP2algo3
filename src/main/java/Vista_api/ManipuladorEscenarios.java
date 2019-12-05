@@ -2,7 +2,7 @@ package Vista_api;
 
 import javafx.stage.Stage;
 
-public interface Manipulador_escenarios {
+public interface ManipuladorEscenarios {
 
     //inicializa el escenario
     void inicializar();

@@ -1,8 +1,8 @@
 package Vista_api;
 
 import Vista_api.ManipuladorEventos.EasterEggLogo;
-import Vista_api.ManipuladorEventos.Empezar_juego_Handler;
-import Vista_api.ManipuladorEventos.Salir_Juego_Handler;
+import Vista_api.ManipuladorEventos.EmpezarJuegoHandler;
+import Vista_api.ManipuladorEventos.SalirJuegoHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,14 +17,14 @@ import javafx.stage.Stage;
 
 import static Vista_api.ConstantesInterfaz.*;
 
-public class PantallaTitulo implements Manipulador_escenarios {
+public class PantallaTitulo implements ManipuladorEscenarios {
 
     public Scene titulo;
 
     public void inicializar(Stage stage){
 
         //abro una imagen y se lo asigno a un visor
-        ImageView Imagen_titulo = (new ImageView(new Image(IMG_TITULO)));
+        ImageView imagenTitulo = (new ImageView(new Image(IMG_TITULO)));
 
 
         TextField textfield1 = new TextField();
@@ -33,33 +33,33 @@ public class PantallaTitulo implements Manipulador_escenarios {
         textfield2.setPromptText("Jugador2");
         Label informacion = new Label();
 
-        VBox contenedor_text_fields = new VBox();
-        contenedor_text_fields.prefWidth(20); //Pixeles de distancia entre las cosas
+        VBox contenedorTextFields = new VBox();
+        contenedorTextFields.prefWidth(20); //Pixeles de distancia entre las cosas
 
-        contenedor_text_fields.getChildren().addAll(textfield1,textfield2, informacion);
+        contenedorTextFields.getChildren().addAll(textfield1,textfield2, informacion);
 
         //Creo botones
-        Button boton_dummy = new Button("Dummy");
-        Button boton_iniciar = new Button("Iniciar");
-        Button boton_salir = new Button("Salir ");
+        Button botonDummy = new Button("Dummy");
+        Button botonIniciar = new Button("Iniciar");
+        Button botonSalir = new Button("Salir ");
 
         //Creacion de Handlers y sus iniciaciones
-        Salir_Juego_Handler salir_juego_handler = new Salir_Juego_Handler(stage);
-        Empezar_juego_Handler jugarHandler = new Empezar_juego_Handler(stage,textfield1,textfield2,informacion);
-        EasterEggLogo logo_bonus = new EasterEggLogo();
+        SalirJuegoHandler salirJuegoHandler = new SalirJuegoHandler(stage);
+        EmpezarJuegoHandler jugarHandler = new EmpezarJuegoHandler(stage,textfield1,textfield2,informacion);
+        EasterEggLogo eggLogo = new EasterEggLogo();
 
         //Asignacion de triggers de eventos a los botones
         //Dummy usa un lambda
-        boton_dummy.setOnAction((event) -> System.out.println("Tocaboton"));
-        boton_salir.setOnAction(salir_juego_handler);
-        boton_iniciar.setOnAction(jugarHandler);
+        botonDummy.setOnAction((event) -> System.out.println("Tocaboton"));
+        botonSalir.setOnAction(salirJuegoHandler);
+        botonIniciar.setOnAction(jugarHandler);
 
         //Dispara el evento logo_bonus SOLO al hacer click en el logo del titulo
-        Imagen_titulo.addEventFilter(MouseEvent.MOUSE_CLICKED, logo_bonus);
+        imagenTitulo.addEventFilter(MouseEvent.MOUSE_CLICKED, eggLogo);
 
         //Creo contenedores y
-        HBox hbox = new HBox(boton_dummy, boton_iniciar, boton_salir);
-        VBox vbox = new VBox(20,Imagen_titulo,contenedor_text_fields,hbox);
+        HBox hbox = new HBox(botonDummy, botonIniciar, botonSalir);
+        VBox vbox = new VBox(20,imagenTitulo,contenedorTextFields,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
 
