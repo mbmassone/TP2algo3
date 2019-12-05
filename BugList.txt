@@ -3,6 +3,7 @@ Bugs conocidos
 [] El click izquierdo solo es valido si se lo hace SOBRE la ultima capa dibujada (por ejemplo, si no s ele hace click a la silueta del curandero, no se selecciona)
 -> Se solucionaria usando una capa alfa(? entera sobre cada casilla dibujada
 [] La catapulta parece no hacer daño, desde donde es larga distancia?
+[] URGENTE: La catapulta no ataca a los aliados (La consigna dice que debe atacarlos)
 
 Problemas (o no) que ocurren
 
