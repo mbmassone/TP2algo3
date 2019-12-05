@@ -16,7 +16,7 @@ public class VentanaEmergenteGanador extends VBox {
 
     private Stage stage;
 
-    public VentanaEmergenteGanador(Scene stage){
+    public VentanaEmergenteGanador(Stage stage){
         this.stage = stage;
     }
 
