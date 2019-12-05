@@ -3,6 +3,7 @@ package Controlador;
 import Modelo.AtacarAliadoExcepcion;
 import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
 import Modelo.CatapultaNoSePuedeMoverExcepcion;
+import Modelo.CurarEnemigoExcepcion;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Modelo.Turno;
@@ -51,6 +52,10 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
             } catch (AtacarAliadoExcepcion excepcion) {
                 System.out.println("No se puede atacar a aliados"); //TODO avisar a usuario.
             }
+            catch (CurarEnemigoExcepcion exception){
+                this.info.setText("\nNo puedes curar a una unidad enemiga\n");
+            }
+
         }
 
         mapa.actualizarTableroBatalla();

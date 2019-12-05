@@ -89,15 +89,12 @@ public class Mapa extends VBox {
 
                 Coordenada coordenada_temp = new Coordenada(x,y);
                 String string = this.tablero.contenidoCasillero(coordenada_temp);
-                //System.out.println(string);
 
                 //Capas
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
 
                 ImageView vacio = (new ImageView(new Image("file:libre.png")));
-                //TODO cambiar el handler por los handlers que correspondan
 
-                //TODO bindiar el handler
                 visor.addEventFilter(MouseEvent.MOUSE_CLICKED, new TocarCasilleroEnBatallaHandler(new Coordenada(x,y), coordenadaOrigen, coordenadaDestino));
 
                 this.matriz.add(vacio, y, x);
