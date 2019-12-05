@@ -44,8 +44,5 @@ public class PanelDerechoColocarUnidades extends VBox {
         this.getChildren().addAll(textoSuperior,bannerJugador,bannerPuntos,intrucciones, tableroUnidadesACrear, terminarTurno, informacion);
         terminarTurno.setAlignment(Pos.CENTER);
     }
-
-    public void actualizar(){
-
-    }
+    
 }
