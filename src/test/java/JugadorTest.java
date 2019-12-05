@@ -1,6 +1,5 @@
-import Modelo.Casillero.Casillero;
-import Modelo.Infanteria;
-import Modelo.Jugador;
+import Modelo.Unidad.Infanteria;
+import Modelo.Jugador.Jugador;
 import org.junit.Assert;
 import org.junit.Test;
 

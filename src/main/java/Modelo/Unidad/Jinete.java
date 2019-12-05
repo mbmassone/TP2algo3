@@ -1,8 +1,7 @@
-package Modelo;
-import Modelo.Casillero.Casillero;
+package Modelo.Unidad;
 import Modelo.Casillero.IdentificadorDeEnemigos;
 import Modelo.Casillero.IdentificadorDeInfanterias;
-import Modelo.Unidad;
+import Modelo.Jugador.Jugador;
 
 public class Jinete extends Atacante {
 

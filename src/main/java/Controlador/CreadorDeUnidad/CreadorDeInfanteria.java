@@ -1,8 +1,8 @@
 package Controlador.CreadorDeUnidad;
 
-import Modelo.Infanteria;
-import Modelo.Jugador;
-import Modelo.Unidad;
+import Modelo.Unidad.Infanteria;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Unidad;
 
 public class CreadorDeInfanteria implements CreadorDeUnidad {
     @Override

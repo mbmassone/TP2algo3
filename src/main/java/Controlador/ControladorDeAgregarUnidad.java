@@ -1,15 +1,12 @@
 package Controlador;
 
 import Controlador.CreadorDeUnidad.CreadorDeUnidad;
-import Modelo.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
-import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExcepcion;
 import Modelo.Turno;
-import Modelo.Unidad;
+import Modelo.Unidad.Unidad;
 import Vista_api.Mapa;
 import javafx.event.EventHandler;
-import javafx.event.ActionEvent;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 

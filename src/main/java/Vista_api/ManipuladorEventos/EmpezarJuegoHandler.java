@@ -8,8 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-
-//Nose como funciona, pero funciona. ejecuta primero el constructor y despues salta al handle
 public class EmpezarJuegoHandler implements EventHandler<ActionEvent> {
 
     private Stage jugando;

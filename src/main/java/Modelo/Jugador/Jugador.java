@@ -1,5 +1,7 @@
-package Modelo;
+package Modelo.Jugador;
 
+
+import Modelo.Unidad.Unidad;
 
 public class Jugador {
     //Atributos
@@ -52,8 +54,6 @@ public class Jugador {
     public int obtenerPuntos() { return puntos; }
 
     public int obtenerCantidadUnidades(){ return cantidadUnidades; }
-
-    public void aumentarCantidadUnidades(){ (this.cantidadUnidades)++; }
 
     public boolean esGanador(){
         return cantidadUnidades == 0;

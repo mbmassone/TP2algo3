@@ -1,7 +1,7 @@
 package Vista_api;
 
 import Controlador.ContenedorDeClases;
-import Modelo.Jugador;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.EventHandlerCeldaMapa;
@@ -10,11 +10,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
-
-import static Vista_api.ConstantesInterfaz.*;
 
 
 public class Mapa extends VBox {
@@ -50,7 +47,6 @@ public class Mapa extends VBox {
         this.coordenadaDestino = coordenadaDestino;
         this.labelVida = labelVida;
         this.labelUnidad = labelUnidad;
-        //this.actualizarTablero();
         this.check = (new ImageView(new Image("file:check.png")));
         this.check2 = (new ImageView(new Image("file:hitmarker.png")));
     }

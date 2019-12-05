@@ -66,17 +66,6 @@ public class PantallaTitulo implements ManipuladorEscenarios {
     }
 
     @Override
-    public void inicializar() {
-
-    }
-
-    @Override
-    public void actualizar(){
-
-    }
-
-
-    @Override
     public void mostrar(Stage stage) {
         stage.setScene(this.titulo);
     }

@@ -1,4 +1,6 @@
-package Modelo;
+package Modelo.Unidad.Distancia;
+
+import Modelo.Unidad.Unidad;
 
 public class DistanciaMediana extends TipoDistancia {
 

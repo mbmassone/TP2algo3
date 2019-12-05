@@ -1,8 +1,7 @@
-package Modelo;
+package Modelo.Unidad;
 
 import Modelo.Casillero.IdentificadorDeInfanterias;
-import Modelo.Casillero.Casillero;
-import Modelo.Casillero.IdentificadorDeInfanterias;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Direccion;
 import java.util.List;
 

@@ -1,11 +1,10 @@
-import Modelo.Casillero.Casillero;
 import Modelo.Casillero.CasilleroOcupadoExcepcion;
-import Modelo.Infanteria;
-import Modelo.Jugador;
+import Modelo.Unidad.Infanteria;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Modelo.Tablero.UnidadAgregadaEnSectorEnemigoExcepcion;
-import Modelo.Unidad;
+import Modelo.Unidad.Unidad;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,6 +1,7 @@
-package Modelo;
+package Modelo.Unidad;
 
-import Modelo.Casillero.Casillero;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Distancia.TipoDistancia;
 
 public abstract class Atacante extends Unidad {
     protected float danioCercano;

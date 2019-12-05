@@ -1,4 +1,4 @@
-package Modelo;
+package Modelo.Unidad;
 
 public class CatapultaNoSePuedeMoverExcepcion extends RuntimeException {
 }

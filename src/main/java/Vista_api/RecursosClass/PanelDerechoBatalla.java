@@ -23,8 +23,4 @@ public class PanelDerechoBatalla extends VBox {
         //Agregar cada elemento a si mismo
         this.getChildren().addAll(panelDeControles,textoJugadorActual);
     }
-
-    public void actualizar(){
-
-    }
 }

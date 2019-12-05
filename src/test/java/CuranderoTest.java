@@ -1,8 +1,10 @@
-import Modelo.*;
-import Modelo.Casillero.Casillero;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
-import org.junit.Assert;
+import Modelo.Unidad.Curandero;
+import Modelo.Unidad.CurarEnemigoExcepcion;
+import Modelo.Unidad.Infanteria;
+import Modelo.Unidad.Jinete;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

@@ -1,5 +1,5 @@
-package Modelo;
-import Modelo.Casillero.Casillero;
+package Modelo.Unidad;
+import Modelo.Jugador.Jugador;
 
 public class Curandero extends Curador{
 

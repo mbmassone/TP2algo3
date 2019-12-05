@@ -1,6 +1,6 @@
-package Modelo;
+package Modelo.Unidad;
 import Modelo.Casillero.IdentificadorDeUnidades;
-import Modelo.Casillero.Casillero;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Direccion;
 
 import java.util.List;

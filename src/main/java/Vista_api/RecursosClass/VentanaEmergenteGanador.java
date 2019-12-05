@@ -1,6 +1,6 @@
 package Vista_api.RecursosClass;
 
-import Modelo.Jugador;
+import Modelo.Jugador.Jugador;
 import Vista_api.ManipuladorEventos.SalirJuegoHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

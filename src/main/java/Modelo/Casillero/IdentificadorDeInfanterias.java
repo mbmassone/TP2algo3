@@ -1,7 +1,7 @@
 package Modelo.Casillero;
 
-import Modelo.Jugador;
-import Modelo.Unidad;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Unidad;
 
 public class IdentificadorDeInfanterias implements Identificador {
 

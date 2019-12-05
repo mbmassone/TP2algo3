@@ -1,8 +1,8 @@
 package Controlador.CreadorDeUnidad;
 
-import Modelo.Jinete;
-import Modelo.Jugador;
-import Modelo.Unidad;
+import Modelo.Unidad.Jinete;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Unidad;
 
 public class CreadorDeJinete implements CreadorDeUnidad{
     @Override

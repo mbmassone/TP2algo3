@@ -1,8 +1,8 @@
-import Modelo.*;
-import Modelo.Casillero.Casillero;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
+import Modelo.Unidad.*;
 import org.junit.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

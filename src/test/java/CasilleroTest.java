@@ -1,9 +1,13 @@
-import Modelo.*;
 import Modelo.Casillero.*;
 
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Direccion;
 import Modelo.Tablero.Tablero;
+import Modelo.Unidad.*;
+import Modelo.Unidad.Distancia.DistanciaCercana;
+import Modelo.Unidad.Distancia.DistanciaLejana;
+import Modelo.Unidad.Distancia.DistanciaMediana;
 import org.junit.Test;
 
 import java.util.List;

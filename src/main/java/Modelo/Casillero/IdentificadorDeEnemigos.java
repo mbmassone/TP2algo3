@@ -1,6 +1,6 @@
 package Modelo.Casillero;
 
-import Modelo.Jugador;
+import Modelo.Jugador.Jugador;
 
 public class IdentificadorDeEnemigos implements Identificador{
     private Jugador aliado;

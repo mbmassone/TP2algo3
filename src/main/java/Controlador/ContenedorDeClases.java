@@ -1,9 +1,8 @@
 package Controlador;
 
-import Modelo.Jugador;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Tablero;
 import Modelo.Turno;
-import Modelo.Unidad;
 
 public class ContenedorDeClases {
 
@@ -24,18 +23,6 @@ public class ContenedorDeClases {
 
     public Tablero obtenerTablero(){
         return this.tablero;
-    }
-
-
-
-    public Jugador obtenerJugador(String nombreJugador) {
-        if (j1.obtenerNombre().equals(nombreJugador)) return j1;
-        else if (j2.obtenerNombre().equals(nombreJugador)) return j2;
-        else return null;
-    }
-
-    public int obtenerPuntos(String nombreJugador){
-        return obtenerJugador(nombreJugador).obtenerPuntos();
     }
 
     public Jugador obtenerJugador1(){

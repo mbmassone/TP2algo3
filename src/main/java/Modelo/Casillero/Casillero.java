@@ -1,8 +1,13 @@
 package Modelo.Casillero;
 
-import Modelo.*;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Direccion;
+import Modelo.Unidad.*;
+import Modelo.Unidad.Distancia.DistanciaCercana;
+import Modelo.Unidad.Distancia.DistanciaLejana;
+import Modelo.Unidad.Distancia.DistanciaMediana;
+import Modelo.Unidad.Distancia.TipoDistancia;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,7 +18,7 @@ public class Casillero {
     //Atributos
     private HashMap<Direccion, Casillero> adyacentes;
     private Jugador duenio;
-    Unidad unidad; //Solo la pueden acceder clases en el paquete Casillero.
+    Unidad unidad;
     private EstadoCasilla estado;
     private Coordenada coordenada;
 

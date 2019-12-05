@@ -1,5 +1,7 @@
 package Modelo;
 
+import Modelo.Jugador.Jugador;
+
 public class Turno {
 
     Jugador j1;

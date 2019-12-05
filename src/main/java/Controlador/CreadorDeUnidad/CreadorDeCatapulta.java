@@ -1,8 +1,8 @@
 package Controlador.CreadorDeUnidad;
 
-import Modelo.Catapulta;
-import Modelo.Jugador;
-import Modelo.Unidad;
+import Modelo.Unidad.Catapulta;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Unidad;
 
 public class CreadorDeCatapulta implements CreadorDeUnidad {
     @Override

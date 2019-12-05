@@ -1,8 +1,9 @@
-package Modelo;
+package Modelo.Unidad;
 
 import Modelo.Casillero.Casillero;
 import Modelo.Casillero.EnTerritorioAliado;
 import Modelo.Casillero.EstadoTerritorio;
+import Modelo.Jugador.Jugador;
 import Modelo.Tablero.Direccion;
 
 public abstract class Unidad{

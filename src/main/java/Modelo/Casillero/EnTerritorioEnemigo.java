@@ -1,6 +1,6 @@
 package Modelo.Casillero;
 
-import Modelo.Unidad;
+import Modelo.Unidad.Unidad;
 
 public class EnTerritorioEnemigo implements EstadoTerritorio {
     public void analizarDanio(Unidad unidad, float danio){

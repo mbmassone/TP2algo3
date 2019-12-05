@@ -1,8 +1,8 @@
 package Controlador.CreadorDeUnidad;
 
-import Modelo.Curandero;
-import Modelo.Jugador;
-import Modelo.Unidad;
+import Modelo.Unidad.Curandero;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Unidad;
 
 public class CreadorDeCurandero implements CreadorDeUnidad {
     @Override

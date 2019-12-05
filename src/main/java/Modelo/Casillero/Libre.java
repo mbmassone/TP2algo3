@@ -1,6 +1,6 @@
 package Modelo.Casillero;
 
-import Modelo.Unidad;
+import Modelo.Unidad.Unidad;
 
 public class Libre implements EstadoCasilla {
     public boolean estaVacia() {

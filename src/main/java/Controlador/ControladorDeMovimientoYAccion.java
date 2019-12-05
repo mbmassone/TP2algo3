@@ -5,12 +5,15 @@ import Modelo.Casillero.CasilleroFueraDeRangoExcepcion;
 import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
+import Modelo.Unidad.AtacarAliadoExcepcion;
+import Modelo.Unidad.CatapultaCuracionException;
+import Modelo.Unidad.CatapultaNoSePuedeMoverExcepcion;
+import Modelo.Unidad.CurarEnemigoExcepcion;
 import Vista_api.Mapa;
 import Vista_api.RecursosClass.VentanaEmergenteGanador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent> {

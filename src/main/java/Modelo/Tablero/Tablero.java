@@ -1,14 +1,14 @@
 package Modelo.Tablero;
 
 import Modelo.Casillero.Casillero;
-import Modelo.Jugador;
-import Modelo.Unidad;
+import Modelo.Jugador.Jugador;
+import Modelo.Unidad.Unidad;
 
 import java.util.HashMap;
 
 public class Tablero {
     //Atributos
-    private HashMap<Coordenada, Casillero> tablero; //Lo hago como una lista, cualquier cosa lo cambiamos.
+    private HashMap<Coordenada, Casillero> tablero;
     private int TAMANIO = 20;
     Jugador j1;
     Jugador j2;
@@ -88,10 +88,6 @@ public class Tablero {
             return null;
         }
         return obtenerCasillero(coordenada).obtenerUnidad().obtenerDuenio();
-    }
-
-    public Jugador obtenerDuenioCasillero(Coordenada coordenada){
-        return obtenerCasillero(coordenada).obtenerDuenio();
     }
 
     public String obtenerStringVida(Coordenada coordenada) {
