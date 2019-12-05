@@ -6,6 +6,7 @@ import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.SalirJuegoHandler;
 import Vista_api.RecursosClass.PanelDerecho;
+import Vista_api.RecursosClass.VentanaEmergenteGanador;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

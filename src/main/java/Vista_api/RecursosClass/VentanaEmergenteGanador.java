@@ -10,14 +10,18 @@ import javafx.stage.Stage;
 
 public class VentanaEmergenteGanador extends VBox {
 
-    VentanaEmergenteGanador (Jugador ganador){
+    public VentanaEmergenteGanador(){
+
+    }
+
+    public void mostrarGanador(Jugador jugador){
         Stage ventanaEmergente = new Stage();
 
         Button botonSalir = new Button("Salir ");
         SalirJuegoHandler salirJuegoHandler = new SalirJuegoHandler(ventanaEmergente);
         botonSalir.setOnAction(salirJuegoHandler);
 
-        Label mensajeFelicitacion = new Label("Felicidades " + ganador.obtenerNombre() + " Usted es el ganador!");
+        Label mensajeFelicitacion = new Label("Felicidades " + jugador.obtenerNombre() + " Usted es el ganador!");
         VBox vbox3 = new VBox(mensajeFelicitacion,botonSalir);
         Scene contenidoEmergente = new Scene(vbox3);
 
