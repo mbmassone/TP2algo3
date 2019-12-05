@@ -23,7 +23,7 @@ public class PanelDerechoColocarUnidades extends VBox {
         Label puntosRestantes = new Label(Integer.toString(contenedor.obtenerTurno().obtenerJugadorActual().obtenerPuntos()));
         Label intrucciones = new Label("\n\nBienvenido/a " + jugadorActual.getText() + "Para continuar haga click en una celda y haga click en la unidad que desea colocar\nRepita este porceso hasta que se acaben sus puntos\nAl terminar, hacer click en Terminar Turno\n\n\n\n");
         Button terminarTurno = new Button("Terminar Turno");
-        Label informacion = new Button("");
+        Label informacion = new Label("");
         terminarTurno.setOnAction(new TerminarTurnoHandler(jugadorActual, puntosRestantes, contenedor.obtenerTurno(), panelDerecho));
 
         //Arego los contenedores
@@ -44,5 +44,5 @@ public class PanelDerechoColocarUnidades extends VBox {
         this.getChildren().addAll(textoSuperior,bannerJugador,bannerPuntos,intrucciones, tableroUnidadesACrear, terminarTurno, informacion);
         terminarTurno.setAlignment(Pos.CENTER);
     }
-    
+
 }
