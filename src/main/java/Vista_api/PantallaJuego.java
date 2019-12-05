@@ -55,6 +55,7 @@ public class PantallaJuego {
         contenedorPrincipal.getChildren().addAll(mapa,panel_derecho);
         panel_derecho.colocarUnidades();
 
+
         //Creamos la escena
        Scene escenaJuego = new Scene(contenedorPrincipal);
 
