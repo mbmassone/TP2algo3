@@ -5,6 +5,7 @@ import Modelo.Casillero.CasilleroNoEsAdyacenteExcepcion;
 import Modelo.Tablero.Coordenada;
 import Modelo.Tablero.Tablero;
 import Vista_api.Mapa;
+import Vista_api.RecursosClass.VentanaEmergenteGanador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
@@ -18,21 +19,35 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
     private Coordenada coordenadaDestino;
     private Mapa mapa;
     private Label info;
+    private Label jugadorActual;
 
-    public ControladorDeMovimientoYAccion(ContenedorDeClases contenedor, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Mapa mapa, Label informacion){
+    public ControladorDeMovimientoYAccion(ContenedorDeClases contenedor, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Mapa mapa, Label informacion, Label jugadorActual){
 
         this.tablero = contenedor.obtenerTablero();
-        //this.turno = contenedor.obtenerTurno(); TODO se podria chequear el turno para mover/atacar.
         this.coordenadaOrigen = coordenadaOrigen;
         this.coordenadaDestino = coordenadaDestino;
         this.mapa = mapa;
         this.info = informacion;
+        this.turno = contenedor.obtenerTurno();
+        this.jugadorActual = jugadorActual;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         //Limpiar el panel de informacion
+        if(turno.obtenerGanador() != null){
+            VentanaEmergenteGanador ventana = new VentanaEmergenteGanador();
+            ventana.mostrarGanador(turno.obtenerJugadorActual());
+            return;
+        }
         this.info.setText("");
+        if(tablero.obtenerDuenioUnidad(coordenadaOrigen) == null){
+            this.info.setText("\nINFORMACION: No hay unidad ahí.\n");
+            return;
+        } else if(tablero.obtenerDuenioUnidad(coordenadaOrigen) != turno.obtenerJugadorActual()) {
+            this.info.setText("\nINFORMACION: Solo puedes utilizar a tus unidades.\n");
+            return;
+        }
         if(tablero.estaLibre(coordenadaDestino)){
             try{
                 tablero.moverUnidad(coordenadaOrigen, coordenadaDestino);
@@ -58,6 +73,8 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
 
         }
 
+        turno.cambiarTurno();
+        jugadorActual.setText(turno.obtenerJugadorActual().obtenerNombre());
         mapa.actualizarTableroBatalla();
 
     }
