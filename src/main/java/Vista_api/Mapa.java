@@ -125,7 +125,7 @@ public class Mapa extends VBox {
     }
 
 
-    public void sacarMarcaEnMapa(Coordenada coordenada){
+    public void sacarMarcaEnMapa(){
         this.matriz.getChildren().remove(this.check);
     }
 
@@ -134,7 +134,7 @@ public class Mapa extends VBox {
     }
 
 
-    public void sacarMarca2EnMapa(Coordenada coordenada){
+    public void sacarMarca2EnMapa(){
         this.matriz.getChildren().remove(this.check2);
     }
 

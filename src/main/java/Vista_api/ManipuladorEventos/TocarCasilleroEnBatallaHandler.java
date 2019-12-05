@@ -31,7 +31,7 @@ public class TocarCasilleroEnBatallaHandler implements EventHandler<MouseEvent> 
     @Override
     public void handle(MouseEvent mouseEvent) {
         if(mouseEvent.getButton() == MouseButton.PRIMARY){
-            mapa.sacarMarcaEnMapa(coordenadaOrigen);
+            mapa.sacarMarcaEnMapa();
             mapa.colocarMarcaEnMapa(posicionEnTablero);
             System.out.print("Coordenada Origen");
             labelUnidad.setText(tablero.contenidoCasillero(posicionEnTablero));
@@ -39,7 +39,7 @@ public class TocarCasilleroEnBatallaHandler implements EventHandler<MouseEvent> 
             coordenadaOrigen.cambiarCoordenada(posicionEnTablero);
         } else {
             System.out.println("Coordenada Destino");
-            mapa.sacarMarca2EnMapa(coordenadaDestino);
+            mapa.sacarMarca2EnMapa();
             mapa.colocarMarca2EnMapa(posicionEnTablero);
             coordenadaDestino.cambiarCoordenada(posicionEnTablero);
         }

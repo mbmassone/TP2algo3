@@ -37,12 +37,6 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        //Limpiar el panel de informacion
-        if(turno.obtenerGanador() != null){
-            VentanaEmergenteGanador ventana = new VentanaEmergenteGanador(stage);
-            ventana.mostrarGanador(turno.obtenerJugadorActual());
-            return;
-        }
         this.info.setText("");
         if(tablero.obtenerDuenioUnidad(coordenadaOrigen) == null){
             this.info.setText("\nINFORMACION: No hay unidad ahí.\n");
@@ -74,6 +68,12 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
                 this.info.setText("\nNo puedes curar una catapulta\n");
             }
 
+        }
+
+        if(turno.obtenerGanador() != null){
+            VentanaEmergenteGanador ventana = new VentanaEmergenteGanador(stage);
+            ventana.mostrarGanador(turno.obtenerJugadorActual());
+            return;
         }
 
         turno.cambiarTurno();

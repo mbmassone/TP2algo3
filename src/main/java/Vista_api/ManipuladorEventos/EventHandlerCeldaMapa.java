@@ -20,7 +20,7 @@ public class EventHandlerCeldaMapa implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-        mapa.sacarMarcaEnMapa(ultimaCoordenadaTocada);
+        mapa.sacarMarcaEnMapa();
         mapa.colocarMarcaEnMapa(posicionEnTablero);
 
         ultimaCoordenadaTocada.cambiarCoordenada(posicionEnTablero);
