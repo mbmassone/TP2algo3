@@ -21,8 +21,8 @@ public class PanelDerechoColocarUnidades extends VBox {
         Label jugadorActual = new Label(contenedor.obtenerTurno().obtenerJugadorActual().obtenerNombre());
         Label textoPuntosRestantes = new Label("Puntos a usar:");
         Label puntosRestantes = new Label(Integer.toString(contenedor.obtenerTurno().obtenerJugadorActual().obtenerPuntos()));
-        Label intrucciones = new Label("\n\nBienvenido/a " + jugadorActual.getText() + " para continuar haga click en una unidad y haga click de nuevo\n donde quiera colocarla, repita este porceso hasta que se acaben\n sus puntos o haga click en el boton Terminar\n\n\n\n");
-        Button terminarTurno = new Button("Terminar turno");
+        Label intrucciones = new Label("\n\nBienvenido/a " + jugadorActual.getText() + "Para continuar haga click en una celda y haga click en la unidad que desea colocar\nRepita este porceso hasta que se acaben sus puntos\nAl terminar, hacer click en Terminar Turno\n\n\n\n");
+        Button terminarTurno = new Button("Terminar Turno");
         terminarTurno.setOnAction(new TerminarTurnoHandler(jugadorActual, puntosRestantes, contenedor.obtenerTurno(), panelDerecho));
 
         //Arego los contenedores
