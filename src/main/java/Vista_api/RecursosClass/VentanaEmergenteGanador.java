@@ -2,6 +2,7 @@ package Vista_api.RecursosClass;
 
 import Modelo.Jugador;
 import Vista_api.ManipuladorEventos.SalirJuegoHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -28,7 +29,8 @@ public class VentanaEmergenteGanador extends VBox {
         botonSalir.setOnAction(salirJuegoHandler);
 
         Label mensajeFelicitacion = new Label("Felicidades " + jugador.obtenerNombre() + " Usted es el ganador!");
-        VBox vbox3 = new VBox(mensajeFelicitacion,botonSalir);
+        VBox vbox3 = new VBox(imagenTitulo,mensajeFelicitacion,botonSalir);
+        vbox3.setAlignment(Pos.CENTER);
         Scene contenidoEmergente = new Scene(vbox3);
 
         this.stage.setScene(contenidoEmergente);
