@@ -14,9 +14,9 @@ public class Main extends Application {
         stage.setWidth(1280);
 
         //Instancio mi clase de Pantalla de titulo que colocara contenido en el Stage
-        PantallaTitulo wn = new PantallaTitulo();
-        wn.inicializar(stage);
-        wn.mostrar(stage);
+        PantallaTitulo pantalla = new PantallaTitulo();
+        pantalla.inicializar(stage);
+        pantalla.mostrar(stage);
         //La muestra
         stage.show();
 

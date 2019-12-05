@@ -46,7 +46,7 @@ public class PantallaJuego {
        contenedorPrincipal.setSpacing(20);
 
        //panel Derecho donde estaran los controles o la informacion del tablero
-        PanelDerecho panel_derecho = new PanelDerecho(contenedorDeClases, ultimaCoordenadaTocada, mapa, coordenadaOrigen, coordenadaDestino, labelVida, labelUnidad);
+        PanelDerecho panel_derecho = new PanelDerecho(stage, contenedorDeClases, ultimaCoordenadaTocada, mapa, coordenadaOrigen, coordenadaDestino, labelVida, labelUnidad);
 
 
         mapa.actualizarTablero();

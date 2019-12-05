@@ -10,6 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent> {
 
@@ -20,8 +21,9 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
     private Mapa mapa;
     private Label info;
     private Label jugadorActual;
+    private Stage stage;
 
-    public ControladorDeMovimientoYAccion(ContenedorDeClases contenedor, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Mapa mapa, Label informacion, Label jugadorActual){
+    public ControladorDeMovimientoYAccion(Stage stage, ContenedorDeClases contenedor, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Mapa mapa, Label informacion, Label jugadorActual){
 
         this.tablero = contenedor.obtenerTablero();
         this.coordenadaOrigen = coordenadaOrigen;
@@ -30,13 +32,14 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
         this.info = informacion;
         this.turno = contenedor.obtenerTurno();
         this.jugadorActual = jugadorActual;
+        this.stage = stage;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
         //Limpiar el panel de informacion
         if(turno.obtenerGanador() != null){
-            VentanaEmergenteGanador ventana = new VentanaEmergenteGanador();
+            VentanaEmergenteGanador ventana = new VentanaEmergenteGanador(stage);
             ventana.mostrarGanador(turno.obtenerJugadorActual());
             return;
         }

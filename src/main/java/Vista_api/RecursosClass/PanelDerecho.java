@@ -23,9 +23,10 @@ public class PanelDerecho extends VBox {
     private Coordenada coordenadaOrigen;
     private Coordenada coordenadaDestino;
     private Mapa mapa;
+    private Stage stage;
 
 
-    public PanelDerecho(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){
+    public PanelDerecho(Stage stage, ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Mapa mapa, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){
         this.contenedor = contenedor;
         this.ultimaCoordenadaTocada = ultimaCoordenadaTocada;
         this.mapa = mapa;
@@ -33,6 +34,7 @@ public class PanelDerecho extends VBox {
         this.coordenadaDestino = coordenadaDestino;
         this.labelVida = labelVida;
         this.labelUnidad = labelUnidad;
+        this.stage = stage;
     }
 
     public void colocarUnidades(){
@@ -54,7 +56,7 @@ public class PanelDerecho extends VBox {
         Button botonTerminar = new Button("Ejecutar y Pasar Turno");
         Label informacion = new Label("");
 
-        botonTerminar.setOnAction(new ControladorDeMovimientoYAccion(contenedor, coordenadaOrigen, coordenadaDestino, mapa, informacion, jugadorActual));
+        botonTerminar.setOnAction(new ControladorDeMovimientoYAccion(stage, contenedor, coordenadaOrigen, coordenadaDestino, mapa, informacion, jugadorActual));
 
         HBox banner_jugador = new HBox(textoJugadorActual, jugadorActual);
 
