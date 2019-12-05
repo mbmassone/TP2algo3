@@ -30,6 +30,7 @@ public class Mapa extends VBox {
     private Jugador jugador1;
     private Jugador jugador2;
     private ContenedorDeClases contenedor;
+    private ImageView check;
     //Constructor
 
     public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){
@@ -49,6 +50,7 @@ public class Mapa extends VBox {
         this.labelVida = labelVida;
         this.labelUnidad = labelUnidad;
         //this.actualizarTablero();
+        this.check = (new ImageView(new Image("file:check.png")));
     }
 
     //Actualiza la vista del mapa
@@ -115,5 +117,13 @@ public class Mapa extends VBox {
         }
         System.out.println("Mapa de Batalla actualizado");
     }
+    //todo UN METODO QUE reciba una coordenada para pintarle un seleccion
+    public void colocarMarcaEnMapa(Coordenada coordenada){
+        this.matriz.add(this.check, coordenada.obtenerFila(), coordenada.obtenerColumna());
+    }
 
+    //todo UN METODO QUE reciba una coordenada para sacarle la seleccion
+    public void sacarMarcaEnMapa(Coordenada coordenada){
+        this.matriz.getChildren().remove(this.check);
+    }
 }
