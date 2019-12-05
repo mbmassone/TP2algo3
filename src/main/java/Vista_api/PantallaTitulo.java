@@ -39,7 +39,6 @@ public class PantallaTitulo implements ManipuladorEscenarios {
         contenedorTextFields.getChildren().addAll(textfield1,textfield2, informacion);
 
         //Creo botones
-        Button botonDummy = new Button("Dummy");
         Button botonIniciar = new Button("Iniciar");
         Button botonSalir = new Button("Salir ");
 
@@ -49,8 +48,6 @@ public class PantallaTitulo implements ManipuladorEscenarios {
         EasterEggLogo eggLogo = new EasterEggLogo();
 
         //Asignacion de triggers de eventos a los botones
-        //Dummy usa un lambda
-        botonDummy.setOnAction((event) -> System.out.println("Tocaboton"));
         botonSalir.setOnAction(salirJuegoHandler);
         botonIniciar.setOnAction(jugarHandler);
 
@@ -58,7 +55,7 @@ public class PantallaTitulo implements ManipuladorEscenarios {
         imagenTitulo.addEventFilter(MouseEvent.MOUSE_CLICKED, eggLogo);
 
         //Creo contenedores y
-        HBox hbox = new HBox(botonDummy, botonIniciar, botonSalir);
+        HBox hbox = new HBox(botonIniciar, botonSalir);
         VBox vbox = new VBox(20,imagenTitulo,contenedorTextFields,hbox);
         vbox.setAlignment(Pos.CENTER);
         hbox.setAlignment(Pos.CENTER);
