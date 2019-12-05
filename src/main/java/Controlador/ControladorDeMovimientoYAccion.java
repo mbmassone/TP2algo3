@@ -40,7 +40,7 @@ public class ControladorDeMovimientoYAccion implements EventHandler<ActionEvent>
                 this.info.setText("\nINFORMACION: Solo se puede mover a adyacentes\n");
             }
             catch (CatapultaNoSePuedeMoverExcepcion exception) {
-                this.info.setText("\nINFORMACION: Las cataputas no se mueven\n"); //TODO avisar a usuario.
+                this.info.setText("\nINFORMACION: Las cataputas no se mueven\n");
             }
         } else {
             //Atacar

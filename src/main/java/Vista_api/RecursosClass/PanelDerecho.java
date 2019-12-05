@@ -31,11 +31,10 @@ public class PanelDerecho extends VBox {
         this.labelVida = labelVida;
         this.labelUnidad = labelUnidad;
     }
-//TODO Deberia recibir el handler que manipula la creacion de unidades, que a si mismo se comuinicara con el tablero para crearlo
 
     public void colocarUnidades(){
 
-        this.panelColocarUnidades = new PanelDerechoColocarUnidades(contenedor, ultimaCoordenadaTocada, mapa, this); //TODO sacar clase PanelDerechoColocarUnidades.
+        this.panelColocarUnidades = new PanelDerechoColocarUnidades(contenedor, ultimaCoordenadaTocada, mapa, this);
 
         this.getChildren().addAll(panelColocarUnidades);
     }

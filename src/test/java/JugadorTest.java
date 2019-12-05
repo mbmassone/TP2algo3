@@ -15,7 +15,7 @@ public class JugadorTest {
     }
 
     @Test
-    public void testVerificarReduccionDePuntos() { //TODO ACOMODAR ESTO
+    public void testVerificarReduccionDePuntos() {
         Jugador nuevoJugador = new Jugador("Andoni");
         Infanteria nuevaUnidad = new Infanteria(nuevoJugador);
         nuevoJugador.agregarUnidad(nuevaUnidad );
@@ -77,6 +77,6 @@ public class JugadorTest {
         nuevoJugador.eliminarUnidad();
 
 
-        Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0); //TODO Consultar esto
+        Assert.assertSame(nuevoJugador.obtenerCantidadUnidades(), 0);
     }
 }

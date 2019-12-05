@@ -6,6 +6,8 @@ import Modelo.Tablero.Tablero;
 import Vista_api.ManipuladorEventos.SalirJuegoHandler;
 import Vista_api.RecursosClass.PanelDerecho;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;

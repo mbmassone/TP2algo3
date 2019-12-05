@@ -32,12 +32,11 @@ public class Mapa extends VBox {
     private ContenedorDeClases contenedor;
     //Constructor
 
-    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){ //TODO buscar alternativa para pasar las coordenadas
+    public Mapa(ContenedorDeClases contenedor, Coordenada ultimaCoordenadaTocada, Coordenada coordenadaOrigen, Coordenada coordenadaDestino, Label labelVida, Label labelUnidad){
 
         this.matriz = new GridPane();
         this.matriz.setHgap(2);
         this.matriz.setVgap(2);
-        //TODO cambiar harcoding de aqui, el tablero o loqeusea deberia decirme de cuanto es la matriz
         this.filas = 20;
         this.columnas = 20;
         this.getChildren().add(this.matriz);
@@ -57,11 +56,9 @@ public class Mapa extends VBox {
         //Recorro todos los casilleros
         for (int x=0; x<this.columnas; x++) {
             for (int y = 0; y < this.filas; y++) {
-                //TODO obtener el estado de una casilla e iterar a la siguiente.
 
                 Coordenada coordenada_temp = new Coordenada(x,y);
                 String string = tablero.contenidoCasillero(coordenada_temp);
-                //System.out.println(string);
 
                 //Cargo un visor de imagenes abriendo un Stream de archivo con la composicion de ruta de abajo (usa el string que recupera del casillero)
                 ImageView visor = (new ImageView(new Image("file:" + string + ".png")));
